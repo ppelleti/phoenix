@@ -2,4 +2,6 @@
 
 Phoenix
 ===
-Phoenix is an open source implementation of of the swift language.
+Phoenix is a free and open source implementation of the Swift language.
+
+It’s currently a work in progress.
