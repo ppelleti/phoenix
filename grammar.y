@@ -2,7 +2,7 @@
     #include <iostream>
     @class NSArray;
     #include <Foundation/NSString.h>
-    #import "swift2js-Swift.h"
+    #import "swift2objc-Swift.h"
     void yyerror (const char *error);
     int  yylex ();
     static ASTNode * ast = NULL;
