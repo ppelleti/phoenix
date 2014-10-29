@@ -20,6 +20,7 @@
 		1460D5AF1A0178C4009D1EE9 /* ObjCCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5AE1A0178C4009D1EE9 /* ObjCCodeGenerator.m */; };
 		1460D5B21A0178D9009D1EE9 /* LLVMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B11A0178D9009D1EE9 /* LLVMCodeGenerator.m */; };
 		1460D5B51A0178FF009D1EE9 /* ASMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */; };
+		1460D5B71A017A63009D1EE9 /* GRAMMAR.md in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B61A017A63009D1EE9 /* GRAMMAR.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +61,7 @@
 		1460D5B11A0178D9009D1EE9 /* LLVMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLVMCodeGenerator.m; sourceTree = "<group>"; };
 		1460D5B31A0178FF009D1EE9 /* ASMCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMCodeGenerator.h; sourceTree = "<group>"; };
 		1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMCodeGenerator.m; sourceTree = "<group>"; };
+		1460D5B61A017A63009D1EE9 /* GRAMMAR.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = GRAMMAR.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				1460D5911A01779D009D1EE9 /* grammar.mm */,
 				1460D5921A01779D009D1EE9 /* grammar.y */,
+				1460D5B61A017A63009D1EE9 /* GRAMMAR.md */,
 			);
 			name = Grammar;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				1460D5B51A0178FF009D1EE9 /* ASMCodeGenerator.m in Sources */,
 				1460D5A91A017831009D1EE9 /* AST.m in Sources */,
+				1460D5B71A017A63009D1EE9 /* GRAMMAR.md in Sources */,
 				1460D5A21A01779D009D1EE9 /* Regex.m in Sources */,
 				1460D5A11A01779D009D1EE9 /* README.md in Sources */,
 				1460D5AF1A0178C4009D1EE9 /* ObjCCodeGenerator.m in Sources */,
@@ -326,6 +330,7 @@
 				1460D58F1A017757009D1EE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
