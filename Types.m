@@ -136,23 +136,80 @@
 @end
 
 // ArrayType...
-@interface ArrayType: GenericType
-@property (nonatomic, retain) GenericType *innerType;
-- (id) initWithInnerType: (GenericType *)innerType;
+@implementation ArrayType: GenericType
+- (id) initWithInnerType: (GenericType *)innerType
+{
+    self = [super initWithType:ARRAY];
+    if(self != nil)
+    {
+        self.innerType = innerType;
+    }
+    return self;
+}
+
+- (NSString *)customBinaryOperator:(ASTNode *)myNode :(NSString *)op :(ASTNode *)otherNode
+{
+    if([op isEqualToString:@"+="])
+    {
+        if(otherNode.type == ARRAY)
+        {
+            return [NSString stringWithFormat:@"[%@ addObjectsFromArray:%@]",[myNode toCode], [otherNode toCode]];
+        }
+        else
+        {
+            return [NSString stringWithFormat:@"[%@ addObjectsFromArray:%@]",[myNode toCode], [otherNode toCode]];
+        }
+    }
+}
 @end
 
 // DictionaryType...
-@interface DictionaryType: GenericType
-@property (nonatomic, retain) GenericType *innerType;
-- (id) initWithInnerType: (GenericType *)innerType;
+@implementation DictionaryType: GenericType
+- (id) initWithInnerType: (GenericType *)innerType
+{
+    self = [super initWithType:DICTIONARY];
+    if(self != nil)
+    {
+        self.innerType = innerType;
+    }
+    return self;
+}
 @end
 
 // FunctionType...
-@interface FunctionType: GenericType
-@property (nonatomic, retain) GenericType *returnType;
-@property (nonatomic, retain) NSMutableArray *argumentTypes;
+@implementation FunctionType: GenericType
 - (id) initWithArgumentTypes: (NSMutableArray *)argumentTypes
-                  returnType: (GenericType *)returnType;
+                  returnType: (GenericType *)returnType
+{
+    if((self = [super initWithType:DICTIONARY]) != nil)
+    {
+        self.argumentTypes = [argumentTypes copy];
+        self.returnType = returnType;
+    }
+    return self;
+}
 
-- (id) initWithArgumentTypes:(GenericType *)argumentType
-
+- (id) initWithArgsType:(GenericType *)argsType
+             returnType:(GenericType *)returnType
+{
+    self = [super initWithType:DICTIONARY];
+    
+    if(self)
+    {
+        TupleType *tuple = nil;
+        if([argsType isKindOfClass:[TupleType class]])
+        {
+            tuple = (TupleType *)argsType;
+        }
+        
+        if(tuple != nil)
+        {
+            [self.argumentTypes addObjectsFromArray:tuple.types];
+        }
+        
+        self.returnType = returnType;
+    }
+    
+    return self;
+}
+@end
