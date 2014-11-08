@@ -6534,7 +6534,7 @@ int yylex ()
     int token = [lexer yylex];
     
     //set string value
-    const char * str = [lexer yylexstr].UTF8String;
+    const char * str = [[lexer yylexstr] UTF8String];
     if (str) {
         yylval.str = strdup(str);
     }

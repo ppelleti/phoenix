@@ -86,7 +86,7 @@ typedef NSUInteger TOKEN;
 
 - (int) yylex;
 
-- (NSString *) yylextstr;
+- (NSString *) yylexstr;
 
 - (void) checkIdentifier;
 

@@ -245,7 +245,7 @@ static TokenData *lastyylexToken = nil;
     return 0;
 }
 
-- (NSString *) yylextstr
+- (NSString *) yylexstr
 {
     TokenData *data = nil;
     if((data = lastyylexToken))
