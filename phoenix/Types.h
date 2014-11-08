@@ -10,14 +10,14 @@
 @class ExpressionList;
 
 enum {
-    STRING = 1,
-    BOOLEAN, NUMBER, ARRAY, DICTIONARY,
-    TUPLE,
-    FUNCTION,
-    CLASS,
-    STRUCT,
-    VOID,
-    UNKOWN
+    TYPE_STRING = 1,
+    TYPE_BOOLEAN, TYPE_NUMBER, TYPE_ARRAY, TYPE_DICTIONARY,
+    TYPE_TUPLE,
+    TYPE_FUNCTION,
+    TYPE_CLASS,
+    TYPE_STRUCT,
+    TYPE_VOID,
+    TYPE_UNKNOWN
 };
 typedef NSUInteger SwiftType;
 
@@ -31,7 +31,7 @@ typedef NSUInteger SwiftType;
 - (NSString *) customBinaryOperator: (ASTNode *)myNode
                                    : (NSString *)op
                                    : (ASTNode *)otherNode;
-- (GenericType *) fromTypeIdentifier: (NSString *)name;
++ (GenericType *) fromTypeIdentifier: (NSString *)name;
 @end
 
 // IndirectionType...
@@ -45,7 +45,7 @@ typedef NSUInteger SwiftType;
 @interface TupleType: GenericType
 @property (nonatomic, retain) NSMutableArray *names;
 @property (nonatomic, retain) NSMutableArray *types;
-- (id) initWithList: (ExpressionList *)list;
+- (id) initWithList: (ASTNode *)list;
 - (void) addType: (NSString *)name
                 : (GenericType *)type;
 - (GenericType *) getTypeForIndex:(int)index;
@@ -69,7 +69,6 @@ typedef NSUInteger SwiftType;
 @property (nonatomic, retain) NSMutableArray *argumentTypes;
 - (id) initWithArgumentTypes: (NSMutableArray *)argumentTypes
                   returnType: (GenericType *)returnType;
-
-- (id) initWithArgumentTypes:(GenericType *)argumentType
-                  returnType:(GenericType *)returnType;
+- (id) initWithArgsType:(GenericType *)argsType
+             returnType:(GenericType *)returnType;
 @end

@@ -180,7 +180,9 @@
     #include <iostream>
     @class NSArray;
     #include <Foundation/NSString.h>
-    #import "swift2objc-Swift.h"
+    #include "AST.h"
+    #include "Lexer.h"
+
     void yyerror (const char *error);
     int  yylex ();
     static ASTNode * ast = NULL;

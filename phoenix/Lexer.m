@@ -60,102 +60,102 @@ static TokenData *lastyylexToken = nil;
         postfixOperatorRegex = [[Regex alloc] initWithPattern: @"[^\\s,:;\\)\\}\\]]+$"];
         
         // Keywords...
-        declarationKeywords = @{@"class":[NSNumber numberWithInt: CLASS],
-                                @"deinit":[NSNumber numberWithInt: DEINIT],
-                                @"enum":[NSNumber numberWithInt: ENUM],
-                                @"extension":[NSNumber numberWithInt: EXTENSION],
-                                @"func":[NSNumber numberWithInt: FUNC],
-                                @"import":[NSNumber numberWithInt: IMPORT],
-                                @"init":[NSNumber numberWithInt: INIT],
-                                @"let":[NSNumber numberWithInt: LET],
-                                @"protocol":[NSNumber numberWithInt: PROTOCOL],
-                                @"static":[NSNumber numberWithInt: STATIC],
-                                @"struct":[NSNumber numberWithInt: STRUCT],
-                                @"subscript":[NSNumber numberWithInt: SUBSCRIPT],
-                                @"typealias":[NSNumber numberWithInt: TYPEALIAS],
-                                @"var":[NSNumber numberWithInt: VAR]};
+        declarationKeywords = @{@"class":[NSNumber numberWithInt: LEX_CLASS],
+                                @"deinit":[NSNumber numberWithInt: LEX_DEINIT],
+                                @"enum":[NSNumber numberWithInt: LEX_ENUM],
+                                @"extension":[NSNumber numberWithInt: LEX_EXTENSION],
+                                @"func":[NSNumber numberWithInt: LEX_FUNC],
+                                @"import":[NSNumber numberWithInt: LEX_IMPORT],
+                                @"init":[NSNumber numberWithInt: LEX_INIT],
+                                @"let":[NSNumber numberWithInt: LEX_LET],
+                                @"protocol":[NSNumber numberWithInt: LEX_PROTOCOL],
+                                @"static":[NSNumber numberWithInt: LEX_STATIC],
+                                @"struct":[NSNumber numberWithInt: LEX_STRUCT],
+                                @"subscript":[NSNumber numberWithInt: LEX_SUBSCRIPT],
+                                @"typealias":[NSNumber numberWithInt: LEX_TYPEALIAS],
+                                @"var":[NSNumber numberWithInt: LEX_VAR]};
         
         statementKeywords = @{
-                              @"break":[NSNumber numberWithInt: BREAK],
-                              @"case":[NSNumber numberWithInt: CASE],
-                              @"continue":[NSNumber numberWithInt: CONTINUE],
-                              @"default":[NSNumber numberWithInt: DEFAULT],
-                              @"do":[NSNumber numberWithInt: DO],
-                              @"else":[NSNumber numberWithInt: ELSE],
-                              @"fallthrough":[NSNumber numberWithInt: FALLTHROUGH],
-                              @"if":[NSNumber numberWithInt: IF],
-                              @"in":[NSNumber numberWithInt: IN],
-                              @"for":[NSNumber numberWithInt: FOR],
-                              @"return":[NSNumber numberWithInt: RETURN],
-                              @"switch":[NSNumber numberWithInt: SWITCH],
-                              @"where":[NSNumber numberWithInt: WHERE],
-                              @"while":[NSNumber numberWithInt: WHILE],
+                              @"break":[NSNumber numberWithInt: LEX_BREAK],
+                              @"case":[NSNumber numberWithInt: LEX_CASE],
+                              @"continue":[NSNumber numberWithInt: LEX_CONTINUE],
+                              @"default":[NSNumber numberWithInt: LEX_DEFAULT],
+                              @"do":[NSNumber numberWithInt: LEX_DO],
+                              @"else":[NSNumber numberWithInt: LEX_ELSE],
+                              @"fallthrough":[NSNumber numberWithInt: LEX_FALLTHROUGH],
+                              @"if":[NSNumber numberWithInt: LEX_IF],
+                              @"in":[NSNumber numberWithInt: LEX_IN],
+                              @"for":[NSNumber numberWithInt: LEX_FOR],
+                              @"return":[NSNumber numberWithInt: LEX_RETURN],
+                              @"switch":[NSNumber numberWithInt: LEX_SWITCH],
+                              @"where":[NSNumber numberWithInt: LEX_WHERE],
+                              @"while":[NSNumber numberWithInt: LEX_WHILE],
                               };
         
         expressionKeywords = @{
-                               @"as":[NSNumber numberWithInt: AS],
-                               @"dynamictype":[NSNumber numberWithInt: DYNAMICTYPE],
-                               @"is":[NSNumber numberWithInt: IS],
-                               @"new":[NSNumber numberWithInt: NEW],
-                               @"super":[NSNumber numberWithInt: SUPER],
-                               @"self":[NSNumber numberWithInt: SELF],
-                               @"Self":[NSNumber numberWithInt: SELF_CLASS],
-                               @"Type":[NSNumber numberWithInt: TYPE]
+                               @"as":[NSNumber numberWithInt: LEX_AS],
+                               @"dynamictype":[NSNumber numberWithInt: LEX_DYNAMICTYPE],
+                               @"is":[NSNumber numberWithInt: LEX_IS],
+                               @"new":[NSNumber numberWithInt: LEX_NEW],
+                               @"super":[NSNumber numberWithInt: LEX_SUPER],
+                               @"self":[NSNumber numberWithInt: LEX_SELF],
+                               @"Self":[NSNumber numberWithInt: LEX_SELF_CLASS],
+                               @"Type":[NSNumber numberWithInt: LEX_TYPE]
                                };
         
         particularKeywords = @{
-                               @"associativity":[NSNumber numberWithInt: ASSOCIATIVITY],
-                               @"didSet":[NSNumber numberWithInt: DIDSET],
-                               @"get":[NSNumber numberWithInt: GET],
-                               @"infix":[NSNumber numberWithInt: INFIX],
-                               @"inout":[NSNumber numberWithInt: INOUT],
-                               @"left":[NSNumber numberWithInt: LEFT],
-                               @"mutating":[NSNumber numberWithInt: MUTATING],
-                               @"none":[NSNumber numberWithInt: NONE],
-                               @"nonmutating":[NSNumber numberWithInt: NONMUTATING],
-                               @"operator":[NSNumber numberWithInt: OPERATOR],
-                               @"override":[NSNumber numberWithInt: OVERRIDE],
-                               @"postfix":[NSNumber numberWithInt: POSTFIX],
-                               @"precedence":[NSNumber numberWithInt: PRECEDENCE],
-                               @"prefix":[NSNumber numberWithInt: PREFIX],
-                               @"right":[NSNumber numberWithInt: RIGHT],
-                               @"set":[NSNumber numberWithInt: SET],
-                               @"unowned":[NSNumber numberWithInt: UNOWNED],
-                               @"unowned(safe)":[NSNumber numberWithInt: UNOWNED_SAFE],
-                               @"unowned(unsafe)":[NSNumber numberWithInt: UNOWNED_UNSAFE],
-                               @"weak":[NSNumber numberWithInt: WEAK],
-                               @"willSet":[NSNumber numberWithInt: WILLSET],
+                               @"associativity":[NSNumber numberWithInt: LEX_ASSOCIATIVITY],
+                               @"didSet":[NSNumber numberWithInt: LEX_DIDSET],
+                               @"get":[NSNumber numberWithInt: LEX_GET],
+                               @"infix":[NSNumber numberWithInt: LEX_INFIX],
+                               @"inout":[NSNumber numberWithInt: LEX_INOUT],
+                               @"left":[NSNumber numberWithInt: LEX_LEFT],
+                               @"mutating":[NSNumber numberWithInt: LEX_MUTATING],
+                               @"none":[NSNumber numberWithInt: LEX_NONE],
+                               @"nonmutating":[NSNumber numberWithInt: LEX_NONMUTATING],
+                               @"operator":[NSNumber numberWithInt: LEX_OPERATOR],
+                               @"override":[NSNumber numberWithInt: LEX_OVERRIDE],
+                               @"postfix":[NSNumber numberWithInt: LEX_POSTFIX],
+                               @"precedence":[NSNumber numberWithInt: LEX_PRECEDENCE],
+                               @"prefix":[NSNumber numberWithInt: LEX_PREFIX],
+                               @"right":[NSNumber numberWithInt: LEX_RIGHT],
+                               @"set":[NSNumber numberWithInt: LEX_SET],
+                               @"unowned":[NSNumber numberWithInt: LEX_UNOWNED],
+                               @"unowned(safe)":[NSNumber numberWithInt: LEX_UNOWNED_SAFE],
+                               @"unowned(unsafe)":[NSNumber numberWithInt: LEX_UNOWNED_UNSAFE],
+                               @"weak":[NSNumber numberWithInt: LEX_WEAK],
+                               @"willSet":[NSNumber numberWithInt: LEX_WILLSET],
                                };
         
         operatorSymbols = @{
-                            @"/": [NSNumber numberWithInt: SLASH],       @"=": [NSNumber numberWithInt: EQUAL],
-                            @"-": [NSNumber numberWithInt: MINUS],       @"+": [NSNumber numberWithInt: PLUS],
-                            @"!": [NSNumber numberWithInt: EXCLAMATION], @"*": [NSNumber numberWithInt: ASTERISK],
-                            @"%": [NSNumber numberWithInt: PERCENT],     @"<": [NSNumber numberWithInt: LT],
-                            @">": [NSNumber numberWithInt: GT],          @"&": [NSNumber numberWithInt: AMPERSAND],
-                            @"|": [NSNumber numberWithInt: OR],          @"^": [NSNumber numberWithInt: CARET],
-                            @"~": [NSNumber numberWithInt: TILDE],       @".": [NSNumber numberWithInt: DOT],
+                            @"/": [NSNumber numberWithInt: LEX_SLASH],       @"=": [NSNumber numberWithInt: LEX_EQUAL],
+                            @"-": [NSNumber numberWithInt: LEX_MINUS],       @"+": [NSNumber numberWithInt: LEX_PLUS],
+                            @"!": [NSNumber numberWithInt: LEX_EXCLAMATION], @"*": [NSNumber numberWithInt: LEX_ASTERISK],
+                            @"%": [NSNumber numberWithInt: LEX_PERCENT],     @"<": [NSNumber numberWithInt: LEX_LT],
+                            @">": [NSNumber numberWithInt: LEX_GT],          @"&": [NSNumber numberWithInt: LEX_AMPERSAND],
+                            @"|": [NSNumber numberWithInt: LEX_OR],          @"^": [NSNumber numberWithInt: LEX_CARET],
+                            @"~": [NSNumber numberWithInt: LEX_TILDE],       @".": [NSNumber numberWithInt: LEX_DOT],
                             //combined
-                            @"==": [NSNumber numberWithInt: EQUAL2],     @"===": [NSNumber numberWithInt: EQUAL3],
-                            @"++": [NSNumber numberWithInt: PLUSPLUS],   @"--": [NSNumber numberWithInt: MINUSMINUS],
-                            @"...":[NSNumber numberWithInt: DOT3],       @"->": [NSNumber numberWithInt: ARROW],
-                            @"<<": [NSNumber numberWithInt: LT2],        @">>": [NSNumber numberWithInt: GT2],
-                            @"&&": [NSNumber numberWithInt: AMPERSAND2], @"||": [NSNumber numberWithInt: OR2],
-                            @"+=": [NSNumber numberWithInt: PLUS_EQ],    @"-=": [NSNumber numberWithInt: MINUS_EQ],
-                            @"*=": [NSNumber numberWithInt: ASTERISK_EQ], @"%=": [NSNumber numberWithInt: PERCENT_EQ],
-                            @"/=": [NSNumber numberWithInt: SLASH_EQ],   @"|=": [NSNumber numberWithInt: OR_EQ],
-                            @"&=": [NSNumber numberWithInt: AMPERSAND_EQ], @"^=": [NSNumber numberWithInt: CARET_EQ],
-                            @"~=": [NSNumber numberWithInt: TILDE_EQ],
+                            @"==": [NSNumber numberWithInt: LEX_EQUAL2],     @"===": [NSNumber numberWithInt: LEX_EQUAL3],
+                            @"++": [NSNumber numberWithInt: LEX_PLUSPLUS],   @"--": [NSNumber numberWithInt: LEX_MINUSMINUS],
+                            @"...":[NSNumber numberWithInt: LEX_DOT3],       @"->": [NSNumber numberWithInt: LEX_ARROW],
+                            @"<<": [NSNumber numberWithInt: LEX_LT2],        @">>": [NSNumber numberWithInt: LEX_GT2],
+                            @"&&": [NSNumber numberWithInt: LEX_AMPERSAND2], @"||": [NSNumber numberWithInt: LEX_OR2],
+                            @"+=": [NSNumber numberWithInt: LEX_PLUS_EQ],    @"-=": [NSNumber numberWithInt: LEX_MINUS_EQ],
+                            @"*=": [NSNumber numberWithInt: LEX_ASTERISK_EQ], @"%=": [NSNumber numberWithInt: LEX_PERCENT_EQ],
+                            @"/=": [NSNumber numberWithInt: LEX_SLASH_EQ],   @"|=": [NSNumber numberWithInt: LEX_OR_EQ],
+                            @"&=": [NSNumber numberWithInt: LEX_AMPERSAND_EQ], @"^=": [NSNumber numberWithInt: LEX_CARET_EQ],
+                            @"~=": [NSNumber numberWithInt: LEX_TILDE_EQ],
                             };
         
         grammarSymbols = @{
-                           @"(": [NSNumber numberWithInt: LPAR],        @")": [NSNumber numberWithInt: RPAR],
-                           @"[": [NSNumber numberWithInt: LBRACKET],    @"]": [NSNumber numberWithInt: RBRACKET],
-                           @"{": [NSNumber numberWithInt: LBRACE],      @"}": [NSNumber numberWithInt: RBRACE],
-                           @",": [NSNumber numberWithInt: COMMA],       @":": [NSNumber numberWithInt: COLON],
-                           @";": [NSNumber numberWithInt: SEMICOLON],   @"@": [NSNumber numberWithInt: AT],
-                           @"_": [NSNumber numberWithInt: UNDERSCORE],  @"#": [NSNumber numberWithInt: HASH],
-                           @"$": [NSNumber numberWithInt: DOLLAR],      @"?": [NSNumber numberWithInt: QUESTION],
+                           @"(": [NSNumber numberWithInt: LEX_LPAR],        @")": [NSNumber numberWithInt: LEX_RPAR],
+                           @"[": [NSNumber numberWithInt: LEX_LBRACKET],    @"]": [NSNumber numberWithInt: LEX_RBRACKET],
+                           @"{": [NSNumber numberWithInt: LEX_LBRACE],      @"}": [NSNumber numberWithInt: LEX_RBRACE],
+                           @",": [NSNumber numberWithInt: LEX_COMMA],       @":": [NSNumber numberWithInt: LEX_COLON],
+                           @";": [NSNumber numberWithInt: LEX_SEMICOLON],   @"@": [NSNumber numberWithInt: LEX_AT],
+                           @"_": [NSNumber numberWithInt: LEX_UNDERSCORE],  @"#": [NSNumber numberWithInt: LEX_HASH],
+                           @"$": [NSNumber numberWithInt: LEX_DOLLAR],      @"?": [NSNumber numberWithInt: LEX_QUESTION],
                            };
         
     }
@@ -216,7 +216,7 @@ static TokenData *lastyylexToken = nil;
         TokenData *foundToken = [tokenStack objectAtIndex: 0];
         
         [tokenStack removeObjectAtIndex:0];
-        if ([foundToken token] == COMMENT)
+        if ([foundToken token] == LEX_COMMENT)
         {
             //for now comment tokens are ommited and not pased to the parsed
             return [self nextToken];
@@ -299,13 +299,13 @@ static TokenData *lastyylexToken = nil;
     }
     else if([booleanRegex test: identifier])
     {
-        TokenData *data = [[TokenData alloc] initWithToken:BOOLEAN_LITERAL
+        TokenData *data = [[TokenData alloc] initWithToken:LEX_BOOLEAN_LITERAL
                                                      value:identifier];
         [tokenStack addObject: data];
     }
     else {
         //user defined identifier
-        TokenData *data = [[TokenData alloc] initWithToken:IDENTIFIER
+        TokenData *data = [[TokenData alloc] initWithToken:LEX_IDENTIFIER
                                                      value:identifier];
         [tokenStack addObject: data];
     }
@@ -319,7 +319,7 @@ static TokenData *lastyylexToken = nil;
         if (match)
         {
             consumed += [match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
-            TokenData *data = [[TokenData alloc] initWithToken:NUMBER_LITERAL
+            TokenData *data = [[TokenData alloc] initWithToken:LEX_NUMBER_LITERAL
                                                          value:match];
             [tokenStack addObject:data];
             return;
@@ -333,7 +333,7 @@ static TokenData *lastyylexToken = nil;
     if (match)
     {
         consumed+=[match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
-        TokenData *data = [[TokenData alloc] initWithToken:STRING_LITERAL
+        TokenData *data = [[TokenData alloc] initWithToken:LEX_STRING_LITERAL
                                                      value:match];
         [tokenStack addObject:data];
     }
@@ -345,14 +345,14 @@ static TokenData *lastyylexToken = nil;
     if ((match = [lineCommentRegex firstMatch: code]))
     {
         consumed += [match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
-        TokenData *data = [[TokenData alloc] initWithToken:COMMENT
+        TokenData *data = [[TokenData alloc] initWithToken:LEX_COMMENT
                                                      value:match];
         [tokenStack addObject:data];
     }
     else if ((match = [blockCommentRegex firstMatch: code]))
     {
         consumed += [match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
-        TokenData *data = [[TokenData alloc] initWithToken:COMMENT
+        TokenData *data = [[TokenData alloc] initWithToken:LEX_COMMENT
                                                      value:match];
         [tokenStack addObject:data];
     }
@@ -397,7 +397,7 @@ static TokenData *lastyylexToken = nil;
         }
         else if (prefix) {
             //prefix unary operator
-            TokenData *data = [[TokenData alloc] initWithToken:PREFIX_OPERATOR
+            TokenData *data = [[TokenData alloc] initWithToken:LEX_PREFIX_OPERATOR
                                                          value:@""];
             [tokenStack addObject:data];
             TokenData *data2 = [[TokenData alloc] initWithToken:token
@@ -406,7 +406,7 @@ static TokenData *lastyylexToken = nil;
         }
         else if (postfix) {
             //postfix unary operator
-            TokenData *data = [[TokenData alloc] initWithToken:POSTFIX_OPERATOR
+            TokenData *data = [[TokenData alloc] initWithToken:LEX_POSTFIX_OPERATOR
                                                          value:@""];
             [tokenStack addObject:data];
             TokenData *data2 = [[TokenData alloc] initWithToken:token
@@ -439,17 +439,17 @@ static TokenData *lastyylexToken = nil;
 - (NSString *) tokenToString: (TOKEN)token
 {
     switch (token) {
-        case IDENTIFIER:
+        case LEX_IDENTIFIER:
             return @"ID";
-        case BOOLEAN_LITERAL:
+        case LEX_BOOLEAN_LITERAL:
             return @"bool";
-        case STRING_LITERAL:
+        case LEX_STRING_LITERAL:
             return @"string";
-        case NUMBER_LITERAL:
+        case LEX_NUMBER_LITERAL:
             return @"number";
-        case PREFIX_OPERATOR:
+        case LEX_PREFIX_OPERATOR:
             return @"prefix_op";
-        case POSTFIX_OPERATOR:
+        case LEX_POSTFIX_OPERATOR:
             return @"postfix_op";
         default:
             break;

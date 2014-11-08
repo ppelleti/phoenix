@@ -29,15 +29,15 @@
         || [op isEqualToString: @"&&"]
         || [op isEqualToString: @"||"] )
     {
-        return [[GenericType alloc] initWithType:BOOLEAN];
+        return [[GenericType alloc] initWithType:TYPE_BOOLEAN];
     }
     else if( [op isEqualToString: @"="] )
     {
         return other;
     }
-    else if (self.type == STRING || other.type == STRING)
+    else if (self.type == TYPE_STRING || other.type == TYPE_STRING)
     {
-        return [[GenericType alloc] initWithType: STRING];
+        return [[GenericType alloc] initWithType: TYPE_STRING];
     }
     else
     {
@@ -52,19 +52,19 @@
     return nil;
 }
 
-- (GenericType *) fromTypeIdentifier: (NSString *)name
++ (GenericType *) fromTypeIdentifier: (NSString *)name
 {
     if ([name isEqualToString: @"String"])
     {
-        return [[GenericType alloc] initWithType:STRING];
+        return [[GenericType alloc] initWithType:TYPE_STRING];
     }
     else if ([name isEqualToString: @"Int"])
     {
-        return [[GenericType alloc] initWithType:NUMBER];
+        return [[GenericType alloc] initWithType:TYPE_NUMBER];
     }
     else
     {
-        return [[GenericType alloc] initWithType:UNKOWN];
+        return [[GenericType alloc] initWithType:TYPE_UNKNOWN];
     }
 }
 
@@ -91,7 +91,7 @@
 
 - (id) initWithList: (ExpressionList *)list
 {
-    self = [super initWithType: TUPLE];
+    self = [super initWithType: TYPE_TUPLE];
     if(self != nil)
     {
         ExpressionList *item = list;
@@ -105,21 +105,23 @@
         {
             NamedExpression *namedExpression = nil;
             NamedExpression *expression = nil;
-            if ((namedExpression = [validItem current]) != nil)
+            ExpressionList *vItem = (ExpressionList *)validItem;
+            if ((namedExpression = (NamedExpression *)[vItem current]) != nil)
             {
                 [self addType: namedExpression.name
                              : namedExpression.type];
             }
-            else if((expression = validItem.current) != nil)
+            else if((expression = (NamedExpression *)[vItem current]) != nil)
             {
                 NSString *str = [NSString stringWithFormat:@"%d",index];
                 [self addType: str
                              : expression.type];
             }
             ++index;
-            item = [validItem next];
+            item = [vItem next];
         }
     }
+    return self;
 }
 
 - (void) addType: (NSString *)name
@@ -139,7 +141,7 @@
 @implementation ArrayType: GenericType
 - (id) initWithInnerType: (GenericType *)innerType
 {
-    self = [super initWithType:ARRAY];
+    self = [super initWithType:TYPE_ARRAY];
     if(self != nil)
     {
         self.innerType = innerType;
@@ -151,7 +153,7 @@
 {
     if([op isEqualToString:@"+="])
     {
-        if(otherNode.type == ARRAY)
+        if(otherNode.type.type == TYPE_ARRAY)
         {
             return [NSString stringWithFormat:@"[%@ addObjectsFromArray:%@]",[myNode toCode], [otherNode toCode]];
         }
@@ -159,7 +161,10 @@
         {
             return [NSString stringWithFormat:@"[%@ addObjectsFromArray:%@]",[myNode toCode], [otherNode toCode]];
         }
+        
+        return [super customBinaryOperator:myNode :op :otherNode];
     }
+    return nil;
 }
 @end
 
@@ -167,7 +172,7 @@
 @implementation DictionaryType: GenericType
 - (id) initWithInnerType: (GenericType *)innerType
 {
-    self = [super initWithType:DICTIONARY];
+    self = [super initWithType:TYPE_DICTIONARY];
     if(self != nil)
     {
         self.innerType = innerType;
@@ -181,7 +186,7 @@
 - (id) initWithArgumentTypes: (NSMutableArray *)argumentTypes
                   returnType: (GenericType *)returnType
 {
-    if((self = [super initWithType:DICTIONARY]) != nil)
+    if((self = [super initWithType:TYPE_DICTIONARY]) != nil)
     {
         self.argumentTypes = [argumentTypes copy];
         self.returnType = returnType;
@@ -192,7 +197,7 @@
 - (id) initWithArgsType:(GenericType *)argsType
              returnType:(GenericType *)returnType
 {
-    self = [super initWithType:DICTIONARY];
+    self = [super initWithType:TYPE_DICTIONARY];
     
     if(self)
     {

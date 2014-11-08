@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		1460D58A1A017757009D1EE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5891A017757009D1EE9 /* main.m */; };
 		1460D59D1A01779D009D1EE9 /* grammar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5911A01779D009D1EE9 /* grammar.mm */; };
-		1460D59E1A01779D009D1EE9 /* grammar.y in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5921A01779D009D1EE9 /* grammar.y */; };
 		1460D59F1A01779D009D1EE9 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5941A01779D009D1EE9 /* Lexer.m */; };
-		1460D5A01A01779D009D1EE9 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5961A01779D009D1EE9 /* Makefile */; };
-		1460D5A11A01779D009D1EE9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5971A01779D009D1EE9 /* README.md */; };
 		1460D5A21A01779D009D1EE9 /* Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5991A01779D009D1EE9 /* Regex.m */; };
 		1460D5A31A01779D009D1EE9 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D59C1A01779D009D1EE9 /* Types.m */; };
 		1460D5A91A017831009D1EE9 /* AST.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5A81A017831009D1EE9 /* AST.m */; };
@@ -20,7 +17,6 @@
 		1460D5AF1A0178C4009D1EE9 /* ObjCCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5AE1A0178C4009D1EE9 /* ObjCCodeGenerator.m */; };
 		1460D5B21A0178D9009D1EE9 /* LLVMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B11A0178D9009D1EE9 /* LLVMCodeGenerator.m */; };
 		1460D5B51A0178FF009D1EE9 /* ASMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */; };
-		1460D5B71A017A63009D1EE9 /* GRAMMAR.md in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B61A017A63009D1EE9 /* GRAMMAR.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,12 +36,9 @@
 		1460D5891A017757009D1EE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1460D5901A01779D009D1EE9 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		1460D5911A01779D009D1EE9 /* grammar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = grammar.mm; sourceTree = "<group>"; };
-		1460D5921A01779D009D1EE9 /* grammar.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; path = grammar.y; sourceTree = "<group>"; };
 		1460D5931A01779D009D1EE9 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
 		1460D5941A01779D009D1EE9 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lexer.m; sourceTree = "<group>"; };
 		1460D5951A01779D009D1EE9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		1460D5961A01779D009D1EE9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		1460D5971A01779D009D1EE9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1460D5981A01779D009D1EE9 /* Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Regex.h; sourceTree = "<group>"; };
 		1460D5991A01779D009D1EE9 /* Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Regex.m; sourceTree = "<group>"; };
 		1460D59A1A01779D009D1EE9 /* swift.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swift.grammar; sourceTree = "<group>"; };
@@ -62,6 +55,7 @@
 		1460D5B31A0178FF009D1EE9 /* ASMCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMCodeGenerator.h; sourceTree = "<group>"; };
 		1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMCodeGenerator.m; sourceTree = "<group>"; };
 		1460D5B61A017A63009D1EE9 /* GRAMMAR.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = GRAMMAR.md; sourceTree = "<group>"; };
+		1468F3EA1A0DEC57006C9CAE /* grammar.y */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.yacc; path = grammar.y; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +100,8 @@
 		1460D5A41A0177DA009D1EE9 /* Grammar */ = {
 			isa = PBXGroup;
 			children = (
+				1468F3EA1A0DEC57006C9CAE /* grammar.y */,
 				1460D5911A01779D009D1EE9 /* grammar.mm */,
-				1460D5921A01779D009D1EE9 /* grammar.y */,
 				1460D5B61A017A63009D1EE9 /* GRAMMAR.md */,
 			);
 			name = Grammar;
@@ -141,8 +135,6 @@
 			children = (
 				1460D59A1A01779D009D1EE9 /* swift.grammar */,
 				1460D5951A01779D009D1EE9 /* LICENSE */,
-				1460D5961A01779D009D1EE9 /* Makefile */,
-				1460D5971A01779D009D1EE9 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -205,12 +197,8 @@
 			files = (
 				1460D5B51A0178FF009D1EE9 /* ASMCodeGenerator.m in Sources */,
 				1460D5A91A017831009D1EE9 /* AST.m in Sources */,
-				1460D5B71A017A63009D1EE9 /* GRAMMAR.md in Sources */,
 				1460D5A21A01779D009D1EE9 /* Regex.m in Sources */,
-				1460D5A11A01779D009D1EE9 /* README.md in Sources */,
 				1460D5AF1A0178C4009D1EE9 /* ObjCCodeGenerator.m in Sources */,
-				1460D5A01A01779D009D1EE9 /* Makefile in Sources */,
-				1460D59E1A01779D009D1EE9 /* grammar.y in Sources */,
 				1460D58A1A017757009D1EE9 /* main.m in Sources */,
 				1460D5AC1A0178AA009D1EE9 /* CodeGenerator.m in Sources */,
 				1460D59F1A01779D009D1EE9 /* Lexer.m in Sources */,
@@ -230,7 +218,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -270,7 +258,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
