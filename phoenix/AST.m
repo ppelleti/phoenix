@@ -246,17 +246,22 @@ NSString *tabulate(NSString *code)
 
 - (id) init: (NSString *)identifier
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.name = identifier;
+    }
+    return self;
 }
 
 - (NSString *) toCode
 {
-    return nil;
+    return self.name;
 }
 
 - (GenericType *) inferType
 {
-    return nil;
+    return [ctx inferSymbol:self.name];
 }
 
 @end

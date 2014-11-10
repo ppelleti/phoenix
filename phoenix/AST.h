@@ -72,7 +72,7 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 
 // Identifier expression...
 @interface IdentifierExpression: ASTNode
-@property (nonatomic, retain) NSString *value;
+@property (nonatomic, retain) NSString *name;
 - (id) init: (NSString *)identifier;
 // - (NSString *) toCode
 // - (GenericType *) inferType;
