@@ -79,6 +79,9 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 @end
 
 @interface BinaryOperator : ASTNode
+@property (nonatomic, retain) ASTNode *rightOperand;
+@property (nonatomic, retain) NSString *binaryOperator;
+
 - (id) initWithRightOperand: (ASTNode *)rightOperand
              binaryOperator: (NSString *)binaryOperator;
 // - (NSString *) toCode

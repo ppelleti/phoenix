@@ -270,7 +270,13 @@ NSString *tabulate(NSString *code)
 - (id) initWithRightOperand: (ASTNode *)rightOperand
              binaryOperator: (NSString *)binaryOperator
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.rightOperand = rightOperand;
+        self.binaryOperator = binaryOperator;
+    }
+    return self;
 }
 
 - (NSString *) toCode
@@ -280,7 +286,7 @@ NSString *tabulate(NSString *code)
 
 - (GenericType *) inferType
 {
-    return nil;
+    return [self.rightOperand getType];
 }
 
 @end
