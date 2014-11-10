@@ -475,7 +475,7 @@ static TokenData *lastyylexToken = nil;
         }
     }
     
-    return @"unkown";
+    return @"unknown";
 }
 
 //debug function

@@ -177,7 +177,13 @@ NSString *tabulate(NSString *code)
 
 - (GenericType *) getType
 {
-    return nil;
+    GenericType *cached = self.type;
+    if(cached)
+    {
+        return cached;
+    }
+    self.type = [self inferType];
+    return self.type ? self.type : [[GenericType alloc] initWithType:TYPE_UNKNOWN];
 }
 
 - (GenericType *) inferType
@@ -187,12 +193,15 @@ NSString *tabulate(NSString *code)
 
 - (void) setType: (GenericType *)type
 {
-    return;
+    self.type = type;
 }
 
 - (void) setTypeIfEmpty: (GenericType *)type
 {
-    return;
+    if(self.type == nil)
+    {
+        self.type = type;
+    }
 }
 
 @end
@@ -201,17 +210,33 @@ NSString *tabulate(NSString *code)
 @implementation LiteralExpression
 - (id) init: (NSString *)literal
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.value = literal;
+    }
+    return self;
 }
 
 - (NSString *) toCode
 {
-    return nil;
+    return self.value;
 }
 
 - (GenericType *) inferType
 {
-    return nil;
+    if ([self.value isEqualToString: @"true"] ||
+        [self.value isEqualToString: @"false"])
+    {
+        return [[GenericType alloc] initWithType:TYPE_BOOLEAN];
+    }
+    else if ([self.value hasPrefix: @"\""])
+    {
+        return [[GenericType alloc] initWithType:TYPE_STRING];
+    }
+    else {
+        return [[GenericType alloc] initWithType:TYPE_NUMBER];
+    }
 }
 
 @end
