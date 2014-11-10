@@ -167,7 +167,7 @@ static TokenData *lastyylexToken = nil;
     NSString *match = nil;
     if((match = [cleanRegex firstMatch:code]) != nil)
     {
-        code = [code substringFromIndex:[match lengthOfBytesUsingEncoding:NSUTF16StringEncoding]];
+        code = [code substringFromIndex:[match lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
         lastParsed = match;
     }
 }
@@ -226,7 +226,7 @@ static TokenData *lastyylexToken = nil;
     }
     else
     {
-        if ([code lengthOfBytesUsingEncoding:NSUTF16StringEncoding] > 0)
+        if ([code lengthOfBytesUsingEncoding:NSUTF8StringEncoding] > 0)
         {
             NSLog(@"Lexer Error, unknown token: %@", code);
         }
@@ -264,7 +264,7 @@ static TokenData *lastyylexToken = nil;
     }
     
     NSString *identifier = match;
-    consumed += [identifier lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+    consumed += [identifier lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     
     int declarationToken = 0; // [declarationKeywords[identifier] intValue];
     int statementToken = 0; // [statementKeywords[identifier] intValue];
@@ -318,7 +318,7 @@ static TokenData *lastyylexToken = nil;
         NSString *match = [regex firstMatch:code];
         if (match)
         {
-            consumed += [match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+            consumed += [match lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
             TokenData *data = [[TokenData alloc] initWithToken:LEX_NUMBER_LITERAL
                                                          value:match];
             [tokenStack addObject:data];
@@ -332,7 +332,7 @@ static TokenData *lastyylexToken = nil;
     NSString *match = [stringRegex firstMatch: code];
     if (match)
     {
-        consumed+=[match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+        consumed+=[match lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
         TokenData *data = [[TokenData alloc] initWithToken:LEX_STRING_LITERAL
                                                      value:match];
         [tokenStack addObject:data];
@@ -344,14 +344,14 @@ static TokenData *lastyylexToken = nil;
     NSString *match = nil;
     if ((match = [lineCommentRegex firstMatch: code]))
     {
-        consumed += [match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+        consumed += [match lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
         TokenData *data = [[TokenData alloc] initWithToken:LEX_COMMENT
                                                      value:match];
         [tokenStack addObject:data];
     }
     else if ((match = [blockCommentRegex firstMatch: code]))
     {
-        consumed += [match lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+        consumed += [match lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
         TokenData *data = [[TokenData alloc] initWithToken:LEX_COMMENT
                                                      value:match];
         [tokenStack addObject:data];
@@ -360,14 +360,13 @@ static TokenData *lastyylexToken = nil;
 
 - (void) checkOperator
 {
-    
     TOKEN found = 0;
     NSString *value = @"";
     //check operators by precedence (test combined operators first)
     int i = 0;
     for(i = 3; i > 0; --i)
     {
-        if([code lengthOfBytesUsingEncoding:NSUTF16StringEncoding] < i)
+        if([code lengthOfBytesUsingEncoding:NSUTF8StringEncoding] < i)
         {
             continue;
         }
@@ -383,9 +382,9 @@ static TokenData *lastyylexToken = nil;
     TOKEN token = 0;
     if ((token = found))
     {
-        consumed += [value lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+        consumed += [value lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
         //check if the operator is prefix, postfix or binary
-        BOOL prefix = [prefixOperatorRegex test: [code substringFromIndex: [value lengthOfBytesUsingEncoding:NSUTF16StringEncoding]]];
+        BOOL prefix = [prefixOperatorRegex test: [code substringFromIndex: [value lengthOfBytesUsingEncoding:NSUTF8StringEncoding]]];
         BOOL postfix = [postfixOperatorRegex test: lastParsed];
         
         if (prefix == postfix) {
@@ -418,7 +417,7 @@ static TokenData *lastyylexToken = nil;
 
 - (void) checkGrammarSymbol
 {
-    if ([code lengthOfBytesUsingEncoding:NSUTF16StringEncoding] <= 0)
+    if ([code lengthOfBytesUsingEncoding:NSUTF8StringEncoding] <= 0)
     {
         return;
     }
@@ -428,7 +427,7 @@ static TokenData *lastyylexToken = nil;
     
     if ((match))
     {
-        consumed += [firstChar lengthOfBytesUsingEncoding:NSUTF16StringEncoding];
+        consumed += [firstChar lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
         TokenData *data = [[TokenData alloc] initWithToken:match
                                                      value:firstChar];
         [tokenStack addObject:data];

@@ -48,12 +48,16 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         BOOL debug = YES;
         
-        if(argc == 0)
+        /*
+        if(argc <= 1)
         {
+            puts("No input files");
             return 0;
         }
+         */
         
-        NSString *fileName = [NSString stringWithUTF8String:argv[1]];
+        NSString *fileName = @"/tmp/test1.swift";
+        // NSString *fileName = [NSString stringWithUTF8String:argv[1]];
         NSString *sourceCode = [NSString stringWithContentsOfFile:fileName
                                                          encoding:NSUTF8StringEncoding
                                                             error:NULL];

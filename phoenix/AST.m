@@ -10,7 +10,7 @@
 
 NSString *tabulate(NSString *code)
 {
-    NSRange range = NSMakeRange(0, [code length]);
+    NSRange range = NSMakeRange(0, [code lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
     NSString *result = [code stringByReplacingOccurrencesOfString:@"\n"
                                                        withString:@"\n\t"
                                                           options: NSCaseInsensitiveSearch
@@ -19,7 +19,7 @@ NSString *tabulate(NSString *code)
     if( [result hasSuffix:@"\t"] )
     {
         result = [result substringToIndex:
-                  [result lengthOfBytesUsingEncoding:NSUTF16StringEncoding] - 1];
+                  [result lengthOfBytesUsingEncoding:NSUTF8StringEncoding] - 1];
     }
     result = [@"\t" stringByAppendingString: result];
     return result;
@@ -32,50 +32,136 @@ NSString *tabulate(NSString *code)
 // Context
 @implementation ASTContext
 
+- (id) init
+{
+    if(ctx != nil)
+    {
+        return ctx;
+    }
+    else
+    {
+        self = [super init];
+        if(self != nil)
+        {
+            ctx = self;  // set global context...
+            self.exportedVars = [NSMutableArray array];  // array of arrays of exported variables...
+            self.exportedIndex = 0;
+            self.symbols = [NSMutableArray array];  // Array of ASTSymbolTable objects...
+            self.symbolsIndex = -1;
+            self.generateIDIndex = 0;
+        }
+        return self;
+    }
+    return nil;
+}
+
+- (NSString *)variableDeclaration
+{
+    return @"id"; // temporary
+}
+
+- (NSString *)declarationSeparator
+{
+    return @","; // temporary...
+}
+
 // Methods.
 - (NSString *)generateID
 {
-    return nil;
+    return [NSString stringWithFormat:@"_ref%ld",
+            (long)self.generateIDIndex++];
+}
+
+- (BOOL) _find: (NSString *)name
+{
+    if([self.exportedVars count] < self.symbolsIndex)
+    {
+        [self saveExported];
+    }
+    
+    NSArray *array = [self.exportedVars objectAtIndex:self.exportedIndex];
+    return [array containsObject:name];
 }
 
 - (void) exportVar: (NSString *)name
 {
-    return ;
+    if(![self _find:name])
+    {
+        [[self.exportedVars objectAtIndex:self.exportedIndex] addObject:name];
+    }
 }
 
 - (NSString *)getExportedVars
 {
+    if ([[self.exportedVars objectAtIndex: self.exportedIndex] count] > 0)
+    {
+        NSString *result = @"";
+        result = [result stringByAppendingString:[self variableDeclaration]];
+        for (NSString *variable in [self.exportedVars objectAtIndex:self.exportedIndex])
+        {
+            result = [result stringByAppendingString:
+                      [variable stringByAppendingString: [self declarationSeparator]]];
+        }
+        
+        result = [result substringFromIndex:
+                  [result lengthOfBytesUsingEncoding:NSUTF8StringEncoding] - 1];
+        result = [result stringByAppendingString:@";\n"];
+        return result;
+    }
     return nil;
 }
 
 - (void) saveExported
 {
-    return ;
+    self.exportedIndex++;
+    [self.exportedVars addObject:[NSMutableArray array]];
 }
 
 - (void) restoreExported
 {
-    return ;
+    if(self.exportedIndex > 0)
+    {
+        [self.exportedVars removeLastObject];
+        self.exportedIndex--;
+    }
 }
 
 - (void) saveSymbols
 {
-    return ;
+    self.symbolsIndex++;
+    [self.symbols addObject:[NSMutableArray array]];
 }
 
 - (void) restoreSymbols
 {
-    return ;
+    if(self.symbolsIndex > 0)
+    {
+        [self.symbols removeLastObject];
+        self.symbolsIndex--;
+    }
 }
 
 - (void) addSymbolName: (NSString *)name
                   type: (GenericType *)type
 {
-    return ;
+    if([self.symbols count] < self.symbolsIndex)
+    {
+        [self.symbols addObject:[ASTSymbolTable dictionary]];
+    }
+    [[self.symbols objectAtIndex:self.symbolsIndex] setObject:type
+                                                       forKey:name];
 }
 
-- (GenericType *)inferType: (NSString *)name
+- (GenericType *)inferSymbol: (NSString *)name
 {
+    for(NSInteger i = self.symbolsIndex; i >= 0; --i)
+    {
+        GenericType *type = [[self.symbols objectAtIndex:i] objectForKey:name];
+        if(type != nil)
+        {
+            return type;
+        }
+    }
     return nil;
 }
 

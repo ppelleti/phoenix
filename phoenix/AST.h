@@ -29,6 +29,9 @@
 //index for IDS
 @property (nonatomic, assign) NSInteger generateIDIndex;
 
+- (NSString *) variableDeclaration;
+- (NSString *) declarationSeparator;
+
 // Methods.
 - (NSString *)generateID;
 - (void) exportVar: (NSString *)name;
@@ -39,7 +42,7 @@
 - (void) restoreSymbols;
 - (void) addSymbolName: (NSString *)name
                   type: (GenericType *)type;
-- (GenericType *)inferType: (NSString *)name;
+- (GenericType *)inferSymbol: (NSString *)name;
 
 @end
 
