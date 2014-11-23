@@ -621,17 +621,23 @@ NSString *tabulate(NSString *code)
 - (id) initWithName: (NSString *)name
                expr: (ASTNode *)expr
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.name = name;
+        self.expr = expr;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    return [self.expr toCode];
 }
 
 - (GenericType *)inferType
 {
-    return nil;
+    return [self.expr getType];
 }
 
 @end
