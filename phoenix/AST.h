@@ -140,15 +140,19 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 - (id) initWithExpression: (ASTNode *)expression;
 - (id) initWithExpression: (ASTNode *)expression
                      next: (BinaryExpression *)next;
-- (void) leftAndRightTypeToCodeLeft: (ParenthesizedExpression *)left
-                              right: (ParenthesizedExpression *)right;
+- (NSString *) leftAndRightTypeToCodeLeft: (ParenthesizedExpression *)left
+                                    right: (ParenthesizedExpression *)right;
+- (NSString *) leftTupleAndRightExpressionToCodeLeft: (ParenthesizedExpression *)left
+                                               right: (ASTNode *)right;
 // - (NSString *)toCode;
 // - (GenericType *)inferType;
 @end
 
 @interface NamedExpression: ASTNode
+
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) ASTNode *expr;
+
 - (id) initWithName: (NSString *)name
                expr: (ASTNode *)expr;
 // - (NSString *)toCode;
