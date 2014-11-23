@@ -7,6 +7,7 @@
 //
 
 #import "AST.h"
+#import <math.h>
 
 NSString *tabulate(NSString *code)
 {
@@ -24,6 +25,28 @@ NSString *tabulate(NSString *code)
     result = [@"\t" stringByAppendingString: result];
     return result;
 }
+
+@interface NSString (Extension)
+- (NSInteger) toInt;
+@end
+
+@implementation NSString (Extension)
+
+- (NSInteger)toInt
+{
+    NSError *error = nil;
+    NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:@"[-+]?[0-9]+"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    if([regEx matchesInString:self options:NSMatchingAnchored
+       range:NSMakeRange(0, [self length])])
+    {
+        return [self integerValue];
+    }
+    return NAN;
+}
+
+@end
 
 // Define a subclass for future expansion...
 @implementation ASTSymbolTable : NSMutableDictionary
@@ -279,9 +302,27 @@ NSString *tabulate(NSString *code)
     return self;
 }
 
+- (NSString *) codeForIndex: (NSInteger)index
+{
+    return [NSString stringWithFormat:@"[%ld]",index];
+}
+
 - (NSString *) toCode
 {
-    return nil;
+    if([self.binaryOperator isEqualToString:@"."])
+    {
+        NSString *right = [self.rightOperand toCode];
+        NSInteger index = [right integerValue];
+        if(!isnan(index))
+        {
+            return [self codeForIndex:index];
+        }
+        return [NSString stringWithFormat: @"%@%@",self.binaryOperator, right];
+    }
+    
+    // else...
+    return [NSString stringWithFormat: @" %@ %@",self.binaryOperator,
+            [self.rightOperand toCode]];
 }
 
 - (GenericType *) inferType
@@ -292,19 +333,25 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation AssignmentOperator
+
 - (id) initWithRightOperand: (ASTNode *)rightOperand
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.rightOperand = rightOperand;
+    }
+    return self;
 }
 
 - (NSString *) toCode
 {
-    return nil;
+    return [NSString stringWithFormat:@" = %@",self.rightOperand];
 }
 
 - (GenericType *) inferType
 {
-    return nil;
+    return [self.rightOperand getType];
 }
 
 @end
@@ -313,57 +360,75 @@ NSString *tabulate(NSString *code)
 - (id) initWithTrueOperand: (ASTNode *)trueOperand
               falseOperand: (ASTNode *)falseOperand
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.trueOperand = trueOperand;
+        self.falseOperand = falseOperand;
+    }
+    return self;
 }
 
 - (NSString *) toCode
 {
-    return nil;
+    return [NSString stringWithFormat:@" ? %@ : %@",
+            [self.trueOperand toCode],
+            [self.falseOperand toCode]];
 }
 
 - (GenericType *) inferType
 {
-    return nil;
+    return [self.trueOperand getType];
 }
-
 @end
 
 @implementation PrefixOperator
 - (id) init: (ASTNode *)operand
            : (NSString *)prefixOperator;
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.operand = operand;
+        self.prefixOperator = prefixOperator;
+    }
+    return self;
 }
 
 - (NSString *) toCode
 {
-    return nil;
+    return [NSString stringWithFormat:@"%@%@",self.prefixOperator, [self.operand toCode]];
 }
 
 - (GenericType *) inferType
 {
-    return nil;
+    return [self.operand getType];
 }
 
 @end
 
 @implementation PostfixOperator
 - (id) init: (ASTNode *)operand
-           : (NSString *)prefixOperator;
+           : (NSString *)postfixOperator;
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.operand = operand;
+        self.postfixOperator = postfixOperator;
+    }
+    return self;
 }
 
 - (NSString *) toCode
 {
-    return nil;
+    return [NSString stringWithFormat:@"%@%@", [self.operand toCode], self.postfixOperator];
 }
 
 - (GenericType *) inferType
 {
-    return nil;
+    return [self.operand getType];
 }
-
 @end
 
 ///

@@ -84,17 +84,25 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 
 - (id) initWithRightOperand: (ASTNode *)rightOperand
              binaryOperator: (NSString *)binaryOperator;
+- (NSString *) codeForIndex: (NSInteger)index;
 // - (NSString *) toCode
 // - (GenericType *) inferType;
 @end
 
 @interface AssignmentOperator : ASTNode
+
+@property (nonatomic, retain) ASTNode *rightOperand;
+
 - (id) initWithRightOperand: (ASTNode *)rightOperand;
 // - (NSString *) toCode
 // - (GenericType *) inferType;
 @end
 
 @interface TernaryOperator : ASTNode
+
+@property (nonatomic, retain) ASTNode *trueOperand;
+@property (nonatomic, retain) ASTNode *falseOperand;
+
 - (id) initWithTrueOperand: (ASTNode *)trueOperand
               falseOperand: (ASTNode *)falseOperand;
 // - (NSString *) toCode
@@ -102,6 +110,10 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 @end
 
 @interface PrefixOperator : ASTNode
+
+@property (nonatomic, retain) ASTNode *operand;
+@property (nonatomic, retain) NSString *prefixOperator;
+
 - (id) init: (ASTNode *)operand
            : (NSString *)prefixOperator;
 // - (NSString *) toCode
@@ -109,6 +121,10 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 @end
 
 @interface PostfixOperator : ASTNode
+
+@property (nonatomic, retain) ASTNode *operand;
+@property (nonatomic, retain) NSString *postfixOperator;
+
 - (id) init: (ASTNode *)operand
            : (NSString *)prefixOperator;
 // - (NSString *) toCode
