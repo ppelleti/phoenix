@@ -536,18 +536,82 @@ NSString *tabulate(NSString *code)
         }
     }
     
-    result = [result substringToIndex: [result lengthOfBytesUsingEncoding:NSUTF8StringEncoding] - 2];    
+    result = [result substringToIndex: [result lengthOfBytesUsingEncoding:NSUTF8StringEncoding] - 2];
     return result;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    //Check Tuple assignment binary expressions
+    AssignmentOperator *assignment = (AssignmentOperator *)[self.next current];
+    if (assignment != nil)
+    {
+        self.current.type = [assignment.rightOperand getType];
+        //check left to right tuple assignment
+        ParenthesizedExpression *leftTuple =  (ParenthesizedExpression *)[self current];
+        ParenthesizedExpression *rightTuple = (ParenthesizedExpression *)assignment.rightOperand;
+        
+        if(leftTuple && [leftTuple isList] && rightTuple && [rightTuple isList])
+        {
+            return [self leftAndRightTypeToCodeLeft:leftTuple
+                                              right:rightTuple];
+        }
+        else if(leftTuple && [leftTuple isList])
+        {
+            return  [self leftTupleAndRightExpressionToCodeLeft:leftTuple
+                                                          right:assignment.rightOperand];
+        }
+    }
+    
+    BinaryOperator *binaryOperator = (BinaryOperator *)[self.next current];
+    //check for custom operators. Example array +=
+    if(binaryOperator)
+    {
+        NSString *customOperator = [[self.current getType]
+                                    customBinaryOperator:self.current
+                                    :binaryOperator.binaryOperator
+                                    :binaryOperator.rightOperand];
+        return customOperator;
+    }
+
+    //Generic binary expression
+    NSString *result = @"";
+    BinaryExpression *currentExpression = (BinaryExpression *)self.current;
+    BinaryExpression *nextExpression = (BinaryExpression *)self.next;
+    if(currentExpression)
+    {
+        result = [result stringByAppendingString: [currentExpression toCode]];
+    }
+    else if(nextExpression)
+    {
+        result = [result stringByAppendingString: [nextExpression toCode]];
+    }
+
+    return result;
 }
 
 - (GenericType *)inferType
 {
-    return nil;
+    if([self current])
+    {
+        return nil;
+    }
+    
+    GenericType *leftType = [self.current getType];
+    if([[self.next current] class] == [BinaryOperator class])
+    {
+        BinaryOperator *op = (BinaryOperator *)[self.next current];
+        return [leftType operate:[op binaryOperator]
+                                :[op getType]];
+    }
+    else if([[self.next current] class] == [AssignmentOperator class])
+    {
+        AssignmentOperator *op = (AssignmentOperator *)[self.next current];
+        self.current.type = [op getType];
+        return [op getType];
+    }
+    
+    return leftType;
 }
 
 @end
