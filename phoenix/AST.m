@@ -1243,17 +1243,32 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithReturnExpr:  (ASTNode *)returnExpr
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.returnExpr = returnExpr;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    ASTNode *expr = self.returnExpr;
+    if (expr)
+    {
+        return [NSString stringWithFormat:@"return %@;", [expr toCode]];
+    }
+    return @"return;";
 }
 
 - (GenericType *)inferType
 {
-    return nil;
+    ASTNode *expr = self.returnExpr;
+    if (expr)
+    {
+        return [expr getType];
+    }
+    return [[GenericType alloc] initWithType:TYPE_VOID];
 }
 
 @end
