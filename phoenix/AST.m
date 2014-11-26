@@ -1066,15 +1066,25 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithKey: (ASTNode *)key value: (ASTNode *)value
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.key = key;
+        self.value = value;
+    }
+    return self;
 }
+
 - (NSString *)toCode
 {
-    return nil;
+    return [[[@"\n" stringByAppendingString: [self.key toCode]]
+             stringByAppendingString:@" : "]
+            stringByAppendingString:[self.value toCode]];
 }
+
 - (GenericType *)inferType
 {
-    return nil;
+    return [self.value getType];
 }
 
 @end
@@ -1089,17 +1099,22 @@ NSString *tabulate(NSString *code)
                   local: (NSString *)local
                  defVal: (ASTNode *)defVal
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.inoutVal = inoutVal;
+        self.letVal = letVal;
+        self.hashVal = hashVal;
+        self.external = external;
+        self.local = local;
+        self.defVal = defVal;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
-}
-
-- (GenericType *)inferType
-{
-    return nil;
+    return self.local ? self.local : self.external;
 }
 
 @end
@@ -1111,17 +1126,35 @@ NSString *tabulate(NSString *code)
           signature: (ASTNode *)signature
                body: (ASTNode *)body
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.name = name;
+        self.signature = signature;
+        self.body = body;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
-}
+    NSString *result = [NSString stringWithFormat:@"function %@ (", self.name]; // "function " + self.name + "(";
+    ASTNode *parameters = self.signature;
+    if (parameters)
+    {
+        [result stringByAppendingString:[parameters toCode]];
+    }
+    [result stringByAppendingString:@") {\n"];
 
-- (GenericType *)inferType
-{
-    return nil;
+    ASTNode *statements = self.body;
+    if(statements)
+    {
+        NSString *string = tabulate([statements toCode]);
+        result = [result stringByAppendingString:string];
+    }
+
+    result = [result stringByAppendingString: @"}"];
+    return result;
 }
 
 @end
