@@ -57,6 +57,8 @@ NSString *tabulate(NSString *code)
 // Context
 @implementation ASTContext
 
+@synthesize exportedIndex, exportedVars, symbols, symbolsIndex, generateIDIndex;
+
 - (id) init
 {
     if(ctx != nil)
@@ -195,6 +197,8 @@ NSString *tabulate(NSString *code)
 // Node
 @implementation ASTNode
 
+@synthesize type;
+
 - (NSString *)toCode
 {
     return nil;
@@ -216,16 +220,16 @@ NSString *tabulate(NSString *code)
     return nil;
 }
 
-- (void) setType: (GenericType *)type
+- (void) setType: (GenericType *)atype
 {
-    self.type = type;
+    self.type = atype;
 }
 
-- (void) setTypeIfEmpty: (GenericType *)type
+- (void) setTypeIfEmpty: (GenericType *)atype
 {
     if(self.type == nil)
     {
-        self.type = type;
+        self.type = atype;
     }
 }
 
@@ -233,12 +237,15 @@ NSString *tabulate(NSString *code)
 
 // Literal expression...
 @implementation LiteralExpression
-- (id) init: (NSString *)literal
+
+@synthesize value;
+
+- (id) init: (NSString *)aliteral
 {
     self = [super init];
     if(self)
     {
-        self.value = literal;
+        self.value = aliteral;
     }
     return self;
 }
@@ -269,12 +276,14 @@ NSString *tabulate(NSString *code)
 // Identifier expression...
 @implementation IdentifierExpression
 
-- (id) init: (NSString *)identifier
+@synthesize name;
+
+- (id) init: (NSString *)anidentifier
 {
     self = [super init];
     if(self)
     {
-        self.name = identifier;
+        self.name = anidentifier;
     }
     return self;
 }
@@ -292,14 +301,17 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation BinaryOperator
-- (id) initWithRightOperand: (ASTNode *)rightOperand
-             binaryOperator: (NSString *)binaryOperator
+
+@synthesize rightOperand, binaryOperator;
+
+- (id) initWithRightOperand: (ASTNode *)arightOperand
+             binaryOperator: (NSString *)abinaryOperator
 {
     self = [super init];
     if(self)
     {
-        self.rightOperand = rightOperand;
-        self.binaryOperator = binaryOperator;
+        self.rightOperand = arightOperand;
+        self.binaryOperator = abinaryOperator;
     }
     return self;
 }
@@ -336,12 +348,14 @@ NSString *tabulate(NSString *code)
 
 @implementation AssignmentOperator
 
-- (id) initWithRightOperand: (ASTNode *)rightOperand
+@synthesize rightOperand;
+
+- (id) initWithRightOperand: (ASTNode *)arightOperand
 {
     self = [super init];
     if(self)
     {
-        self.rightOperand = rightOperand;
+        self.rightOperand = arightOperand;
     }
     return self;
 }
@@ -359,14 +373,14 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation TernaryOperator
-- (id) initWithTrueOperand: (ASTNode *)trueOperand
-              falseOperand: (ASTNode *)falseOperand
+- (id) initWithTrueOperand: (ASTNode *)atrueOperand
+              falseOperand: (ASTNode *)afalseOperand
 {
     self = [super init];
     if(self)
     {
-        self.trueOperand = trueOperand;
-        self.falseOperand = falseOperand;
+        self.trueOperand = atrueOperand;
+        self.falseOperand = afalseOperand;
     }
     return self;
 }
@@ -385,14 +399,17 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation PrefixOperator
-- (id) init: (ASTNode *)operand
-           : (NSString *)prefixOperator;
+
+@synthesize operand, prefixOperator;
+
+- (id) init: (ASTNode *)anoperand
+           : (NSString *)aprefixOperator;
 {
     self = [super init];
     if(self)
     {
-        self.operand = operand;
-        self.prefixOperator = prefixOperator;
+        self.operand = anoperand;
+        self.prefixOperator = aprefixOperator;
     }
     return self;
 }
@@ -410,14 +427,17 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation PostfixOperator
-- (id) init: (ASTNode *)operand
-           : (NSString *)postfixOperator;
+
+@synthesize operand, postfixOperator;
+
+- (id) init: (ASTNode *)anoperand
+           : (NSString *)apostfixOperator;
 {
     self = [super init];
     if(self)
     {
-        self.operand = operand;
-        self.postfixOperator = postfixOperator;
+        self.operand = anoperand;
+        self.postfixOperator = apostfixOperator;
     }
     return self;
 }
@@ -436,25 +456,26 @@ NSString *tabulate(NSString *code)
 ///
 @implementation BinaryExpression
 
+@synthesize current;
 
-- (id) initWithExpression: (ASTNode *)expression
+- (id) initWithExpression: (ASTNode *)anexpression
 {
     self = [super init];
     if(self)
     {
-        self.current = expression;
+        self.current = anexpression;
     }
     return self;
 }
 
-- (id) initWithExpression: (ASTNode *)expression
-                     next: (BinaryExpression *)next
+- (id) initWithExpression: (ASTNode *)anexpression
+                     next: (BinaryExpression *)anext
 {
     self = [super init];
     if(self)
     {
-        self.current = expression;
-        self.next = next;
+        self.current = anexpression;
+        self.next = anext;
     }
     return self;
 }
@@ -620,14 +641,16 @@ NSString *tabulate(NSString *code)
 
 @implementation NamedExpression
 
-- (id) initWithName: (NSString *)name
-               expr: (ASTNode *)expr
+@synthesize name, expr;
+
+- (id) initWithName: (NSString *)aname
+               expr: (ASTNode *)anexpr
 {
     self = [super init];
     if(self)
     {
-        self.name = name;
-        self.expr = expr;
+        self.name = aname;
+        self.expr = anexpr;
     }
     return self;
 }
@@ -645,12 +668,15 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation TypeExpression
-- (id) initWithLinkedType: (GenericType *)linkedType
+
+@synthesize linkedType;
+
+- (id) initWithLinkedType: (GenericType *)alinkedType
 {
     self = [super init];
     if(self)
     {
-        self.linkedType = linkedType;
+        self.linkedType = alinkedType;
     }
     return self;
 }
@@ -667,14 +693,17 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation ExpressionList
-- (id)initWithExpr: (ASTNode *)expr
-              next: (ExpressionList *)next
+
+@synthesize current, next;
+
+- (id)initWithExpr: (ASTNode *)anexpr
+              next: (ExpressionList *)anext
 {
     self = [super init];
     if(self)
     {
-        self.current = expr;
-        self.next = next;
+        self.current = anexpr;
+        self.next = anext;
     }
     return self;
 }
@@ -718,12 +747,14 @@ NSString *tabulate(NSString *code)
 
 @implementation ParenthesizedExpression
 
-- (id) initWithExpression: (ASTNode *)expression
+@synthesize expression, allowInlineTuple;
+
+- (id) initWithExpression: (ASTNode *)anexpression
 {
     self = [super init];
     if(self)
     {
-        self.expression = expression;
+        self.expression = anexpression;
         self.allowInlineTuple = YES;
     }
     return nil;
@@ -735,7 +766,7 @@ NSString *tabulate(NSString *code)
     ExpressionList *item = list;
     int index = 0;
     ExpressionList *validItem = nil;
-    ASTNode *expression = nil;
+    ASTNode *expr = nil;
     
     while ((validItem = item) != nil)
     {
@@ -747,7 +778,7 @@ NSString *tabulate(NSString *code)
                                 [[namedExpression expr] toCode]];
             [result stringByAppendingString:string];
         }
-        else if ((expression = [validItem current]) != nil)
+        else if ((expr = [validItem current]) != nil)
         {
             NSString *string = [NSString stringWithFormat:@"%d: %@",index, [expression toCode]];
             result = [result stringByAppendingString:string]; // += "\(index): \(expression.toJS()), ";
@@ -873,14 +904,16 @@ NSString *tabulate(NSString *code)
 
 @implementation FunctionCallExpression
 
-- (id) initWithFunction: (ASTNode *)function
-          parenthesized: (ParenthesizedExpression *)parenthesized
+@synthesize function, parenthesized;
+
+- (id) initWithFunction: (ASTNode *)afunction
+          parenthesized: (ParenthesizedExpression *)aparenthesized
 {
     self = [super init];
     if(self)
     {
-        self.function = function;
-        self.parenthesized = parenthesized;
+        self.function = afunction;
+        self.parenthesized = aparenthesized;
     }
     return self;
 }
@@ -905,12 +938,14 @@ NSString *tabulate(NSString *code)
 
 @implementation VariableDeclaration
 
-- (id) initWithInitializer: (ExpressionList *)initializer
+@synthesize initializer;
+
+- (id) initWithInitializer: (ExpressionList *)aninitializer
 {
     self = [super init];
     if(self)
     {
-        self.initializer = initializer;
+        self.initializer = aninitializer;
     }
     return self;
 }
@@ -984,12 +1019,14 @@ NSString *tabulate(NSString *code)
 
 @implementation ArrayLiteral: ASTNode
 
-- (id) initWithItems: (ASTNode *)items
+@synthesize items;
+
+- (id) initWithItems: (ASTNode *)anitems
 {
     self = [super init];
     if(self)
     {
-        self.items = items;
+        self.items = anitems;
     }
     return self;
 }
@@ -1022,13 +1059,14 @@ NSString *tabulate(NSString *code)
 
 @implementation DictionaryLiteral : ASTNode
 
+@synthesize pairs;
 
-- (id) initWithPairs: (ASTNode *)pairs
+- (id) initWithPairs: (ASTNode *)apairs
 {
     self = [super init];
     if(self)
     {
-        self.pairs = pairs;
+        self.pairs = apairs;
     }
     return self;
 }
@@ -1064,13 +1102,15 @@ NSString *tabulate(NSString *code)
 
 @implementation DictionaryItem: ASTNode
 
-- (id) initWithKey: (ASTNode *)key value: (ASTNode *)value
+@synthesize key, value;
+
+- (id) initWithKey: (ASTNode *)akey value: (ASTNode *)avalue
 {
     self = [super init];
     if(self)
     {
-        self.key = key;
-        self.value = value;
+        self.key = akey;
+        self.value = avalue;
     }
     return self;
 }
@@ -1092,22 +1132,24 @@ NSString *tabulate(NSString *code)
 
 @implementation FunctionParameter : ASTNode
 
-- (id) initWithInoutVal: (BOOL)inoutVal
-                 letVal: (BOOL)letVal
-                hashVal: (BOOL)hashVal
-               external: (NSString *)external
-                  local: (NSString *)local
-                 defVal: (ASTNode *)defVal
+@synthesize inoutVal, letVal, hashVal, external, local, defVal;
+
+- (id) initWithInoutVal: (BOOL)aninoutVal
+                 letVal: (BOOL)aletVal
+                hashVal: (BOOL)ahashVal
+               external: (NSString *)anexternal
+                  local: (NSString *)alocal
+                 defVal: (ASTNode *)adefVal
 {
     self = [super init];
     if(self)
     {
-        self.inoutVal = inoutVal;
-        self.letVal = letVal;
-        self.hashVal = hashVal;
-        self.external = external;
-        self.local = local;
-        self.defVal = defVal;
+        self.inoutVal = aninoutVal;
+        self.letVal = aletVal;
+        self.hashVal = ahashVal;
+        self.external = anexternal;
+        self.local = alocal;
+        self.defVal = adefVal;
     }
     return self;
 }
@@ -1122,16 +1164,18 @@ NSString *tabulate(NSString *code)
 
 @implementation FunctionDeclaration : ASTNode
 
-- (id) initWithName: (NSString *)name
-          signature: (ASTNode *)signature
-               body: (ASTNode *)body
+@synthesize name, signature, body;
+
+- (id) initWithName: (NSString *)aname
+          signature: (ASTNode *)asignature
+               body: (ASTNode *)abody
 {
     self = [super init];
     if(self)
     {
-        self.name = name;
-        self.signature = signature;
-        self.body = body;
+        self.name = aname;
+        self.signature = asignature;
+        self.body = abody;
     }
     return self;
 }
@@ -1163,14 +1207,16 @@ NSString *tabulate(NSString *code)
 
 @implementation WhileStatement : ASTNode
 
-- (id)initWithWhileCondition: (ASTNode *)whileCondition
-                   codeBlock: (ASTNode *)codeBlock
+@synthesize whileCondition, codeBlock;
+
+- (id)initWithWhileCondition: (ASTNode *)awhileCondition
+                   codeBlock: (ASTNode *)acodeBlock
 {
     self = [super init];
     if(self)
     {
-        self.whileCondition = whileCondition;
-        self.codeBlock = codeBlock;
+        self.whileCondition = awhileCondition;
+        self.codeBlock = acodeBlock;
     }
     return self;
 }
@@ -1197,14 +1243,16 @@ NSString *tabulate(NSString *code)
 
 @implementation LabelStatement : ASTNode
 
-- (id) initWithLabelName: (NSString *)labelName
-                    loop: (ASTNode *)loop
+@synthesize labelName, loop;
+
+- (id) initWithLabelName: (NSString *)alabelName
+                    loop: (ASTNode *)aloop
 {
     self = [super init];
     if(self)
     {
-        self.labelName = labelName;
-        self.loop = loop;
+        self.labelName = alabelName;
+        self.loop = aloop;
     }
     return self;
 }
@@ -1218,12 +1266,15 @@ NSString *tabulate(NSString *code)
 @end
 
 @implementation BreakStatement : ASTNode
-- (id) initWithLabelId: (NSString *)labelName
+
+@synthesize labelName;
+
+- (id) initWithLabelId: (NSString *)alabelName
 {
     self = [super init];
     if(self)
     {
-        self.labelName = labelName;
+        self.labelName = alabelName;
     }
     return self;
 }
@@ -1241,12 +1292,14 @@ NSString *tabulate(NSString *code)
 
 @implementation ReturnStatement
 
-- (id) initWithReturnExpr:  (ASTNode *)returnExpr
+@synthesize returnExpr;
+
+- (id) initWithReturnExpr:  (ASTNode *)areturnExpr
 {
     self = [super init];
     if(self)
     {
-        self.returnExpr = returnExpr;
+        self.returnExpr = areturnExpr;
     }
     return self;
 }
@@ -1276,12 +1329,14 @@ NSString *tabulate(NSString *code)
 
 @implementation OptionalChainExprStatement
 
-- (id) initWithOptChainExpr:  (ASTNode *)optChainExpr
+@synthesize optChainExpr;
+
+- (id) initWithOptChainExpr:  (ASTNode *)anoptChainExpr
 {
     self = [super init];
     if(self)
     {
-        self.optChainExpr = optChainExpr;
+        self.optChainExpr = anoptChainExpr;
     }
     return self;
 }
@@ -1300,16 +1355,18 @@ NSString *tabulate(NSString *code)
 
 @implementation IfStatement : ASTNode
 
-- (id) initWithIfCondition: (ASTNode *)ifCondition
-                      body: (ASTNode *)body
-                elseClause: (ASTNode *)elseClause
+@synthesize ifCondition, body, elseClause;
+
+- (id) initWithIfCondition: (ASTNode *)anifCondition
+                      body: (ASTNode *)abody
+                elseClause: (ASTNode *)anelseClause
 {
     self = [super init];
     if(self)
     {
-        self.ifCondition = ifCondition;
-        self.body = body;
-        self.elseClause = elseClause;
+        self.ifCondition = anifCondition;
+        self.body = abody;
+        self.elseClause = anelseClause;
     }
     return self;
 }
@@ -1349,12 +1406,14 @@ NSString *tabulate(NSString *code)
 
 @implementation ImportStatement : ASTNode
 
-- (id) initWithPath: (NSString *)path
+@synthesize path;
+
+- (id) initWithPath: (NSString *)apath
 {
     self = [super init];
     if(self)
     {
-        self.path = path;
+        self.path = apath;
     }
     return self;
 }
@@ -1369,12 +1428,14 @@ NSString *tabulate(NSString *code)
 
 @implementation StatementNode : ASTNode
 
-- (id) initWithStatement: (ASTNode *)statement
+@synthesize statement;
+
+- (id) initWithStatement: (ASTNode *)astatement
 {
     self = [super init];
     if(self)
     {
-        self.statement = statement;
+        self.statement = astatement;
     }
     return self;
 }
@@ -1388,12 +1449,12 @@ NSString *tabulate(NSString *code)
 
 @implementation DeclarationStatement : ASTNode
 
-- (id) initWithDeclaration: (ASTNode *)declaration
+- (id) initWithDeclaration: (ASTNode *)adeclaration
 {
     self = [super init];
     if(self)
     {
-        self.declaration = declaration;
+        self.declaration = adeclaration;
     }
     return self;
 }
@@ -1411,24 +1472,26 @@ NSString *tabulate(NSString *code)
 
 @implementation StatementsNode : ASTNode
 
-- (id) initWithCurrent: (ASTNode *)current
+@synthesize current;
+
+- (id) initWithCurrent: (ASTNode *)acurrent
 {
     self = [super init];
     if(self)
     {
-        self.current = current;
+        self.current = acurrent;
     }
     return self;
 }
 
-- (id) initWithCurrent: (ASTNode *)current
-                  next: (StatementsNode *)next
+- (id) initWithCurrent: (ASTNode *)acurrent
+                  next: (StatementsNode *)anext
 {
     self = [super init];
     if(self)
     {
-        self.current = current;
-        self.next = next;
+        self.current = acurrent;
+        self.next = anext;
     }
     return self;
 }

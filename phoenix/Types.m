@@ -11,6 +11,8 @@
 
 @implementation GenericType
 
+@synthesize type;
+
 - (id)initWithType: (SwiftType)aType
 {
     self = [super init];
@@ -71,12 +73,15 @@
 @end
 
 @implementation IndirectionType
-- (id) initWithPointer: (GenericType *)pointer
+
+@synthesize pointer;
+
+- (id) initWithPointer: (GenericType *)apointer
 {
-    self = [super initWithType: pointer.type];
+    self = [super initWithType: apointer.type];
     if(self != nil)
     {
-        self.pointer = pointer;
+        self.pointer = apointer;
     }
     return self;
 }
@@ -88,6 +93,8 @@
 @end
 
 @implementation TupleType
+
+@synthesize names, types;
 
 - (id) initWithList: (ExpressionList *)list
 {
@@ -139,12 +146,15 @@
 
 // ArrayType...
 @implementation ArrayType: GenericType
-- (id) initWithInnerType: (GenericType *)innerType
+
+@synthesize innerType;
+
+- (id) initWithInnerType: (GenericType *)aninnerType
 {
     self = [super initWithType:TYPE_ARRAY];
     if(self != nil)
     {
-        self.innerType = innerType;
+        self.innerType = aninnerType;
     }
     return self;
 }
@@ -170,12 +180,15 @@
 
 // DictionaryType...
 @implementation DictionaryType: GenericType
-- (id) initWithInnerType: (GenericType *)innerType
+
+@synthesize innerType;
+
+- (id) initWithInnerType: (GenericType *)aninnerType
 {
     self = [super initWithType:TYPE_DICTIONARY];
     if(self != nil)
     {
-        self.innerType = innerType;
+        self.innerType = aninnerType;
     }
     return self;
 }
@@ -183,28 +196,31 @@
 
 // FunctionType...
 @implementation FunctionType: GenericType
-- (id) initWithArgumentTypes: (NSMutableArray *)argumentTypes
-                  returnType: (GenericType *)returnType
+
+@synthesize argumentTypes, returnType;
+
+- (id) initWithArgumentTypes: (NSMutableArray *)anargumentTypes
+                  returnType: (GenericType *)areturnType
 {
     if((self = [super initWithType:TYPE_DICTIONARY]) != nil)
     {
-        self.argumentTypes = [argumentTypes copy];
-        self.returnType = returnType;
+        self.argumentTypes = [anargumentTypes copy];
+        self.returnType = areturnType;
     }
     return self;
 }
 
-- (id) initWithArgsType:(GenericType *)argsType
-             returnType:(GenericType *)returnType
+- (id) initWithArgsType:(GenericType *)anargsType
+             returnType:(GenericType *)areturnType
 {
     self = [super initWithType:TYPE_DICTIONARY];
     
     if(self)
     {
         TupleType *tuple = nil;
-        if([argsType isKindOfClass:[TupleType class]])
+        if([anargsType isKindOfClass:[TupleType class]])
         {
-            tuple = (TupleType *)argsType;
+            tuple = (TupleType *)anargsType;
         }
         
         if(tuple != nil)
@@ -212,7 +228,7 @@
             [self.argumentTypes addObjectsFromArray:tuple.types];
         }
         
-        self.returnType = returnType;
+        self.returnType = areturnType;
     }
     
     return self;
