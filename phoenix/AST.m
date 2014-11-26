@@ -473,8 +473,8 @@ NSString *tabulate(NSString *code)
             break;
         }
         
-        [names[i] setTypeIfEmpty:[values[i] getType]]; //infere type from assignment if needed
-        NSString *string = [NSString stringWithFormat:@"((%@) = (%@)), ",[names[i] toCode], [values[i] toCode]];
+        [names[i] setTypeIfEmpty:[[values objectAtIndex:i] getType]]; //infere type from assignment if needed
+        NSString *string = [NSString stringWithFormat:@"((%@) = (%@)), ",[[names objectAtIndex:i] toCode], [[values objectAtIndex:i]  toCode]];
         result = [result stringByAppendingString:string];
     }
     result = [result substringToIndex: [result lengthOfBytesUsingEncoding:NSUTF8StringEncoding] - 2];
@@ -518,12 +518,12 @@ NSString *tabulate(NSString *code)
             NSInteger number = [tupleMembers[i] toInt];
             if(isnan(number) == NO)
             {
-                NSString *string = [NSString stringWithFormat:@"%@ = %@[%ld]",[names[i] toCode], tupleID, (long)number];
+                NSString *string = [NSString stringWithFormat:@"%@ = %@[%ld]",[[names objectAtIndex:i]  toCode], tupleID, (long)number];
                 result = [result stringByAppendingString:string];
             }
             else
             {
-                NSString *string = [NSString stringWithFormat:@"%@ = %@[%@]",[names[i] toCode], tupleID, tupleMembers[i]];
+                NSString *string = [NSString stringWithFormat:@"%@ = %@[%@]",[[names objectAtIndex:i]  toCode], tupleID, [tupleMembers objectAtIndex:i]];
                 result = [result stringByAppendingString:string];
             }
         }
@@ -533,7 +533,7 @@ NSString *tabulate(NSString *code)
         NSInteger i = 0;
         for (i = 0; i < names.count; ++i)
         {
-            NSString *string = [NSString stringWithFormat:@"%@ = %@[Object.keys(%@)[%ld], ", [names[i] toCode], tupleID, tupleID, i];
+            NSString *string = [NSString stringWithFormat:@"%@ = %@[Object.keys(%@)[%ld], ", [[names objectAtIndex:i] toCode], tupleID, tupleID, i];
             result = [result stringByAppendingString:string];
         }
     }
@@ -907,11 +907,46 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithInitializer: (ExpressionList *)initializer
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.initializer = initializer;
+    }
+    return self;
 }
+
 - (void) exportSymbols: (ASTNode *)expression
 {
-    return ;
+    if(expression == nil)
+    {
+        return;
+    }
+    
+    ParenthesizedExpression *tuple = (ParenthesizedExpression *)(AS(expression, [ParenthesizedExpression class]));
+    if(tuple != nil)
+    {
+        NSArray *names = [tuple toExpressionArray];
+        NSArray *types = [tuple toTypesArray];
+        int i = 0;
+        for(i = 0; i < [names count]; i++)
+        {
+            NSString *name = [[names objectAtIndex:i] toCode];
+            if(self.exportVariables)
+            {
+                [ctx exportVar:name];
+            }
+            [ctx addSymbolName:name type:[types objectAtIndex:i]];
+        }
+    }
+    else
+    {
+        NSString *name = [expression toCode];
+        if(self.exportVariables)
+        {
+            [ctx exportVar:name];
+        }
+        [ctx addSymbolName:name type:[expression getType]];
+    }
 }
 
 - (NSString *) toCode
