@@ -1220,11 +1220,22 @@ NSString *tabulate(NSString *code)
 @implementation BreakStatement : ASTNode
 - (id) initWithLabelId: (NSString *)labelName
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.labelName = labelName;
+    }
+    return self;
 }
+
 - (NSString *)toCode
 {
-    return nil;
+    NSString *identifier = self.labelName;
+    if(identifier)
+    {
+        return [NSString stringWithFormat:@"break %@;",identifier];
+    }
+    return @"break;";
 }
 @end
 
