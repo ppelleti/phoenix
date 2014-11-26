@@ -876,22 +876,34 @@ NSString *tabulate(NSString *code)
 - (id) initWithFunction: (ASTNode *)function
           parenthesized: (ParenthesizedExpression *)parenthesized
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.function = function;
+        self.parenthesized = parenthesized;
+    }
+    return self;
 }
 
 
 - (NSString *)toCode
 {
-    return nil;
+    self.parenthesized.allowInlineTuple = NO;
+    return [self.function toCode];
 }
+
 - (GenericType *)inferType
 {
-    return nil;
+    FunctionType *funcType = (FunctionType *)(AS([self.function getType], [FunctionType class]));
+    if(funcType != nil)
+    {
+        return [funcType returnType];
+    }
+    return [[GenericType alloc] initWithType:TYPE_VOID];
 }
 @end
 
 @implementation VariableDeclaration
-
 
 - (id) initWithInitializer: (ExpressionList *)initializer
 {
