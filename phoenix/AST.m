@@ -1278,17 +1278,22 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithOptChainExpr:  (ASTNode *)optChainExpr
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.optChainExpr = optChainExpr;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
-}
-
-- (GenericType *)inferType
-{
-    return nil;
+    ASTNode *expr = self.optChainExpr;
+    if(expr)
+    {
+        return [expr toCode];
+    }
+    return @"";
 }
 
 @end
