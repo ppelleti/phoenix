@@ -1166,12 +1166,30 @@ NSString *tabulate(NSString *code)
 - (id)initWithWhileCondition: (ASTNode *)whileCondition
                    codeBlock: (ASTNode *)codeBlock
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.whileCondition = whileCondition;
+        self.codeBlock = codeBlock;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    NSString *result = @"while";
+    
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"( %@ ) { \n", [self.whileCondition toCode]]];
+    ASTNode *statements = self.codeBlock;
+    if(statements)
+    {
+        NSString *string = tabulate([statements toCode]);
+        result = [result stringByAppendingString:string];
+    }
+    
+    
+    result = [result stringByAppendingString:@"}"];
+    return result;
 }
 
 @end
@@ -1182,12 +1200,19 @@ NSString *tabulate(NSString *code)
 - (id) initWithLabelName: (NSString *)labelName
                     loop: (ASTNode *)loop
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.labelName = labelName;
+        self.loop = loop;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    return [NSString stringWithFormat:@"%@:\n%@",self.labelName,
+            [self.loop toCode]];
 }
 
 @end
