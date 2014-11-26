@@ -1304,13 +1304,45 @@ NSString *tabulate(NSString *code)
                       body: (ASTNode *)body
                 elseClause: (ASTNode *)elseClause
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.ifCondition = ifCondition;
+        self.body = body;
+        self.elseClause = elseClause;
+    }
+    return self;
 }
 
 
 - (NSString *)toCode
 {
-    return nil;
+    NSString *result = @"if (";
+    result = [result stringByAppendingString:[self.ifCondition toCode]];
+    result = [result stringByAppendingString:@") {\n"];
+    ASTNode *statements = self.body;
+    if(statements)
+    {
+        NSString *string = tabulate([statements toCode]);
+        result = [result stringByAppendingString:string];
+    }
+    result = [result stringByAppendingString:@"}"];
+    ASTNode *next = self.elseClause;
+    if(next)
+    {
+        result = [result stringByAppendingString:@"\nelse"];
+        if([next isKindOfClass:[IfStatement class]])
+        {
+            result = [result stringByAppendingString:[next toCode]];
+        }
+        else
+        {
+            NSString *string = [NSString stringWithFormat:@"{\n %@ }",tabulate([next toCode])];
+            result = [result stringByAppendingString:string];
+        }
+    }
+    
+    return result;
 }
 
 @end
@@ -1319,12 +1351,18 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithPath: (NSString *)path
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.path = path;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    NSString *pathRep = [NSString stringWithFormat:@"%@/%@.h",self.path, self.path];
+    return [NSString stringWithFormat:@"#import <%@>\n",pathRep];
 }
 
 @end
@@ -1333,12 +1371,17 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithStatement: (ASTNode *)statement
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.statement = statement;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    return [NSString stringWithFormat:@"%@;",self.statement];
 }
 
 @end
@@ -1347,12 +1390,22 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithDeclaration: (ASTNode *)declaration
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.declaration = declaration;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    VariableDeclaration *varDeclaration = (VariableDeclaration *)(AS(self.declaration, [VariableDeclaration class]));
+    if(varDeclaration)
+    {
+        varDeclaration.exportVariables = NO;
+    }
+    return [self.declaration toCode];
 }
 @end
 
@@ -1360,22 +1413,74 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithCurrent: (ASTNode *)current
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.current = current;
+    }
+    return self;
 }
 
 - (id) initWithCurrent: (ASTNode *)current
                   next: (StatementsNode *)next
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.current = current;
+        self.next = next;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    if (self.firstStatement)
+    {
+        [ctx saveSymbols];
+    }
+    
+    NSString *result = @"";
+    ASTNode *currentStatement = self.current;
+    if (currentStatement)
+    {
+        [ctx saveExported];
+        NSString *tmp = [[currentStatement toCode] stringByAppendingString:@"\n"];
+
+        NSString *exported = [ctx getExportedVars];
+        if(exported)
+        {
+            result = [result stringByAppendingString:exported];
+        }
+        result = [result stringByAppendingString:tmp];
+        [ctx restoreExported];
+    }
+    
+    StatementsNode *nextStatements =  (StatementsNode *)self.next;
+    if(nextStatements)
+    {
+        nextStatements.firstStatement = NO;
+        result = [result stringByAppendingString:[nextStatements toCode]];
+    }
+
+    if (self.firstStatement)
+    {
+        [ctx restoreSymbols];
+    }
+    
+    return result;
 }
 
 - (NSInteger) getStatementsCount
 {
-    return 0;
+    int result = 1;
+    StatementsNode *item = (StatementsNode *)self.next;
+    StatementsNode *valid = nil;
+    while ( (valid = item) != nil)
+    {
+        result++;
+        item = (StatementsNode *)[valid next];
+    }
+    return result;
 }
 @end
