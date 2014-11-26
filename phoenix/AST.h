@@ -133,10 +133,8 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 
 ///
 @interface BinaryExpression: ASTNode
-
 @property (nonatomic, retain) ASTNode *current;
 @property (nonatomic, retain) BinaryExpression *next;
-
 - (id) initWithExpression: (ASTNode *)expression;
 - (id) initWithExpression: (ASTNode *)expression
                      next: (BinaryExpression *)next;
@@ -149,10 +147,8 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 @end
 
 @interface NamedExpression: ASTNode
-
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) ASTNode *expr;
-
 - (id) initWithName: (NSString *)name
                expr: (ASTNode *)expr;
 // - (NSString *)toCode;
@@ -167,10 +163,8 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 @end
 
 @interface ExpressionList : ASTNode
-
 @property (nonatomic, retain) ASTNode *current;
 @property (nonatomic, retain) ExpressionList *next;
-
 - (id)initWithExpr: (ASTNode *)expr
               next: (ExpressionList *)next;
 // - (NSString *)toCode;
@@ -178,10 +172,8 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 @end
 
 @interface ParenthesizedExpression : ASTNode
-
 @property (nonatomic,retain) ASTNode *expression;
 @property (nonatomic,assign) BOOL allowInlineTuple;
-
 - (id) initWithExpression: (ASTNode *)expression;
 - (NSString *) toInlineTuple: (ExpressionList *) list;
 - (BOOL) isList;

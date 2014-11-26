@@ -9,6 +9,8 @@
 #import "AST.h"
 #import <math.h>
 
+#define AS(X,Y) ([X class] == Y)?X:nil
+
 NSString *tabulate(NSString *code)
 {
     NSRange range = NSMakeRange(0, [code lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
@@ -645,79 +647,225 @@ NSString *tabulate(NSString *code)
 @implementation TypeExpression
 - (id) initWithLinkedType: (GenericType *)linkedType
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.linkedType = linkedType;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    return @"";
 }
 
 - (GenericType *)inferType
 {
-    return nil;
+    return self.linkedType;
 }
 @end
 
 @implementation ExpressionList
-
-
 - (id)initWithExpr: (ASTNode *)expr
               next: (ExpressionList *)next
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.current = expr;
+        self.next = next;
+    }
+    return self;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    NSString *result = @"";
+    ASTNode *currentExpression = self.current;
+    if (currentExpression)
+    {
+        result = [result stringByAppendingString:[currentExpression toCode]];
+    }
+    
+    ExpressionList *nextExpression = self.next;
+    if (nextExpression)
+    {
+        result = [result stringByAppendingString: [NSString stringWithFormat:@", %@", [nextExpression toCode]]];
+    }
+    return result;
 }
 
 - (GenericType *)inferType
 {
-    return nil;
+    NSMutableArray *types = [[NSMutableArray alloc] initWithCapacity:10];// :[GenericType] = [];
+    ExpressionList *item = self; // var item:ExpressionList? = self;
+    ExpressionList *valid = nil;
+    while ((valid = item) != nil)
+    {
+        ExpressionList *expr = (ExpressionList *)[valid current];
+        if  (expr)
+        {
+            [types addObject: [expr getType]];
+        }
+        item = [valid next];
+    }
+    
+    //TODO: get less restrictive type instead of the first one
+    return types.count > 0 ? types[0] : nil;
 }
 @end
 
-@implementation ParenthesizedExpression 
+@implementation ParenthesizedExpression
 
 - (id) initWithExpression: (ASTNode *)expression
 {
+    self = [super init];
+    if(self)
+    {
+        self.expression = expression;
+        self.allowInlineTuple = YES;
+    }
     return nil;
 }
 
 - (NSString *) toInlineTuple: (ExpressionList *) list
 {
-    return nil;
+    NSString *result = @"{";
+    ExpressionList *item = list;
+    int index = 0;
+    ExpressionList *validItem = nil;
+    ASTNode *expression = nil;
+    
+    while ((validItem = item) != nil)
+    {
+        NamedExpression *namedExpression = (NamedExpression *)(AS([validItem current], [NamedExpression class]));
+        if (namedExpression)
+        {
+            NSString *string = [NSString stringWithFormat:@"%@: %@, ",
+                                [namedExpression name],
+                                [[namedExpression expr] toCode]];
+            [result stringByAppendingString:string];
+        }
+        else if ((expression = [validItem current]) != nil)
+        {
+            NSString *string = [NSString stringWithFormat:@"%d: %@",index, [expression toCode]];
+            result = [result stringByAppendingString:string]; // += "\(index): \(expression.toJS()), ";
+        }
+        ++index;
+        item = validItem.next;
+    }
+    
+    result = [result substringToIndex: [result lengthOfBytesUsingEncoding:NSUTF8StringEncoding] - 2]; //remove last ', '
+    result = [result stringByAppendingString:@"}"];
+    
+    return result;
 }
 
 - (BOOL) isList
 {
-    return YES;
+    ExpressionList *list = (ExpressionList *)(AS(self.expression,
+                                                 [ExpressionList class]));
+    if(list)
+    {
+        if([list next])
+        {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 - (NSArray *) toExpressionArray
 {
-    return nil;
+    NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:10];
+    ExpressionList *node = (ExpressionList *)(AS(self.expression, [ExpressionList class]));
+    ExpressionList *item = nil;
+    
+    while((item = node) != nil)
+    {
+        [result addObject:[item current]];
+        node = [item next];
+    }
+    
+    return (NSArray *)result;
 }
 
 - (NSArray *) toTypesArray
 {
-    return nil;
+    NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:10];
+    ExpressionList *node = (ExpressionList *)(AS(self.expression, [ExpressionList class]));
+    ExpressionList *item = nil;
+    
+    while((item = node) != nil)
+    {
+        [result addObject:[[item current] getType]];
+        node = [item next];
+    }
+    
+    return (NSArray *)result;
 }
 
 - (NSString *) toTupleInitializer: (NSString *)variableName
 {
-    return nil;
+    ExpressionList *list = (ExpressionList *)(AS(self.expression, [ExpressionList class]));
+    NSString *result = [variableName stringByAppendingString: @" = "];
+    result = [result stringByAppendingString:[NSString stringWithFormat:@"%@ = %@", variableName, [self toInlineTuple: list]]];
+    return result;
 }
 
 - (NSString *)toCode
 {
-    return nil;
+    
+    if (self.allowInlineTuple)
+    {
+        ExpressionList *list = (ExpressionList *)(AS(self.expression, [ExpressionList class]));
+        if (list)
+        {
+            if (([list next]) != nil)
+            {
+                return [self toInlineTuple: list];
+            }
+        }
+    }
+    
+    ExpressionList *expr = nil;
+    if ((expr = (ExpressionList *)self.expression) != nil)
+    {
+        NSString *result = [NSString stringWithFormat:@"(%@)",[expr toCode]];
+        return result;
+    }
+
+    return @"()";
 }
 
 - (GenericType *)inferType
 {
+    if (self.allowInlineTuple)
+    {
+        ExpressionList *list = (ExpressionList *)(AS(self.expression, [ExpressionList class]));
+        ASTNode *item = nil;
+        if(list != nil)
+        {
+            if( [list next] )
+            {
+                //mutiple elements = > tuple
+                return [[TupleType alloc] initWithList:list];
+            }
+            else if ((item = [list current]) != nil)
+            {
+                //single element => not a tuple
+                return [item getType];
+            }
+        }
+    }
+    
+    ASTNode *expr = nil;
+    if ((expr = (ASTNode *)self.expression) != nil)
+    {
+        return [expr getType];
+    }
+    
     return nil;
 }
 
