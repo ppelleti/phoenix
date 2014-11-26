@@ -1002,6 +1002,7 @@ NSString *tabulate(NSString *code)
     {
         result = [result stringByAppendingString:[data toCode]];
     }
+    result = [result stringByAppendingString:@"]"];
     return result;
 }
 
@@ -1024,21 +1025,44 @@ NSString *tabulate(NSString *code)
 
 - (id) initWithPairs: (ASTNode *)pairs
 {
-    return nil;
+    self = [super init];
+    if(self)
+    {
+        self.pairs = pairs;
+    }
+    return self;
 }
+
 - (NSString *)toCode
 {
-    return nil;
+    NSString *result = @"{";
+    ASTNode *data = self.pairs;
+    if(data)
+    {
+        NSString *string = tabulate([[data toCode] stringByAppendingString:@"\n"]);
+        result = [result stringByAppendingString:string];
+    }
+    result = [result stringByAppendingString:@"}"];
+    return result;
 }
+
 - (GenericType *)inferType
 {
-    return nil;
+    ExpressionList *item = (ExpressionList *)(AS(self.pairs, [ExpressionList class]));
+    ASTNode *current = [item current];
+    if(current)
+    {
+        return [[DictionaryType alloc] initWithInnerType:[item getType]];
+    }
+
+    return [[DictionaryType alloc] initWithInnerType:
+            [[GenericType alloc] initWithType:TYPE_UNKNOWN]];
 }
+
 @end
 
 
 @implementation DictionaryItem: ASTNode
-
 
 - (id) initWithKey: (ASTNode *)key value: (ASTNode *)value
 {
@@ -1052,6 +1076,7 @@ NSString *tabulate(NSString *code)
 {
     return nil;
 }
+
 @end
 
 
