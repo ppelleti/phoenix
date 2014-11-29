@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		1460D58A1A017757009D1EE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5891A017757009D1EE9 /* main.m */; };
 		1460D59D1A01779D009D1EE9 /* grammar.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5911A01779D009D1EE9 /* grammar.mm */; };
-		1460D59F1A01779D009D1EE9 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5941A01779D009D1EE9 /* Lexer.m */; };
-		1460D5A21A01779D009D1EE9 /* Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5991A01779D009D1EE9 /* Regex.m */; };
-		1460D5A31A01779D009D1EE9 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D59C1A01779D009D1EE9 /* Types.m */; };
-		1460D5A91A017831009D1EE9 /* AST.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5A81A017831009D1EE9 /* AST.m */; };
-		1460D5AC1A0178AA009D1EE9 /* CodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5AB1A0178AA009D1EE9 /* CodeGenerator.m */; };
-		1460D5AF1A0178C4009D1EE9 /* ObjCCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5AE1A0178C4009D1EE9 /* ObjCCodeGenerator.m */; };
-		1460D5B21A0178D9009D1EE9 /* LLVMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B11A0178D9009D1EE9 /* LLVMCodeGenerator.m */; };
-		1460D5B51A0178FF009D1EE9 /* ASMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */; };
+		14C83C991A29809400A10D94 /* AST.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C871A29809400A10D94 /* AST.m */; };
+		14C83C9A1A29809400A10D94 /* ASMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C8A1A29809400A10D94 /* ASMCodeGenerator.m */; };
+		14C83C9B1A29809400A10D94 /* CodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C8C1A29809400A10D94 /* CodeGenerator.m */; };
+		14C83C9C1A29809400A10D94 /* LLVMCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C8E1A29809400A10D94 /* LLVMCodeGenerator.m */; };
+		14C83C9D1A29809400A10D94 /* ObjCCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C901A29809400A10D94 /* ObjCCodeGenerator.m */; };
+		14C83C9E1A29809400A10D94 /* Lexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C931A29809400A10D94 /* Lexer.m */; };
+		14C83C9F1A29809400A10D94 /* Regex.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C951A29809400A10D94 /* Regex.m */; };
+		14C83CA01A29809400A10D94 /* Types.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C83C981A29809400A10D94 /* Types.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,26 +36,26 @@
 		1460D5891A017757009D1EE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1460D5901A01779D009D1EE9 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		1460D5911A01779D009D1EE9 /* grammar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = grammar.mm; sourceTree = "<group>"; };
-		1460D5931A01779D009D1EE9 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
-		1460D5941A01779D009D1EE9 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lexer.m; sourceTree = "<group>"; };
 		1460D5951A01779D009D1EE9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		1460D5981A01779D009D1EE9 /* Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Regex.h; sourceTree = "<group>"; };
-		1460D5991A01779D009D1EE9 /* Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Regex.m; sourceTree = "<group>"; };
 		1460D59A1A01779D009D1EE9 /* swift.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swift.grammar; sourceTree = "<group>"; };
-		1460D59B1A01779D009D1EE9 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
-		1460D59C1A01779D009D1EE9 /* Types.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Types.m; sourceTree = "<group>"; };
-		1460D5A71A017831009D1EE9 /* AST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AST.h; sourceTree = "<group>"; };
-		1460D5A81A017831009D1EE9 /* AST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AST.m; sourceTree = "<group>"; };
-		1460D5AA1A0178AA009D1EE9 /* CodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeGenerator.h; sourceTree = "<group>"; };
-		1460D5AB1A0178AA009D1EE9 /* CodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeGenerator.m; sourceTree = "<group>"; };
-		1460D5AD1A0178C4009D1EE9 /* ObjCCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCCodeGenerator.h; sourceTree = "<group>"; };
-		1460D5AE1A0178C4009D1EE9 /* ObjCCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCCodeGenerator.m; sourceTree = "<group>"; };
-		1460D5B01A0178D9009D1EE9 /* LLVMCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLVMCodeGenerator.h; sourceTree = "<group>"; };
-		1460D5B11A0178D9009D1EE9 /* LLVMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLVMCodeGenerator.m; sourceTree = "<group>"; };
-		1460D5B31A0178FF009D1EE9 /* ASMCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMCodeGenerator.h; sourceTree = "<group>"; };
-		1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMCodeGenerator.m; sourceTree = "<group>"; };
 		1460D5B61A017A63009D1EE9 /* GRAMMAR.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = GRAMMAR.md; sourceTree = "<group>"; };
 		1468F3EA1A0DEC57006C9CAE /* grammar.y */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.yacc; path = grammar.y; sourceTree = "<group>"; };
+		14C83C861A29809400A10D94 /* AST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AST.h; sourceTree = "<group>"; };
+		14C83C871A29809400A10D94 /* AST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AST.m; sourceTree = "<group>"; };
+		14C83C891A29809400A10D94 /* ASMCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMCodeGenerator.h; sourceTree = "<group>"; };
+		14C83C8A1A29809400A10D94 /* ASMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMCodeGenerator.m; sourceTree = "<group>"; };
+		14C83C8B1A29809400A10D94 /* CodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeGenerator.h; sourceTree = "<group>"; };
+		14C83C8C1A29809400A10D94 /* CodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeGenerator.m; sourceTree = "<group>"; };
+		14C83C8D1A29809400A10D94 /* LLVMCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLVMCodeGenerator.h; sourceTree = "<group>"; };
+		14C83C8E1A29809400A10D94 /* LLVMCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLVMCodeGenerator.m; sourceTree = "<group>"; };
+		14C83C8F1A29809400A10D94 /* ObjCCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCCodeGenerator.h; sourceTree = "<group>"; };
+		14C83C901A29809400A10D94 /* ObjCCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCCodeGenerator.m; sourceTree = "<group>"; };
+		14C83C921A29809400A10D94 /* Lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lexer.h; sourceTree = "<group>"; };
+		14C83C931A29809400A10D94 /* Lexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lexer.m; sourceTree = "<group>"; };
+		14C83C941A29809400A10D94 /* Regex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Regex.h; sourceTree = "<group>"; };
+		14C83C951A29809400A10D94 /* Regex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Regex.m; sourceTree = "<group>"; };
+		14C83C971A29809400A10D94 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		14C83C981A29809400A10D94 /* Types.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Types.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,22 +110,10 @@
 		1460D5A51A0177F0009D1EE9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1460D5981A01779D009D1EE9 /* Regex.h */,
-				1460D5991A01779D009D1EE9 /* Regex.m */,
-				1460D59B1A01779D009D1EE9 /* Types.h */,
-				1460D59C1A01779D009D1EE9 /* Types.m */,
-				1460D5931A01779D009D1EE9 /* Lexer.h */,
-				1460D5941A01779D009D1EE9 /* Lexer.m */,
-				1460D5A71A017831009D1EE9 /* AST.h */,
-				1460D5A81A017831009D1EE9 /* AST.m */,
-				1460D5AA1A0178AA009D1EE9 /* CodeGenerator.h */,
-				1460D5AB1A0178AA009D1EE9 /* CodeGenerator.m */,
-				1460D5AD1A0178C4009D1EE9 /* ObjCCodeGenerator.h */,
-				1460D5AE1A0178C4009D1EE9 /* ObjCCodeGenerator.m */,
-				1460D5B01A0178D9009D1EE9 /* LLVMCodeGenerator.h */,
-				1460D5B11A0178D9009D1EE9 /* LLVMCodeGenerator.m */,
-				1460D5B31A0178FF009D1EE9 /* ASMCodeGenerator.h */,
-				1460D5B41A0178FF009D1EE9 /* ASMCodeGenerator.m */,
+				14C83C851A29809400A10D94 /* AST */,
+				14C83C881A29809400A10D94 /* CodeGenerator */,
+				14C83C911A29809400A10D94 /* Lexer */,
+				14C83C961A29809400A10D94 /* Types */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -137,6 +125,50 @@
 				1460D5951A01779D009D1EE9 /* LICENSE */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14C83C851A29809400A10D94 /* AST */ = {
+			isa = PBXGroup;
+			children = (
+				14C83C861A29809400A10D94 /* AST.h */,
+				14C83C871A29809400A10D94 /* AST.m */,
+			);
+			path = AST;
+			sourceTree = "<group>";
+		};
+		14C83C881A29809400A10D94 /* CodeGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				14C83C891A29809400A10D94 /* ASMCodeGenerator.h */,
+				14C83C8A1A29809400A10D94 /* ASMCodeGenerator.m */,
+				14C83C8B1A29809400A10D94 /* CodeGenerator.h */,
+				14C83C8C1A29809400A10D94 /* CodeGenerator.m */,
+				14C83C8D1A29809400A10D94 /* LLVMCodeGenerator.h */,
+				14C83C8E1A29809400A10D94 /* LLVMCodeGenerator.m */,
+				14C83C8F1A29809400A10D94 /* ObjCCodeGenerator.h */,
+				14C83C901A29809400A10D94 /* ObjCCodeGenerator.m */,
+			);
+			path = CodeGenerator;
+			sourceTree = "<group>";
+		};
+		14C83C911A29809400A10D94 /* Lexer */ = {
+			isa = PBXGroup;
+			children = (
+				14C83C921A29809400A10D94 /* Lexer.h */,
+				14C83C931A29809400A10D94 /* Lexer.m */,
+				14C83C941A29809400A10D94 /* Regex.h */,
+				14C83C951A29809400A10D94 /* Regex.m */,
+			);
+			path = Lexer;
+			sourceTree = "<group>";
+		};
+		14C83C961A29809400A10D94 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				14C83C971A29809400A10D94 /* Types.h */,
+				14C83C981A29809400A10D94 /* Types.m */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,16 +227,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1460D5B51A0178FF009D1EE9 /* ASMCodeGenerator.m in Sources */,
-				1460D5A91A017831009D1EE9 /* AST.m in Sources */,
-				1460D5A21A01779D009D1EE9 /* Regex.m in Sources */,
-				1460D5AF1A0178C4009D1EE9 /* ObjCCodeGenerator.m in Sources */,
+				14C83C9D1A29809400A10D94 /* ObjCCodeGenerator.m in Sources */,
+				14C83CA01A29809400A10D94 /* Types.m in Sources */,
+				14C83C9A1A29809400A10D94 /* ASMCodeGenerator.m in Sources */,
+				14C83C9E1A29809400A10D94 /* Lexer.m in Sources */,
+				14C83C9F1A29809400A10D94 /* Regex.m in Sources */,
+				14C83C9B1A29809400A10D94 /* CodeGenerator.m in Sources */,
+				14C83C991A29809400A10D94 /* AST.m in Sources */,
 				1460D58A1A017757009D1EE9 /* main.m in Sources */,
-				1460D5AC1A0178AA009D1EE9 /* CodeGenerator.m in Sources */,
-				1460D59F1A01779D009D1EE9 /* Lexer.m in Sources */,
 				1460D59D1A01779D009D1EE9 /* grammar.mm in Sources */,
-				1460D5A31A01779D009D1EE9 /* Types.m in Sources */,
-				1460D5B21A0178D9009D1EE9 /* LLVMCodeGenerator.m in Sources */,
+				14C83C9C1A29809400A10D94 /* LLVMCodeGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

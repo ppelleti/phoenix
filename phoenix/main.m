@@ -10,9 +10,9 @@
 #import "Lexer.h"
 #import "AST.h"
 
-#import "bridge.h"
-//ASTNode* bridge_yyparse(Lexer * lexer, int debug);
-//const char * bridge_yyerror();
+// #import "bridge.h"
+ASTNode* bridge_yyparse(Lexer * lexer, int debug);
+const char * bridge_yyerror();
 
 NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
 {
