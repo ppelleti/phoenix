@@ -238,6 +238,7 @@ static TokenData *lastyylexToken = nil;
 - (int) yylex
 {
     TokenData *data = nil;
+    lastyylexToken = [self nextToken];
     if((data = lastyylexToken))
     {
         return (int)data.token;

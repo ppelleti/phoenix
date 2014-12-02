@@ -51,6 +51,9 @@ static ASTContext *ctx = nil;  // Initialized top ASTContext when first context 
 
 // Node
 @interface ASTNode: NSObject
+{
+    GenericType *type;
+}
 
 @property (nonatomic, retain) GenericType *type;
 

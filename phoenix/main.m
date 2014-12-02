@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Lexer.h"
 #import "AST.h"
-
 // #import "bridge.h"
-ASTNode* bridge_yyparse(Lexer * lexer, int debug);
-const char * bridge_yyerror();
+
+// ASTNode* bridge_yyparse(Lexer * lexer, int debug);
+// const char * bridge_yyerror();
 
 NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
 {
@@ -30,6 +30,8 @@ NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
         NSLog(@"===========");
     }
     
+    foo();
+    
     ASTNode *ast = bridge_yyparse(lexer, debug);
     if(ast != nil)
     {
@@ -46,7 +48,7 @@ NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        BOOL debug = YES;
+        BOOL debug = NO;
         
         /*
         if(argc <= 1)

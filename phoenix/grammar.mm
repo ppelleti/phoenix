@@ -175,7 +175,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "grammar.y"
+// #line 1 "grammar.y"
 
     #include <iostream>
     @class NSArray;
@@ -201,14 +201,14 @@
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE 
-#line 26 "grammar.y"
+// #line 26 "grammar.y"
 {
     ASTNode * node;
     char *    str;
     GenericType * type;
 }
 /* Line 204 of glr.c.  */
-#line 210 "grammar.mm"
+// #line 210 "grammar.mm"
 	YYSTYPE;
 # define YYSTYPE_IS_DECLARED 1
 # define YYSTYPE_IS_TRIVIAL 1
@@ -255,7 +255,7 @@ static YYSTYPE yyval_default;
 
 
 /* Line 234 of glr.c.  */
-#line 257 "grammar.mm"
+// #line 257 "grammar.mm"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -2374,877 +2374,877 @@ yyuserAction (yyRuleNum yyn, int yyrhslen, yyGLRStackItem* yyvsp,
   switch (yyn)
     {
         case 2:
-#line 414 "grammar.y"
+// #line 414 "grammar.y"
     {ast = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node);;}
     break;
 
   case 3:
-#line 421 "grammar.y"
+// #line 421 "grammar.y"
     { ((*yyvalp).node) = [[StatementNode alloc] initWithStatement:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node)]; LOG("statement (0)\n"); ;}
     break;
 
   case 4:
-#line 422 "grammar.y"
+// #line 422 "grammar.y"
     {;}
     break;
 
   case 5:
-#line 422 "grammar.y"
+// #line 422 "grammar.y"
     { LOG("semicolon_opt\n"); ;}
     break;
 
   case 6:
-#line 423 "grammar.y"
+// #line 423 "grammar.y"
     { ((*yyvalp).node) = [[DeclarationStatement alloc] initWithDeclaration:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node)]; LOG("statement (0)\n"); ;}
     break;
 
   case 7:
-#line 424 "grammar.y"
+// #line 424 "grammar.y"
     { LOG("statement (0)\n"); ;}
     break;
 
   case 8:
-#line 425 "grammar.y"
+// #line 425 "grammar.y"
     { LOG("statement (0)\n"); ;}
     break;
 
   case 9:
-#line 426 "grammar.y"
+// #line 426 "grammar.y"
     { LOG("statement (0)\n"); ;}
     break;
 
   case 10:
-#line 427 "grammar.y"
+// #line 427 "grammar.y"
     { LOG("statement (0)\n"); ;}
     break;
 
   case 11:
-#line 428 "grammar.y"
+// #line 428 "grammar.y"
     {((*yyvalp).node) = [[StatementsNode alloc] initWithCurrent:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node)]; ;}
     break;
 
   case 12:
-#line 429 "grammar.y"
+// #line 429 "grammar.y"
     {((*yyvalp).node) = [[StatementsNode alloc] initWithCurrent:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) next:(StatementsNode*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)]; ;}
     break;
 
   case 13:
-#line 433 "grammar.y"
+// #line 433 "grammar.y"
     { LOG("loop_statement (0)\n"); ;}
     break;
 
   case 14:
-#line 434 "grammar.y"
+// #line 434 "grammar.y"
     { LOG("loop_statement (0)\n"); ;}
     break;
 
   case 15:
-#line 435 "grammar.y"
+// #line 435 "grammar.y"
     { LOG("loop_statement (0)\n"); ;}
     break;
 
   case 16:
-#line 436 "grammar.y"
+// #line 436 "grammar.y"
     { LOG("loop_statement (0)\n"); ;}
     break;
 
   case 17:
-#line 440 "grammar.y"
+// #line 440 "grammar.y"
     { LOG("for_statement (0)\n"); ;}
     break;
 
   case 18:
-#line 441 "grammar.y"
+// #line 441 "grammar.y"
     {;}
     break;
 
   case 19:
-#line 441 "grammar.y"
+// #line 441 "grammar.y"
     { LOG("for_init_opt\n"); ;}
     break;
 
   case 20:
-#line 442 "grammar.y"
+// #line 442 "grammar.y"
     {;}
     break;
 
   case 21:
-#line 442 "grammar.y"
+// #line 442 "grammar.y"
     { LOG("expression_opt\n"); ;}
     break;
 
   case 22:
-#line 443 "grammar.y"
+// #line 443 "grammar.y"
     { LOG("for_statement (0)\n"); ;}
     break;
 
   case 23:
-#line 444 "grammar.y"
+// #line 444 "grammar.y"
     { LOG("for_init (0)\n"); ;}
     break;
 
   case 24:
-#line 445 "grammar.y"
+// #line 445 "grammar.y"
     { LOG("for_init (1)\n"); ;}
     break;
 
   case 25:
-#line 449 "grammar.y"
+// #line 449 "grammar.y"
     { LOG("for_in_statement (0)\n"); ;}
     break;
 
   case 26:
-#line 453 "grammar.y"
+// #line 453 "grammar.y"
     { ((*yyvalp).node) = [[WhileStatement alloc] initWithWhileCondition:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.node) codeBlock:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("while_statement (0)\n"); ;}
     break;
 
   case 27:
-#line 454 "grammar.y"
+// #line 454 "grammar.y"
     { LOG("while_condition (0)\n"); ;}
     break;
 
   case 28:
-#line 455 "grammar.y"
+// #line 455 "grammar.y"
     { LOG("while_condition (1)\n"); ;}
     break;
 
   case 29:
-#line 459 "grammar.y"
+// #line 459 "grammar.y"
     { LOG("do_while_statement (0)\n"); ;}
     break;
 
   case 30:
-#line 463 "grammar.y"
+// #line 463 "grammar.y"
     { LOG("branch_statement (0)\n"); ;}
     break;
 
   case 31:
-#line 464 "grammar.y"
+// #line 464 "grammar.y"
     { LOG("branch_statement (0)\n"); ;}
     break;
 
   case 32:
-#line 468 "grammar.y"
+// #line 468 "grammar.y"
     {((*yyvalp).node) = [[IfStatement alloc] initWithIfCondition:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.node) body:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.node) elseClause:(((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.node)]; LOG("if_statement (0)\n"); ;}
     break;
 
   case 33:
-#line 469 "grammar.y"
+// #line 469 "grammar.y"
     {;}
     break;
 
   case 34:
-#line 469 "grammar.y"
+// #line 469 "grammar.y"
     { LOG("else_clause_opt\n"); ;}
     break;
 
   case 35:
-#line 470 "grammar.y"
+// #line 470 "grammar.y"
     { LOG("if_condition (0)\n"); ;}
     break;
 
   case 36:
-#line 471 "grammar.y"
+// #line 471 "grammar.y"
     { LOG("if_condition (1)\n"); ;}
     break;
 
   case 37:
-#line 472 "grammar.y"
+// #line 472 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node); LOG("else_clause (0)\n"); ;}
     break;
 
   case 38:
-#line 473 "grammar.y"
+// #line 473 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node); LOG("else_clause (1)\n"); ;}
     break;
 
   case 39:
-#line 477 "grammar.y"
+// #line 477 "grammar.y"
     { LOG("switch_statement (0)\n"); ;}
     break;
 
   case 40:
-#line 478 "grammar.y"
+// #line 478 "grammar.y"
     {;}
     break;
 
   case 41:
-#line 478 "grammar.y"
+// #line 478 "grammar.y"
     { LOG("switch_cases_opt\n"); ;}
     break;
 
   case 42:
-#line 479 "grammar.y"
+// #line 479 "grammar.y"
     { LOG("switch_cases (0)\n"); ;}
     break;
 
   case 43:
-#line 480 "grammar.y"
+// #line 480 "grammar.y"
     { LOG("switch_case (0)\n"); ;}
     break;
 
   case 44:
-#line 481 "grammar.y"
+// #line 481 "grammar.y"
     { LOG("switch_case (1)\n"); ;}
     break;
 
   case 45:
-#line 482 "grammar.y"
+// #line 482 "grammar.y"
     { LOG("switch_case (0)\n"); ;}
     break;
 
   case 46:
-#line 483 "grammar.y"
+// #line 483 "grammar.y"
     { LOG("switch_case (1)\n"); ;}
     break;
 
   case 47:
-#line 484 "grammar.y"
+// #line 484 "grammar.y"
     { LOG("case_label (0)\n"); ;}
     break;
 
   case 48:
-#line 485 "grammar.y"
+// #line 485 "grammar.y"
     { LOG("case_item_list (0)\n"); ;}
     break;
 
   case 49:
-#line 486 "grammar.y"
+// #line 486 "grammar.y"
     { LOG("case_item_list (1)\n"); ;}
     break;
 
   case 50:
-#line 487 "grammar.y"
+// #line 487 "grammar.y"
     {;}
     break;
 
   case 51:
-#line 487 "grammar.y"
+// #line 487 "grammar.y"
     { LOG("guard_clause_opt\n"); ;}
     break;
 
   case 52:
-#line 488 "grammar.y"
+// #line 488 "grammar.y"
     { LOG("default_label (0)\n"); ;}
     break;
 
   case 53:
-#line 489 "grammar.y"
+// #line 489 "grammar.y"
     { LOG("guard_clause (0)\n"); ;}
     break;
 
   case 54:
-#line 490 "grammar.y"
+// #line 490 "grammar.y"
     { LOG("guard_expression (0)\n"); ;}
     break;
 
   case 55:
-#line 494 "grammar.y"
+// #line 494 "grammar.y"
     { ((*yyvalp).node) = [[LabelStatement alloc] initWithLabelName:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str)) loop:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)]; LOG("labeled_statement (0)\n"); ;}
     break;
 
   case 56:
-#line 495 "grammar.y"
+// #line 495 "grammar.y"
     { ((*yyvalp).node) = NULL; LOG("labeled_statement (1)\n"); ;}
     break;
 
   case 57:
-#line 496 "grammar.y"
+// #line 496 "grammar.y"
     { LOG("statement_label (0)\n"); ;}
     break;
 
   case 58:
-#line 497 "grammar.y"
+// #line 497 "grammar.y"
     { LOG("label_name (0)\n"); ;}
     break;
 
   case 59:
-#line 501 "grammar.y"
+// #line 501 "grammar.y"
     { LOG("control_transfer_statement (0)\n"); ;}
     break;
 
   case 60:
-#line 502 "grammar.y"
+// #line 502 "grammar.y"
     { LOG("control_transfer_statement (0)\n"); ;}
     break;
 
   case 61:
-#line 503 "grammar.y"
+// #line 503 "grammar.y"
     { LOG("control_transfer_statement (0)\n"); ;}
     break;
 
   case 62:
-#line 504 "grammar.y"
+// #line 504 "grammar.y"
     { LOG("control_transfer_statement (0)\n"); ;}
     break;
 
   case 63:
-#line 508 "grammar.y"
+// #line 508 "grammar.y"
     {((*yyvalp).node) = [[BreakStatement alloc] initWithLabelId:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str))]; LOG("break_statement (0)\n"); ;}
     break;
 
   case 64:
-#line 509 "grammar.y"
+// #line 509 "grammar.y"
     {;}
     break;
 
   case 65:
-#line 509 "grammar.y"
+// #line 509 "grammar.y"
     {  LOG("label_name_opt\n"); ;}
     break;
 
   case 66:
-#line 513 "grammar.y"
+// #line 513 "grammar.y"
     { LOG("continue_statement (0)\n"); ;}
     break;
 
   case 67:
-#line 517 "grammar.y"
+// #line 517 "grammar.y"
     { LOG("fallthrough_statement (0)\n"); ;}
     break;
 
   case 68:
-#line 521 "grammar.y"
+// #line 521 "grammar.y"
     {((*yyvalp).node) = [[ReturnStatement alloc] initWithReturnExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)]; LOG("return_statement (0)\n"); ;}
     break;
 
   case 69:
-#line 528 "grammar.y"
+// #line 528 "grammar.y"
     { LOG("generic_parameter_clause (0)\n"); ;}
     break;
 
   case 70:
-#line 529 "grammar.y"
+// #line 529 "grammar.y"
     {;}
     break;
 
   case 71:
-#line 529 "grammar.y"
+// #line 529 "grammar.y"
     { LOG("requirement_clause_opt\n"); ;}
     break;
 
   case 72:
-#line 530 "grammar.y"
+// #line 530 "grammar.y"
     { LOG("generic_parameter_list (0)\n"); ;}
     break;
 
   case 73:
-#line 531 "grammar.y"
+// #line 531 "grammar.y"
     { LOG("generic_parameter_list (1)\n"); ;}
     break;
 
   case 74:
-#line 532 "grammar.y"
+// #line 532 "grammar.y"
     { LOG("generic_parameter (0)\n"); ;}
     break;
 
   case 75:
-#line 533 "grammar.y"
+// #line 533 "grammar.y"
     { LOG("generic_parameter (0)\n"); ;}
     break;
 
   case 76:
-#line 534 "grammar.y"
+// #line 534 "grammar.y"
     { LOG("generic_parameter (0)\n"); ;}
     break;
 
   case 77:
-#line 535 "grammar.y"
+// #line 535 "grammar.y"
     { LOG("requirement_clause (0)\n"); ;}
     break;
 
   case 78:
-#line 536 "grammar.y"
+// #line 536 "grammar.y"
     { LOG("requirement_list (0)\n"); ;}
     break;
 
   case 79:
-#line 537 "grammar.y"
+// #line 537 "grammar.y"
     { LOG("requirement_list (1)\n"); ;}
     break;
 
   case 80:
-#line 538 "grammar.y"
+// #line 538 "grammar.y"
     { LOG("requirement (0)\n"); ;}
     break;
 
   case 81:
-#line 539 "grammar.y"
+// #line 539 "grammar.y"
     { LOG("requirement (1)\n"); ;}
     break;
 
   case 82:
-#line 540 "grammar.y"
+// #line 540 "grammar.y"
     { LOG("conformance_requirement (0)\n"); ;}
     break;
 
   case 83:
-#line 541 "grammar.y"
+// #line 541 "grammar.y"
     { LOG("conformance_requirement (0)\n"); ;}
     break;
 
   case 84:
-#line 542 "grammar.y"
+// #line 542 "grammar.y"
     { LOG("same_type_requirement (0)\n"); ;}
     break;
 
   case 85:
-#line 546 "grammar.y"
+// #line 546 "grammar.y"
     { LOG("generic_argument_clause (0)\n"); ;}
     break;
 
   case 86:
-#line 547 "grammar.y"
+// #line 547 "grammar.y"
     { LOG("generic_argument_list (0)\n"); ;}
     break;
 
   case 87:
-#line 548 "grammar.y"
+// #line 548 "grammar.y"
     { LOG("generic_argument_list (1)\n"); ;}
     break;
 
   case 88:
-#line 549 "grammar.y"
+// #line 549 "grammar.y"
     { LOG("generic_argument (0)\n"); ;}
     break;
 
   case 89:
-#line 556 "grammar.y"
+// #line 556 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 90:
-#line 557 "grammar.y"
+// #line 557 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 91:
-#line 558 "grammar.y"
+// #line 558 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 92:
-#line 559 "grammar.y"
+// #line 559 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 93:
-#line 560 "grammar.y"
+// #line 560 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 94:
-#line 561 "grammar.y"
+// #line 561 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 95:
-#line 562 "grammar.y"
+// #line 562 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 96:
-#line 563 "grammar.y"
+// #line 563 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 97:
-#line 564 "grammar.y"
+// #line 564 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 98:
-#line 565 "grammar.y"
+// #line 565 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 99:
-#line 566 "grammar.y"
+// #line 566 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 100:
-#line 567 "grammar.y"
+// #line 567 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 101:
-#line 568 "grammar.y"
+// #line 568 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 102:
-#line 569 "grammar.y"
+// #line 569 "grammar.y"
     { LOG("declaration (0)\n"); ;}
     break;
 
   case 103:
-#line 570 "grammar.y"
+// #line 570 "grammar.y"
     { LOG("declarations (0)\n"); ;}
     break;
 
   case 104:
-#line 571 "grammar.y"
+// #line 571 "grammar.y"
     {;}
     break;
 
   case 105:
-#line 571 "grammar.y"
+// #line 571 "grammar.y"
     { LOG("declarations_opt\n"); ;}
     break;
 
   case 106:
-#line 572 "grammar.y"
+// #line 572 "grammar.y"
     { LOG("declaration_specifiers (0)\n"); ;}
     break;
 
   case 107:
-#line 573 "grammar.y"
+// #line 573 "grammar.y"
     {;}
     break;
 
   case 108:
-#line 573 "grammar.y"
+// #line 573 "grammar.y"
     { LOG("declaration_specifiers_opt\n"); ;}
     break;
 
   case 109:
-#line 574 "grammar.y"
+// #line 574 "grammar.y"
     { LOG("declaration_specifier (0)\n"); ;}
     break;
 
   case 110:
-#line 575 "grammar.y"
+// #line 575 "grammar.y"
     { LOG("declaration_specifier (1)\n"); ;}
     break;
 
   case 111:
-#line 576 "grammar.y"
+// #line 576 "grammar.y"
     { LOG("declaration_specifier (2)\n"); ;}
     break;
 
   case 112:
-#line 577 "grammar.y"
+// #line 577 "grammar.y"
     { LOG("declaration_specifier (3)\n"); ;}
     break;
 
   case 113:
-#line 578 "grammar.y"
+// #line 578 "grammar.y"
     { LOG("declaration_specifier (4)\n"); ;}
     break;
 
   case 114:
-#line 579 "grammar.y"
+// #line 579 "grammar.y"
     { LOG("declaration_specifier (5)\n"); ;}
     break;
 
   case 115:
-#line 580 "grammar.y"
+// #line 580 "grammar.y"
     { LOG("declaration_specifier (6)\n"); ;}
     break;
 
   case 116:
-#line 581 "grammar.y"
+// #line 581 "grammar.y"
     { LOG("declaration_specifier (7)\n"); ;}
     break;
 
   case 117:
-#line 582 "grammar.y"
+// #line 582 "grammar.y"
     { LOG("declaration_specifier (8)\n"); ;}
     break;
 
   case 118:
-#line 586 "grammar.y"
+// #line 586 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.node); LOG("code_block (0)\n"); ;}
     break;
 
   case 119:
-#line 587 "grammar.y"
+// #line 587 "grammar.y"
     { ((*yyvalp).node) = NULL; LOG("code_block (1)\n"); ;}
     break;
 
   case 120:
-#line 591 "grammar.y"
+// #line 591 "grammar.y"
     { ((*yyvalp).node) = [[ImportStatement alloc] initWithPath:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.str))]; LOG("import_declaration (0)\n"); ;}
     break;
 
   case 121:
-#line 592 "grammar.y"
+// #line 592 "grammar.y"
     {;}
     break;
 
   case 122:
-#line 592 "grammar.y"
+// #line 592 "grammar.y"
     { LOG("attributes_opt\n"); ;}
     break;
 
   case 123:
-#line 593 "grammar.y"
+// #line 593 "grammar.y"
     {;}
     break;
 
   case 124:
-#line 593 "grammar.y"
+// #line 593 "grammar.y"
     { LOG("import_kind_opt\n"); ;}
     break;
 
   case 125:
-#line 594 "grammar.y"
+// #line 594 "grammar.y"
     { LOG("import_kind (0)\n"); ;}
     break;
 
   case 126:
-#line 595 "grammar.y"
+// #line 595 "grammar.y"
     { LOG("import_kind (1)\n"); ;}
     break;
 
   case 127:
-#line 596 "grammar.y"
+// #line 596 "grammar.y"
     { LOG("import_kind (2)\n"); ;}
     break;
 
   case 128:
-#line 597 "grammar.y"
+// #line 597 "grammar.y"
     { LOG("import_kind (3)\n"); ;}
     break;
 
   case 129:
-#line 598 "grammar.y"
+// #line 598 "grammar.y"
     { LOG("import_kind (4)\n"); ;}
     break;
 
   case 130:
-#line 599 "grammar.y"
+// #line 599 "grammar.y"
     { LOG("import_kind (5)\n"); ;}
     break;
 
   case 131:
-#line 600 "grammar.y"
+// #line 600 "grammar.y"
     { LOG("import_kind (6)\n"); ;}
     break;
 
   case 132:
-#line 601 "grammar.y"
+// #line 601 "grammar.y"
     { LOG("import_path (0)\n"); ;}
     break;
 
   case 133:
-#line 602 "grammar.y"
+// #line 602 "grammar.y"
     { LOG("import_path (1)\n"); ;}
     break;
 
   case 134:
-#line 603 "grammar.y"
+// #line 603 "grammar.y"
     { LOG("import_path_identifier (0)\n"); ;}
     break;
 
   case 135:
-#line 604 "grammar.y"
+// #line 604 "grammar.y"
     { LOG("import_path_identifier (1)\n"); ;}
     break;
 
   case 136:
-#line 608 "grammar.y"
+// #line 608 "grammar.y"
     {((*yyvalp).node) = [[VariableDeclaration alloc] initWithInitializer:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.node)]; LOG("constant_declaration (0)\n"); ;}
     break;
 
   case 137:
-#line 609 "grammar.y"
+// #line 609 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node) next:nil];  LOG("pattern_initializer_list (0)\n"); ;}
     break;
 
   case 138:
-#line 610 "grammar.y"
+// #line 610 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) next:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("pattern_initializer_list (1)\n"); ;}
     break;
 
   case 139:
-#line 611 "grammar.y"
+// #line 611 "grammar.y"
     {((*yyvalp).node) = [[BinaryExpression alloc] initWithExpression:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) next:[[BinaryExpression alloc] initWithExpression:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node) next:nil]]; LOG("pattern_initializer (0)\n"); ;}
     break;
 
   case 140:
-#line 612 "grammar.y"
+// #line 612 "grammar.y"
     { LOG("pattern_initializer (1)\n"); ;}
     break;
 
   case 141:
-#line 613 "grammar.y"
+// #line 613 "grammar.y"
     {;}
     break;
 
   case 142:
-#line 613 "grammar.y"
+// #line 613 "grammar.y"
     { LOG("initializer_opt\n"); ;}
     break;
 
   case 143:
-#line 614 "grammar.y"
+// #line 614 "grammar.y"
     {((*yyvalp).node) = [[AssignmentOperator alloc] initWithRightOperand:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)];  LOG("initializer (0)\n"); ;}
     break;
 
   case 144:
-#line 618 "grammar.y"
+// #line 618 "grammar.y"
     {((*yyvalp).node) = [[VariableDeclaration alloc] initWithInitializer:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)]; LOG("variable_declaration (0)\n"); ;}
     break;
 
   case 145:
-#line 619 "grammar.y"
+// #line 619 "grammar.y"
     { LOG("variable_declaration (0)\n"); ;}
     break;
 
   case 146:
-#line 620 "grammar.y"
+// #line 620 "grammar.y"
     { LOG("variable_declaration (0)\n"); ;}
     break;
 
   case 147:
-#line 621 "grammar.y"
+// #line 621 "grammar.y"
     { LOG("variable_declaration (0)\n"); ;}
     break;
 
   case 148:
-#line 622 "grammar.y"
+// #line 622 "grammar.y"
     { LOG("variable_declaration (0)\n"); ;}
     break;
 
   case 149:
-#line 623 "grammar.y"
+// #line 623 "grammar.y"
     { LOG("variable_declaration_head (0)\n"); ;}
     break;
 
   case 150:
-#line 624 "grammar.y"
+// #line 624 "grammar.y"
     { LOG("variable_name (0)\n"); ;}
     break;
 
   case 151:
-#line 625 "grammar.y"
+// #line 625 "grammar.y"
     { LOG("getter_setter_block (0)\n"); ;}
     break;
 
   case 152:
-#line 626 "grammar.y"
+// #line 626 "grammar.y"
     {;}
     break;
 
   case 153:
-#line 626 "grammar.y"
+// #line 626 "grammar.y"
     { LOG("setter_clause_opt\n"); ;}
     break;
 
   case 154:
-#line 627 "grammar.y"
+// #line 627 "grammar.y"
     { LOG("getter_setter_block (0)\n"); ;}
     break;
 
   case 155:
-#line 628 "grammar.y"
+// #line 628 "grammar.y"
     { LOG("getter_clause (0)\n"); ;}
     break;
 
   case 156:
-#line 629 "grammar.y"
+// #line 629 "grammar.y"
     { LOG("setter_clause (0)\n"); ;}
     break;
 
   case 157:
-#line 630 "grammar.y"
+// #line 630 "grammar.y"
     {;}
     break;
 
   case 158:
-#line 630 "grammar.y"
+// #line 630 "grammar.y"
     { LOG("setter_name_opt\n"); ;}
     break;
 
   case 159:
-#line 631 "grammar.y"
+// #line 631 "grammar.y"
     { LOG("setter_name (0)\n"); ;}
     break;
 
   case 160:
-#line 632 "grammar.y"
+// #line 632 "grammar.y"
     { LOG("getter_setter_keyword_block (0)\n"); ;}
     break;
 
   case 161:
-#line 633 "grammar.y"
+// #line 633 "grammar.y"
     {;}
     break;
 
   case 162:
-#line 633 "grammar.y"
+// #line 633 "grammar.y"
     { LOG("setter_keyword_clause_opt\n"); ;}
     break;
 
   case 163:
-#line 634 "grammar.y"
+// #line 634 "grammar.y"
     { LOG("getter_setter_keyword_block (0)\n"); ;}
     break;
 
   case 164:
-#line 635 "grammar.y"
+// #line 635 "grammar.y"
     { LOG("getter_keyword_clause (0)\n"); ;}
     break;
 
   case 165:
-#line 636 "grammar.y"
+// #line 636 "grammar.y"
     { LOG("setter_keyword_clause (0)\n"); ;}
     break;
 
   case 166:
-#line 637 "grammar.y"
+// #line 637 "grammar.y"
     { LOG("willSet_didSet_block (0)\n"); ;}
     break;
 
   case 167:
-#line 638 "grammar.y"
+// #line 638 "grammar.y"
     {;}
     break;
 
   case 168:
-#line 638 "grammar.y"
+// #line 638 "grammar.y"
     { LOG("didSet_clause_opt\n"); ;}
     break;
 
   case 169:
-#line 639 "grammar.y"
+// #line 639 "grammar.y"
     { LOG("willSet_didSet_block (0)\n"); ;}
     break;
 
   case 170:
-#line 640 "grammar.y"
+// #line 640 "grammar.y"
     { LOG("willSet_clause (0)\n"); ;}
     break;
 
   case 171:
-#line 641 "grammar.y"
+// #line 641 "grammar.y"
     { LOG("didSet_clause (0)\n"); ;}
     break;
 
   case 172:
-#line 645 "grammar.y"
+// #line 645 "grammar.y"
     { LOG("typealias_declaration (0)\n"); ;}
     break;
 
   case 173:
-#line 646 "grammar.y"
+// #line 646 "grammar.y"
     { LOG("typealias_head (0)\n"); ;}
     break;
 
   case 174:
-#line 647 "grammar.y"
+// #line 647 "grammar.y"
     { LOG("typealias_name (0)\n"); ;}
     break;
 
   case 175:
-#line 648 "grammar.y"
+// #line 648 "grammar.y"
     { LOG("typealias_assignment (0)\n"); ;}
     break;
 
   case 176:
-#line 652 "grammar.y"
+// #line 652 "grammar.y"
     {
     ((*yyvalp).node) = [[FunctionDeclaration alloc] initWithName:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (5))].yystate.yysemantics.yysval.str)) signature:(((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (5))].yystate.yysemantics.yysval.node) body:(((yyGLRStackItem const *)yyvsp)[YYFILL ((5) - (5))].yystate.yysemantics.yysval.node)];
     LOG("function_declaration (0)\n");
@@ -3252,102 +3252,102 @@ yyuserAction (yyRuleNum yyn, int yyrhslen, yyGLRStackItem* yyvsp,
     break;
 
   case 177:
-#line 656 "grammar.y"
+// #line 656 "grammar.y"
     {;}
     break;
 
   case 178:
-#line 656 "grammar.y"
+// #line 656 "grammar.y"
     { LOG("generic_parameter_clause_opt\n"); ;}
     break;
 
   case 179:
-#line 657 "grammar.y"
+// #line 657 "grammar.y"
     { LOG("function_head (0)\n"); ;}
     break;
 
   case 180:
-#line 658 "grammar.y"
+// #line 658 "grammar.y"
     { LOG("function_name (0)\n"); ;}
     break;
 
   case 181:
-#line 659 "grammar.y"
+// #line 659 "grammar.y"
     { LOG("function_name (1)\n"); ;}
     break;
 
   case 182:
-#line 660 "grammar.y"
+// #line 660 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node); LOG("function_signature (0)\n"); ;}
     break;
 
   case 183:
-#line 661 "grammar.y"
+// #line 661 "grammar.y"
     {;}
     break;
 
   case 184:
-#line 661 "grammar.y"
+// #line 661 "grammar.y"
     { LOG("function_result_opt\n"); ;}
     break;
 
   case 185:
-#line 662 "grammar.y"
+// #line 662 "grammar.y"
     { LOG("function_result (0)\n"); ;}
     break;
 
   case 186:
-#line 663 "grammar.y"
+// #line 663 "grammar.y"
     { LOG("function_body (0)\n"); ;}
     break;
 
   case 187:
-#line 664 "grammar.y"
+// #line 664 "grammar.y"
     { LOG("parameter_clauses (0)\n"); ;}
     break;
 
   case 188:
-#line 665 "grammar.y"
+// #line 665 "grammar.y"
     {;}
     break;
 
   case 189:
-#line 665 "grammar.y"
+// #line 665 "grammar.y"
     { LOG("parameter_clauses_opt\n"); ;}
     break;
 
   case 190:
-#line 666 "grammar.y"
+// #line 666 "grammar.y"
     {((*yyvalp).node) = NULL; LOG("parameter_clause (0)\n"); ;}
     break;
 
   case 191:
-#line 667 "grammar.y"
+// #line 667 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.node); LOG("parameter_clause (1)\n"); ;}
     break;
 
   case 192:
-#line 668 "grammar.y"
+// #line 668 "grammar.y"
     {;}
     break;
 
   case 193:
-#line 668 "grammar.y"
+// #line 668 "grammar.y"
     { LOG("tripledot_opt\n"); ;}
     break;
 
   case 194:
-#line 669 "grammar.y"
+// #line 669 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node) next:nil]; LOG("parameter_list (0)\n"); ;}
     break;
 
   case 195:
-#line 670 "grammar.y"
+// #line 670 "grammar.y"
     { ((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) next:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)];LOG("parameter_list (1)\n"); ;}
     break;
 
   case 196:
-#line 671 "grammar.y"
+// #line 671 "grammar.y"
     {
     ((*yyvalp).node) = [[FunctionParameter alloc] initWithInoutVal:!!(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (7))].yystate.yysemantics.yysval.node) letVal:!!(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (7))].yystate.yysemantics.yysval.node) hashVal:!!(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (7))].yystate.yysemantics.yysval.node) external:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (7))].yystate.yysemantics.yysval.str)) local:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((5) - (7))].yystate.yysemantics.yysval.str)) defVal:(((yyGLRStackItem const *)yyvsp)[YYFILL ((7) - (7))].yystate.yysemantics.yysval.node)];
     LOG("parameter (0)\n");
@@ -3355,1503 +3355,1503 @@ yyuserAction (yyRuleNum yyn, int yyrhslen, yyGLRStackItem* yyvsp,
     break;
 
   case 197:
-#line 675 "grammar.y"
+// #line 675 "grammar.y"
     {;}
     break;
 
   case 198:
-#line 675 "grammar.y"
+// #line 675 "grammar.y"
     { LOG("inout_opt\n"); ;}
     break;
 
   case 199:
-#line 676 "grammar.y"
+// #line 676 "grammar.y"
     {;}
     break;
 
   case 200:
-#line 676 "grammar.y"
+// #line 676 "grammar.y"
     { LOG("let_opt\n"); ;}
     break;
 
   case 201:
-#line 677 "grammar.y"
+// #line 677 "grammar.y"
     {;}
     break;
 
   case 202:
-#line 677 "grammar.y"
+// #line 677 "grammar.y"
     { LOG("hash_opt\n"); ;}
     break;
 
   case 203:
-#line 678 "grammar.y"
+// #line 678 "grammar.y"
     {;}
     break;
 
   case 204:
-#line 678 "grammar.y"
+// #line 678 "grammar.y"
     { LOG("local_parameter_name_opt\n"); ;}
     break;
 
   case 205:
-#line 679 "grammar.y"
+// #line 679 "grammar.y"
     {;}
     break;
 
   case 206:
-#line 679 "grammar.y"
+// #line 679 "grammar.y"
     { LOG("default_argument_clause_opt\n"); ;}
     break;
 
   case 207:
-#line 680 "grammar.y"
+// #line 680 "grammar.y"
     { LOG("parameter (0)\n"); ;}
     break;
 
   case 208:
-#line 681 "grammar.y"
+// #line 681 "grammar.y"
     { LOG("parameter (0)\n"); ;}
     break;
 
   case 209:
-#line 682 "grammar.y"
+// #line 682 "grammar.y"
     { LOG("parameter_name (0)\n"); ;}
     break;
 
   case 210:
-#line 683 "grammar.y"
+// #line 683 "grammar.y"
     { LOG("parameter_name (1)\n"); ;}
     break;
 
   case 211:
-#line 684 "grammar.y"
+// #line 684 "grammar.y"
     { LOG("local_parameter_name (0)\n"); ;}
     break;
 
   case 212:
-#line 685 "grammar.y"
+// #line 685 "grammar.y"
     { LOG("local_parameter_name (1)\n"); ;}
     break;
 
   case 213:
-#line 686 "grammar.y"
+// #line 686 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node); LOG("default_argument_clause (0)\n"); ;}
     break;
 
   case 214:
-#line 690 "grammar.y"
+// #line 690 "grammar.y"
     { LOG("enum_declaration (0)\n"); ;}
     break;
 
   case 215:
-#line 691 "grammar.y"
+// #line 691 "grammar.y"
     { LOG("enum_declaration (1)\n"); ;}
     break;
 
   case 216:
-#line 692 "grammar.y"
+// #line 692 "grammar.y"
     { LOG("union_style_enum (0)\n"); ;}
     break;
 
   case 217:
-#line 693 "grammar.y"
+// #line 693 "grammar.y"
     {;}
     break;
 
   case 218:
-#line 693 "grammar.y"
+// #line 693 "grammar.y"
     { LOG("union_style_enum_members_opt\n"); ;}
     break;
 
   case 219:
-#line 694 "grammar.y"
+// #line 694 "grammar.y"
     { LOG("union_style_enum_members (0)\n"); ;}
     break;
 
   case 220:
-#line 695 "grammar.y"
+// #line 695 "grammar.y"
     { LOG("union_style_enum_member (0)\n"); ;}
     break;
 
   case 221:
-#line 696 "grammar.y"
+// #line 696 "grammar.y"
     { LOG("union_style_enum_member (1)\n"); ;}
     break;
 
   case 222:
-#line 697 "grammar.y"
+// #line 697 "grammar.y"
     { LOG("union_style_enum_case_clause (0)\n"); ;}
     break;
 
   case 223:
-#line 698 "grammar.y"
+// #line 698 "grammar.y"
     { LOG("union_style_enum_case_list (0)\n"); ;}
     break;
 
   case 224:
-#line 699 "grammar.y"
+// #line 699 "grammar.y"
     { LOG("union_style_enum_case_list (1)\n"); ;}
     break;
 
   case 225:
-#line 700 "grammar.y"
+// #line 700 "grammar.y"
     { LOG("union_style_enum_case (0)\n"); ;}
     break;
 
   case 226:
-#line 701 "grammar.y"
+// #line 701 "grammar.y"
     {;}
     break;
 
   case 227:
-#line 701 "grammar.y"
+// #line 701 "grammar.y"
     { LOG("tuple_type_opt\n"); ;}
     break;
 
   case 228:
-#line 702 "grammar.y"
+// #line 702 "grammar.y"
     { LOG("enum_name (0)\n"); ;}
     break;
 
   case 229:
-#line 703 "grammar.y"
+// #line 703 "grammar.y"
     { LOG("enum_case_name (0)\n"); ;}
     break;
 
   case 230:
-#line 704 "grammar.y"
+// #line 704 "grammar.y"
     { LOG("raw_value_style_enum (0)\n"); ;}
     break;
 
   case 231:
-#line 705 "grammar.y"
+// #line 705 "grammar.y"
     {;}
     break;
 
   case 232:
-#line 705 "grammar.y"
+// #line 705 "grammar.y"
     { LOG("raw_value_style_enum_members_opt\n"); ;}
     break;
 
   case 233:
-#line 706 "grammar.y"
+// #line 706 "grammar.y"
     { LOG("raw_value_style_enum_members (0)\n"); ;}
     break;
 
   case 234:
-#line 707 "grammar.y"
+// #line 707 "grammar.y"
     { LOG("raw_value_style_enum_member (0)\n"); ;}
     break;
 
   case 235:
-#line 708 "grammar.y"
+// #line 708 "grammar.y"
     { LOG("raw_value_style_enum_member (1)\n"); ;}
     break;
 
   case 236:
-#line 709 "grammar.y"
+// #line 709 "grammar.y"
     { LOG("raw_value_style_enum_case_clause (0)\n"); ;}
     break;
 
   case 237:
-#line 710 "grammar.y"
+// #line 710 "grammar.y"
     { LOG("raw_value_style_enum_case_list (0)\n"); ;}
     break;
 
   case 238:
-#line 711 "grammar.y"
+// #line 711 "grammar.y"
     { LOG("raw_value_style_enum_case_list (1)\n"); ;}
     break;
 
   case 239:
-#line 712 "grammar.y"
+// #line 712 "grammar.y"
     { LOG("raw_value_style_enum_case (0)\n"); ;}
     break;
 
   case 240:
-#line 713 "grammar.y"
+// #line 713 "grammar.y"
     {;}
     break;
 
   case 241:
-#line 713 "grammar.y"
+// #line 713 "grammar.y"
     { LOG("raw_value_assignment_opt\n"); ;}
     break;
 
   case 242:
-#line 714 "grammar.y"
+// #line 714 "grammar.y"
     { LOG("raw_value_assignment (0)\n"); ;}
     break;
 
   case 243:
-#line 718 "grammar.y"
+// #line 718 "grammar.y"
     { LOG("struct_declaration (0)\n"); ;}
     break;
 
   case 244:
-#line 719 "grammar.y"
+// #line 719 "grammar.y"
     {;}
     break;
 
   case 245:
-#line 719 "grammar.y"
+// #line 719 "grammar.y"
     { LOG("type_inheritance_clause_opt\n"); ;}
     break;
 
   case 246:
-#line 720 "grammar.y"
+// #line 720 "grammar.y"
     { LOG("struct_name (0)\n"); ;}
     break;
 
   case 247:
-#line 721 "grammar.y"
+// #line 721 "grammar.y"
     { LOG("struct_body (0)\n"); ;}
     break;
 
   case 248:
-#line 725 "grammar.y"
+// #line 725 "grammar.y"
     { LOG("class_declaration (0)\n"); ;}
     break;
 
   case 249:
-#line 726 "grammar.y"
+// #line 726 "grammar.y"
     { LOG("class_name (0)\n"); ;}
     break;
 
   case 250:
-#line 727 "grammar.y"
+// #line 727 "grammar.y"
     { LOG("class_body (0)\n"); ;}
     break;
 
   case 251:
-#line 731 "grammar.y"
+// #line 731 "grammar.y"
     { LOG("protocol_declaration (0)\n"); ;}
     break;
 
   case 252:
-#line 732 "grammar.y"
+// #line 732 "grammar.y"
     { LOG("protocol_name (0)\n"); ;}
     break;
 
   case 253:
-#line 733 "grammar.y"
+// #line 733 "grammar.y"
     { LOG("protocol_body (0)\n"); ;}
     break;
 
   case 254:
-#line 734 "grammar.y"
+// #line 734 "grammar.y"
     {;}
     break;
 
   case 255:
-#line 734 "grammar.y"
+// #line 734 "grammar.y"
     { LOG("protocol_member_declarations_opt\n"); ;}
     break;
 
   case 256:
-#line 735 "grammar.y"
+// #line 735 "grammar.y"
     { LOG("protocol_member_declaration (0)\n"); ;}
     break;
 
   case 257:
-#line 736 "grammar.y"
+// #line 736 "grammar.y"
     { LOG("protocol_member_declaration (0)\n"); ;}
     break;
 
   case 258:
-#line 737 "grammar.y"
+// #line 737 "grammar.y"
     { LOG("protocol_member_declaration (0)\n"); ;}
     break;
 
   case 259:
-#line 738 "grammar.y"
+// #line 738 "grammar.y"
     { LOG("protocol_member_declaration (0)\n"); ;}
     break;
 
   case 260:
-#line 739 "grammar.y"
+// #line 739 "grammar.y"
     { LOG("protocol_member_declaration (0)\n"); ;}
     break;
 
   case 261:
-#line 740 "grammar.y"
+// #line 740 "grammar.y"
     { LOG("protocol_member_declarations (0)\n"); ;}
     break;
 
   case 262:
-#line 744 "grammar.y"
+// #line 744 "grammar.y"
     { LOG("protocol_property_declaration (0)\n"); ;}
     break;
 
   case 263:
-#line 748 "grammar.y"
+// #line 748 "grammar.y"
     { LOG("protocol_method_declaration (0)\n"); ;}
     break;
 
   case 264:
-#line 752 "grammar.y"
+// #line 752 "grammar.y"
     { LOG("protocol_initializer_declaration (0)\n"); ;}
     break;
 
   case 265:
-#line 756 "grammar.y"
+// #line 756 "grammar.y"
     { LOG("protocol_subscript_declaration (0)\n"); ;}
     break;
 
   case 266:
-#line 760 "grammar.y"
+// #line 760 "grammar.y"
     { LOG("protocol_associated_type_declaration (0)\n"); ;}
     break;
 
   case 267:
-#line 761 "grammar.y"
+// #line 761 "grammar.y"
     {;}
     break;
 
   case 268:
-#line 761 "grammar.y"
+// #line 761 "grammar.y"
     { LOG("typealias_assignment_opt\n"); ;}
     break;
 
   case 269:
-#line 765 "grammar.y"
+// #line 765 "grammar.y"
     { LOG("initializer_declaration (0)\n"); ;}
     break;
 
   case 270:
-#line 766 "grammar.y"
+// #line 766 "grammar.y"
     { LOG("initializer_head (0)\n"); ;}
     break;
 
   case 271:
-#line 767 "grammar.y"
+// #line 767 "grammar.y"
     {;}
     break;
 
   case 272:
-#line 767 "grammar.y"
+// #line 767 "grammar.y"
     { LOG("convenience_opt\n"); ;}
     break;
 
   case 273:
-#line 768 "grammar.y"
+// #line 768 "grammar.y"
     { LOG("initializer_body (0)\n"); ;}
     break;
 
   case 274:
-#line 772 "grammar.y"
+// #line 772 "grammar.y"
     { LOG("deinitializer_declaration (0)\n"); ;}
     break;
 
   case 275:
-#line 776 "grammar.y"
+// #line 776 "grammar.y"
     { LOG("extension_declaration (0)\n"); ;}
     break;
 
   case 276:
-#line 777 "grammar.y"
+// #line 777 "grammar.y"
     { LOG("extension_body (0)\n"); ;}
     break;
 
   case 277:
-#line 781 "grammar.y"
+// #line 781 "grammar.y"
     { LOG("subscript_declaration (0)\n"); ;}
     break;
 
   case 278:
-#line 782 "grammar.y"
+// #line 782 "grammar.y"
     { LOG("subscript_declaration (0)\n"); ;}
     break;
 
   case 279:
-#line 783 "grammar.y"
+// #line 783 "grammar.y"
     { LOG("subscript_declaration (0)\n"); ;}
     break;
 
   case 280:
-#line 784 "grammar.y"
+// #line 784 "grammar.y"
     { LOG("subscript_head (0)\n"); ;}
     break;
 
   case 281:
-#line 785 "grammar.y"
+// #line 785 "grammar.y"
     { LOG("subscript_result (0)\n"); ;}
     break;
 
   case 282:
-#line 789 "grammar.y"
+// #line 789 "grammar.y"
     { LOG("operator_declaration (0)\n"); ;}
     break;
 
   case 283:
-#line 790 "grammar.y"
+// #line 790 "grammar.y"
     { LOG("operator_declaration (1)\n"); ;}
     break;
 
   case 284:
-#line 791 "grammar.y"
+// #line 791 "grammar.y"
     { LOG("operator_declaration (2)\n"); ;}
     break;
 
   case 285:
-#line 792 "grammar.y"
+// #line 792 "grammar.y"
     { LOG("prefix_operator_declaration (0)\n"); ;}
     break;
 
   case 286:
-#line 793 "grammar.y"
+// #line 793 "grammar.y"
     { LOG("postfix_operator_declaration (0)\n"); ;}
     break;
 
   case 287:
-#line 794 "grammar.y"
+// #line 794 "grammar.y"
     { LOG("infix_operator_declaration (0)\n"); ;}
     break;
 
   case 288:
-#line 795 "grammar.y"
+// #line 795 "grammar.y"
     {;}
     break;
 
   case 289:
-#line 795 "grammar.y"
+// #line 795 "grammar.y"
     { LOG("infix_operator_attributes_opt\n"); ;}
     break;
 
   case 290:
-#line 796 "grammar.y"
+// #line 796 "grammar.y"
     { LOG("infix_operator_attributes (0)\n"); ;}
     break;
 
   case 291:
-#line 797 "grammar.y"
+// #line 797 "grammar.y"
     {;}
     break;
 
   case 292:
-#line 797 "grammar.y"
+// #line 797 "grammar.y"
     { LOG("precedence_clause_opt\n"); ;}
     break;
 
   case 293:
-#line 798 "grammar.y"
+// #line 798 "grammar.y"
     {;}
     break;
 
   case 294:
-#line 798 "grammar.y"
+// #line 798 "grammar.y"
     { LOG("associativity_clause_opt\n"); ;}
     break;
 
   case 295:
-#line 799 "grammar.y"
+// #line 799 "grammar.y"
     { LOG("precedence_clause (0)\n"); ;}
     break;
 
   case 296:
-#line 800 "grammar.y"
+// #line 800 "grammar.y"
     { LOG("precedence_level (0)\n"); ;}
     break;
 
   case 297:
-#line 801 "grammar.y"
+// #line 801 "grammar.y"
     { LOG("associativity_clause (0)\n"); ;}
     break;
 
   case 298:
-#line 802 "grammar.y"
+// #line 802 "grammar.y"
     { LOG("associativity (0)\n"); ;}
     break;
 
   case 299:
-#line 803 "grammar.y"
+// #line 803 "grammar.y"
     { LOG("associativity (1)\n"); ;}
     break;
 
   case 300:
-#line 804 "grammar.y"
+// #line 804 "grammar.y"
     { LOG("associativity (2)\n"); ;}
     break;
 
   case 301:
-#line 811 "grammar.y"
+// #line 811 "grammar.y"
     { LOG("pattern (0)\n"); ;}
     break;
 
   case 302:
-#line 812 "grammar.y"
+// #line 812 "grammar.y"
     {;}
     break;
 
   case 303:
-#line 812 "grammar.y"
+// #line 812 "grammar.y"
     { LOG("type_annotation_opt\n"); ;}
     break;
 
   case 304:
-#line 813 "grammar.y"
+// #line 813 "grammar.y"
     {((*yyvalp).node) = [[LiteralExpression alloc] init:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str))]; ((*yyvalp).node).type=(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.type); LOG("pattern (1)\n"); ;}
     break;
 
   case 305:
-#line 814 "grammar.y"
+// #line 814 "grammar.y"
     { LOG("pattern (3)\n"); ;}
     break;
 
   case 306:
-#line 815 "grammar.y"
+// #line 815 "grammar.y"
     { LOG("pattern (4)\n"); ;}
     break;
 
   case 307:
-#line 816 "grammar.y"
+// #line 816 "grammar.y"
     { LOG("pattern (5)\n"); ;}
     break;
 
   case 308:
-#line 817 "grammar.y"
+// #line 817 "grammar.y"
     { LOG("pattern (6)\n"); ;}
     break;
 
   case 309:
-#line 818 "grammar.y"
+// #line 818 "grammar.y"
     { LOG("pattern (7)\n"); ;}
     break;
 
   case 310:
-#line 822 "grammar.y"
+// #line 822 "grammar.y"
     { LOG("wildcard_pattern (0)\n"); ;}
     break;
 
   case 311:
-#line 826 "grammar.y"
+// #line 826 "grammar.y"
     { LOG("identifier_pattern (0)\n"); ;}
     break;
 
   case 312:
-#line 830 "grammar.y"
+// #line 830 "grammar.y"
     { LOG("value_binding_pattern (0)\n"); ;}
     break;
 
   case 313:
-#line 831 "grammar.y"
+// #line 831 "grammar.y"
     { LOG("value_binding_pattern (1)\n"); ;}
     break;
 
   case 314:
-#line 835 "grammar.y"
+// #line 835 "grammar.y"
     { LOG("tuple_pattern (0)\n"); ;}
     break;
 
   case 315:
-#line 836 "grammar.y"
+// #line 836 "grammar.y"
     {;}
     break;
 
   case 316:
-#line 836 "grammar.y"
+// #line 836 "grammar.y"
     { LOG("tuple_pattern_element_list_opt\n"); ;}
     break;
 
   case 317:
-#line 837 "grammar.y"
+// #line 837 "grammar.y"
     { LOG("tuple_pattern_element_list (0)\n"); ;}
     break;
 
   case 318:
-#line 838 "grammar.y"
+// #line 838 "grammar.y"
     { LOG("tuple_pattern_element_list (1)\n"); ;}
     break;
 
   case 319:
-#line 839 "grammar.y"
+// #line 839 "grammar.y"
     { LOG("tuple_pattern_element (0)\n"); ;}
     break;
 
   case 320:
-#line 843 "grammar.y"
+// #line 843 "grammar.y"
     { LOG("enum_case_pattern (0)\n"); ;}
     break;
 
   case 321:
-#line 844 "grammar.y"
+// #line 844 "grammar.y"
     {;}
     break;
 
   case 322:
-#line 844 "grammar.y"
+// #line 844 "grammar.y"
     { LOG("type_identifier_opt\n"); ;}
     break;
 
   case 323:
-#line 845 "grammar.y"
+// #line 845 "grammar.y"
     {;}
     break;
 
   case 324:
-#line 845 "grammar.y"
+// #line 845 "grammar.y"
     { LOG("tuple_pattern_opt\n"); ;}
     break;
 
   case 325:
-#line 849 "grammar.y"
+// #line 849 "grammar.y"
     { LOG("type_casting_pattern (0)\n"); ;}
     break;
 
   case 326:
-#line 850 "grammar.y"
+// #line 850 "grammar.y"
     { LOG("type_casting_pattern (1)\n"); ;}
     break;
 
   case 327:
-#line 851 "grammar.y"
+// #line 851 "grammar.y"
     { LOG("is_pattern (0)\n"); ;}
     break;
 
   case 328:
-#line 852 "grammar.y"
+// #line 852 "grammar.y"
     { LOG("as_pattern (0)\n"); ;}
     break;
 
   case 329:
-#line 856 "grammar.y"
+// #line 856 "grammar.y"
     { LOG("expression_pattern (0)\n"); ;}
     break;
 
   case 330:
-#line 863 "grammar.y"
+// #line 863 "grammar.y"
     { LOG("attribute (0)\n"); ;}
     break;
 
   case 331:
-#line 864 "grammar.y"
+// #line 864 "grammar.y"
     {;}
     break;
 
   case 332:
-#line 864 "grammar.y"
+// #line 864 "grammar.y"
     { LOG("attribute_argument_clause_opt\n"); ;}
     break;
 
   case 333:
-#line 865 "grammar.y"
+// #line 865 "grammar.y"
     { LOG("attribute_name (0)\n"); ;}
     break;
 
   case 334:
-#line 866 "grammar.y"
+// #line 866 "grammar.y"
     { LOG("attribute_argument_clause (0)\n"); ;}
     break;
 
   case 335:
-#line 867 "grammar.y"
+// #line 867 "grammar.y"
     {;}
     break;
 
   case 336:
-#line 867 "grammar.y"
+// #line 867 "grammar.y"
     { LOG("balanced_tokens_opt\n"); ;}
     break;
 
   case 337:
-#line 868 "grammar.y"
+// #line 868 "grammar.y"
     { LOG("attributes (0)\n"); ;}
     break;
 
   case 338:
-#line 869 "grammar.y"
+// #line 869 "grammar.y"
     { LOG("balanced_tokens (0)\n"); ;}
     break;
 
   case 339:
-#line 870 "grammar.y"
+// #line 870 "grammar.y"
     { LOG("balanced_token (0)\n"); ;}
     break;
 
   case 340:
-#line 871 "grammar.y"
+// #line 871 "grammar.y"
     { LOG("balanced_token (0)\n"); ;}
     break;
 
   case 341:
-#line 872 "grammar.y"
+// #line 872 "grammar.y"
     { LOG("balanced_token (0)\n"); ;}
     break;
 
   case 342:
-#line 873 "grammar.y"
+// #line 873 "grammar.y"
     { LOG("balanced_token (0)\n"); ;}
     break;
 
   case 343:
-#line 874 "grammar.y"
+// #line 874 "grammar.y"
     { LOG("balanced_token (0)\n"); ;}
     break;
 
   case 344:
-#line 881 "grammar.y"
+// #line 881 "grammar.y"
     {LOG("expression (0)\n"); ;}
     break;
 
   case 345:
-#line 882 "grammar.y"
+// #line 882 "grammar.y"
     {((*yyvalp).node) = [[BinaryExpression alloc] initWithExpression:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) next:(BinaryExpression*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)];;}
     break;
 
   case 346:
-#line 883 "grammar.y"
+// #line 883 "grammar.y"
     { LOG("expression_list (0)\n"); ;}
     break;
 
   case 347:
-#line 884 "grammar.y"
+// #line 884 "grammar.y"
     { LOG("expression_list (1)\n"); ;}
     break;
 
   case 348:
-#line 888 "grammar.y"
+// #line 888 "grammar.y"
     {((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str) ? [[PrefixOperator alloc] init:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node):toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str))] : (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node);  LOG("prefix_expression\n"); ;}
     break;
 
   case 349:
-#line 889 "grammar.y"
+// #line 889 "grammar.y"
     {((*yyvalp).str) = NULL;}
     break;
 
   case 350:
-#line 889 "grammar.y"
+// #line 889 "grammar.y"
     { LOG("prefix_operator_opt\n"); ;}
     break;
 
   case 351:
-#line 890 "grammar.y"
+// #line 890 "grammar.y"
     { LOG("prefix_expression (0)\n"); ;}
     break;
 
   case 352:
-#line 891 "grammar.y"
+// #line 891 "grammar.y"
     { LOG("in_out_expression (0)\n"); ;}
     break;
 
   case 353:
-#line 895 "grammar.y"
+// #line 895 "grammar.y"
     {((*yyvalp).node) = [[BinaryOperator alloc] initWithRightOperand:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node) binaryOperator:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str))]; LOG("binary_expression (0)\n"); ;}
     break;
 
   case 354:
-#line 896 "grammar.y"
+// #line 896 "grammar.y"
     {((*yyvalp).node) = [[AssignmentOperator alloc] initWithRightOperand:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)]; LOG("binary_expression (0)\n"); ;}
     break;
 
   case 355:
-#line 897 "grammar.y"
+// #line 897 "grammar.y"
     {((*yyvalp).node) = [[TernaryOperator alloc] initWithTrueOperand:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.node) falseOperand:(((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.node)]; LOG("binary_expression (0)\n"); ;}
     break;
 
   case 356:
-#line 898 "grammar.y"
+// #line 898 "grammar.y"
     { LOG("binary_expression (0)\n"); ;}
     break;
 
   case 357:
-#line 899 "grammar.y"
+// #line 899 "grammar.y"
     {((*yyvalp).node) = [[BinaryExpression alloc] initWithExpression:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node)]; ;}
     break;
 
   case 358:
-#line 900 "grammar.y"
+// #line 900 "grammar.y"
     {((*yyvalp).node) = [[BinaryExpression alloc] initWithExpression:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) next:(BinaryExpression*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)];  ;}
     break;
 
   case 359:
-#line 906 "grammar.y"
+// #line 906 "grammar.y"
     { LOG("type_casting_operator (0)\n"); ;}
     break;
 
   case 360:
-#line 907 "grammar.y"
+// #line 907 "grammar.y"
     { LOG("type_casting_operator (1)\n"); ;}
     break;
 
   case 361:
-#line 908 "grammar.y"
+// #line 908 "grammar.y"
     {;}
     break;
 
   case 362:
-#line 908 "grammar.y"
+// #line 908 "grammar.y"
     { LOG("question_opt\n"); ;}
     break;
 
   case 363:
-#line 912 "grammar.y"
+// #line 912 "grammar.y"
     { ((*yyvalp).node) = [[IdentifierExpression alloc] init:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str))]; LOG("primary_expression (1)\n"); ;}
     break;
 
   case 364:
-#line 913 "grammar.y"
+// #line 913 "grammar.y"
     {;}
     break;
 
   case 365:
-#line 913 "grammar.y"
+// #line 913 "grammar.y"
     { LOG("generic_argument_clause_opt\n"); ;}
     break;
 
   case 366:
-#line 914 "grammar.y"
+// #line 914 "grammar.y"
     { LOG("primary_expression (2)\n"); ;}
     break;
 
   case 367:
-#line 915 "grammar.y"
+// #line 915 "grammar.y"
     { LOG("primary_expression (3)\n"); ;}
     break;
 
   case 368:
-#line 916 "grammar.y"
+// #line 916 "grammar.y"
     { LOG("primary_expression (4)\n"); ;}
     break;
 
   case 369:
-#line 917 "grammar.y"
+// #line 917 "grammar.y"
     { LOG("primary_expression (5)\n"); ;}
     break;
 
   case 370:
-#line 918 "grammar.y"
+// #line 918 "grammar.y"
     { LOG("primary_expression (6)\n"); ;}
     break;
 
   case 371:
-#line 919 "grammar.y"
+// #line 919 "grammar.y"
     { LOG("primary_expression (7)\n"); ;}
     break;
 
   case 372:
-#line 920 "grammar.y"
+// #line 920 "grammar.y"
     { LOG("primary_expression (8)\n"); ;}
     break;
 
   case 373:
-#line 924 "grammar.y"
+// #line 924 "grammar.y"
     { ((*yyvalp).node) = [[LiteralExpression alloc] init:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.str))]; LOG("Literal: %s\n", (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.str));}
     break;
 
   case 374:
-#line 925 "grammar.y"
+// #line 925 "grammar.y"
     { LOG("literal_expression (0)\n"); ;}
     break;
 
   case 375:
-#line 926 "grammar.y"
+// #line 926 "grammar.y"
     { LOG("literal_expression (1)\n"); ;}
     break;
 
   case 376:
-#line 927 "grammar.y"
+// #line 927 "grammar.y"
     { LOG("literal_expression (0)\n"); ;}
     break;
 
   case 377:
-#line 928 "grammar.y"
+// #line 928 "grammar.y"
     { LOG("literal_expression (1)\n"); ;}
     break;
 
   case 378:
-#line 929 "grammar.y"
+// #line 929 "grammar.y"
     { LOG("literal_expression (2)\n"); ;}
     break;
 
   case 379:
-#line 930 "grammar.y"
+// #line 930 "grammar.y"
     { LOG("literal_expression (3)\n"); ;}
     break;
 
   case 380:
-#line 931 "grammar.y"
+// #line 931 "grammar.y"
     {((*yyvalp).node) = [[ArrayLiteral alloc] initWithItems:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.node)]; LOG("array_literal (0)\n"); ;}
     break;
 
   case 381:
-#line 932 "grammar.y"
+// #line 932 "grammar.y"
     {;}
     break;
 
   case 382:
-#line 932 "grammar.y"
+// #line 932 "grammar.y"
     { LOG("array_literal_items_opt\n"); ;}
     break;
 
   case 383:
-#line 933 "grammar.y"
+// #line 933 "grammar.y"
     { ((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) next:nil]; LOG("array_literal_items (0)\n"); ;}
     break;
 
   case 384:
-#line 934 "grammar.y"
+// #line 934 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) next:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("array_literal_items (1)\n"); ;}
     break;
 
   case 385:
-#line 935 "grammar.y"
+// #line 935 "grammar.y"
     {;}
     break;
 
   case 386:
-#line 935 "grammar.y"
+// #line 935 "grammar.y"
     { LOG("comma_opt\n"); ;}
     break;
 
   case 387:
-#line 936 "grammar.y"
+// #line 936 "grammar.y"
     { LOG("array_literal_item (0)\n"); ;}
     break;
 
   case 388:
-#line 937 "grammar.y"
+// #line 937 "grammar.y"
     {((*yyvalp).node) = [[DictionaryLiteral alloc] initWithPairs:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.node)]; LOG("array_literal (0)\n"); LOG("dictionary_literal (0)\n"); ;}
     break;
 
   case 389:
-#line 938 "grammar.y"
+// #line 938 "grammar.y"
     {((*yyvalp).node) = [[DictionaryLiteral alloc] initWithPairs:nil];  LOG("dictionary_literal (1)\n"); ;}
     break;
 
   case 390:
-#line 939 "grammar.y"
+// #line 939 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) next:nil]; LOG("dictionary_literal_items (0)\n"); ;}
     break;
 
   case 391:
-#line 940 "grammar.y"
+// #line 940 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) next:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("dictionary_literal_items (1)\n"); ;}
     break;
 
   case 392:
-#line 941 "grammar.y"
+// #line 941 "grammar.y"
     {((*yyvalp).node) = [[DictionaryItem alloc] initWithKey:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) value:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("dictionary_literal_item (0)\n"); ;}
     break;
 
   case 393:
-#line 945 "grammar.y"
+// #line 945 "grammar.y"
     { LOG("self_expression (0)\n"); ;}
     break;
 
   case 394:
-#line 946 "grammar.y"
+// #line 946 "grammar.y"
     { LOG("self_expression (0)\n"); ;}
     break;
 
   case 395:
-#line 947 "grammar.y"
+// #line 947 "grammar.y"
     { LOG("self_expression (0)\n"); ;}
     break;
 
   case 396:
-#line 948 "grammar.y"
+// #line 948 "grammar.y"
     { LOG("self_expression (0)\n"); ;}
     break;
 
   case 397:
-#line 952 "grammar.y"
+// #line 952 "grammar.y"
     { LOG("superclass_expression (0)\n"); ;}
     break;
 
   case 398:
-#line 953 "grammar.y"
+// #line 953 "grammar.y"
     { LOG("superclass_expression (1)\n"); ;}
     break;
 
   case 399:
-#line 954 "grammar.y"
+// #line 954 "grammar.y"
     { LOG("superclass_expression (2)\n"); ;}
     break;
 
   case 400:
-#line 955 "grammar.y"
+// #line 955 "grammar.y"
     { LOG("superclass_method_expression (0)\n"); ;}
     break;
 
   case 401:
-#line 956 "grammar.y"
+// #line 956 "grammar.y"
     { LOG("superclass_subscript_expression (0)\n"); ;}
     break;
 
   case 402:
-#line 957 "grammar.y"
+// #line 957 "grammar.y"
     { LOG("superclass_initializer_expression (0)\n"); ;}
     break;
 
   case 403:
-#line 961 "grammar.y"
+// #line 961 "grammar.y"
     { LOG("closure_expression (0)\n"); ;}
     break;
 
   case 404:
-#line 962 "grammar.y"
+// #line 962 "grammar.y"
     {;}
     break;
 
   case 405:
-#line 962 "grammar.y"
+// #line 962 "grammar.y"
     { LOG("closure_signature_opt\n"); ;}
     break;
 
   case 406:
-#line 963 "grammar.y"
+// #line 963 "grammar.y"
     { LOG("closure_signature (0)\n"); ;}
     break;
 
   case 407:
-#line 964 "grammar.y"
+// #line 964 "grammar.y"
     { LOG("closure_signature (0)\n"); ;}
     break;
 
   case 408:
-#line 965 "grammar.y"
+// #line 965 "grammar.y"
     { LOG("closure_signature (0)\n"); ;}
     break;
 
   case 409:
-#line 966 "grammar.y"
+// #line 966 "grammar.y"
     { LOG("closure_signature (0)\n"); ;}
     break;
 
   case 410:
-#line 967 "grammar.y"
+// #line 967 "grammar.y"
     { LOG("closure_signature (0)\n"); ;}
     break;
 
   case 411:
-#line 968 "grammar.y"
+// #line 968 "grammar.y"
     { LOG("capture_list (0)\n"); ;}
     break;
 
   case 412:
-#line 969 "grammar.y"
+// #line 969 "grammar.y"
     { LOG("capture_specifier (0)\n"); ;}
     break;
 
   case 413:
-#line 970 "grammar.y"
+// #line 970 "grammar.y"
     { LOG("capture_specifier (1)\n"); ;}
     break;
 
   case 414:
-#line 971 "grammar.y"
+// #line 971 "grammar.y"
     { LOG("capture_specifier (2)\n"); ;}
     break;
 
   case 415:
-#line 972 "grammar.y"
+// #line 972 "grammar.y"
     { LOG("capture_specifier (3)\n"); ;}
     break;
 
   case 416:
-#line 976 "grammar.y"
+// #line 976 "grammar.y"
     { ((*yyvalp).node) = [[LiteralExpression alloc] init:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str))];  LOG("implicit_member_expression (0)\n"); ;}
     break;
 
   case 417:
-#line 980 "grammar.y"
+// #line 980 "grammar.y"
     { ((*yyvalp).node) = [[ParenthesizedExpression alloc] initWithExpression:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.node)]; LOG("parenthesized_expression (0)\n"); ;}
     break;
 
   case 418:
-#line 981 "grammar.y"
+// #line 981 "grammar.y"
     {((*yyvalp).node) = NULL;}
     break;
 
   case 419:
-#line 981 "grammar.y"
+// #line 981 "grammar.y"
     { ((*yyvalp).node) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node); LOG("expression_element_list_opt\n"); ;}
     break;
 
   case 420:
-#line 982 "grammar.y"
+// #line 982 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node) next:nil]; LOG("expression_element_list (0)\n"); ;}
     break;
 
   case 421:
-#line 983 "grammar.y"
+// #line 983 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) next:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("expression_element_list (1)\n"); ;}
     break;
 
   case 422:
-#line 984 "grammar.y"
+// #line 984 "grammar.y"
     { LOG("expression_element (0)\n"); ;}
     break;
 
   case 423:
-#line 985 "grammar.y"
+// #line 985 "grammar.y"
     { ((*yyvalp).node) = [[NamedExpression alloc] initWithName:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.str)) expr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("expression_element (1)\n"); ;}
     break;
 
   case 424:
-#line 989 "grammar.y"
+// #line 989 "grammar.y"
     { LOG("wildcard_expression (0)\n"); ;}
     break;
 
   case 425:
-#line 993 "grammar.y"
+// #line 993 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 426:
-#line 994 "grammar.y"
+// #line 994 "grammar.y"
     { ((*yyvalp).node) = [[PostfixOperator alloc] init:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node):toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str))]; LOG("postfix_expression op %s\n", (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str)); ;}
     break;
 
   case 427:
-#line 995 "grammar.y"
+// #line 995 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 428:
-#line 996 "grammar.y"
+// #line 996 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 429:
-#line 997 "grammar.y"
+// #line 997 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 430:
-#line 998 "grammar.y"
+// #line 998 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 431:
-#line 999 "grammar.y"
+// #line 999 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 432:
-#line 1000 "grammar.y"
+// #line 1000 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 433:
-#line 1001 "grammar.y"
+// #line 1001 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 434:
-#line 1002 "grammar.y"
+// #line 1002 "grammar.y"
     { LOG("postfix_expression (0)\n"); ;}
     break;
 
   case 435:
-#line 1006 "grammar.y"
+// #line 1006 "grammar.y"
     {((*yyvalp).node) = [[FunctionCallExpression alloc] initWithFunction:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node) parenthesized:(ParenthesizedExpression*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.node)]; LOG("function_call_expression (0)\n"); ;}
     break;
 
   case 436:
-#line 1007 "grammar.y"
+// #line 1007 "grammar.y"
     { LOG("function_call_expression (0)\n"); ;}
     break;
 
   case 437:
-#line 1008 "grammar.y"
+// #line 1008 "grammar.y"
     {;}
     break;
 
   case 438:
-#line 1008 "grammar.y"
+// #line 1008 "grammar.y"
     { LOG("parenthesized_expression_opt\n"); ;}
     break;
 
   case 439:
-#line 1009 "grammar.y"
+// #line 1009 "grammar.y"
     { LOG("trailing_closure (0)\n"); ;}
     break;
 
   case 440:
-#line 1013 "grammar.y"
+// #line 1013 "grammar.y"
     { LOG("initializer_expression (0)\n"); ;}
     break;
 
   case 441:
-#line 1017 "grammar.y"
+// #line 1017 "grammar.y"
     { LOG("explicit_member_expression (0)\n"); ;}
     break;
 
   case 442:
-#line 1018 "grammar.y"
+// #line 1018 "grammar.y"
     { LOG("explicit_member_expression (0)\n"); ;}
     break;
 
   case 443:
-#line 1022 "grammar.y"
+// #line 1022 "grammar.y"
     { LOG("postfix_self_expression (0)\n"); ;}
     break;
 
   case 444:
-#line 1026 "grammar.y"
+// #line 1026 "grammar.y"
     { LOG("dynamic_type_expression (0)\n"); ;}
     break;
 
   case 445:
-#line 1030 "grammar.y"
+// #line 1030 "grammar.y"
     { LOG("subscript_expression (0)\n"); ;}
     break;
 
   case 446:
-#line 1034 "grammar.y"
+// #line 1034 "grammar.y"
     { LOG("forced_value_expression (0)\n"); ;}
     break;
 
   case 447:
-#line 1038 "grammar.y"
+// #line 1038 "grammar.y"
     { ((*yyvalp).node) = [[OptionalChainExprStatement alloc] initWithOptChainExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.node)]; LOG("optional_chaining_expression (0)\n"); ;}
     break;
 
   case 448:
-#line 1045 "grammar.y"
+// #line 1045 "grammar.y"
     { LOG("identifier_list (0)\n"); ;}
     break;
 
   case 449:
-#line 1046 "grammar.y"
+// #line 1046 "grammar.y"
     { LOG("identifier_list (1)\n"); ;}
     break;
 
   case 479:
-#line 1069 "grammar.y"
+// #line 1069 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 480:
-#line 1070 "grammar.y"
+// #line 1070 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 481:
-#line 1071 "grammar.y"
+// #line 1071 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 482:
-#line 1072 "grammar.y"
+// #line 1072 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 483:
-#line 1073 "grammar.y"
+// #line 1073 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 484:
-#line 1074 "grammar.y"
+// #line 1074 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 485:
-#line 1075 "grammar.y"
+// #line 1075 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 486:
-#line 1076 "grammar.y"
+// #line 1076 "grammar.y"
     {((*yyvalp).str) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.str);}
     break;
 
   case 487:
-#line 1083 "grammar.y"
+// #line 1083 "grammar.y"
     { LOG("type (0)\n"); ;}
     break;
 
   case 488:
-#line 1084 "grammar.y"
+// #line 1084 "grammar.y"
     { LOG("type (1)\n"); ;}
     break;
 
   case 489:
-#line 1085 "grammar.y"
+// #line 1085 "grammar.y"
     { LOG("type (2)\n"); ;}
     break;
 
   case 490:
-#line 1086 "grammar.y"
+// #line 1086 "grammar.y"
     { LOG("type (3)\n"); ;}
     break;
 
   case 491:
-#line 1087 "grammar.y"
+// #line 1087 "grammar.y"
     { LOG("type (4)\n"); ;}
     break;
 
   case 492:
-#line 1088 "grammar.y"
+// #line 1088 "grammar.y"
     { LOG("type (5)\n"); ;}
     break;
 
   case 493:
-#line 1089 "grammar.y"
+// #line 1089 "grammar.y"
     { LOG("type (6)\n"); ;}
     break;
 
   case 494:
-#line 1090 "grammar.y"
+// #line 1090 "grammar.y"
     { LOG("type (7)\n"); ;}
     break;
 
   case 495:
-#line 1094 "grammar.y"
+// #line 1094 "grammar.y"
     {((*yyvalp).type) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.type); LOG("type_annotation (0)\n"); ;}
     break;
 
   case 496:
-#line 1098 "grammar.y"
+// #line 1098 "grammar.y"
     {((*yyvalp).type) = [GenericType fromTypeIdentifier:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.str))]; LOG("type_identifier (0)\n"); ;}
     break;
 
   case 497:
-#line 1099 "grammar.y"
+// #line 1099 "grammar.y"
     {((*yyvalp).type) = [GenericType fromTypeIdentifier:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.str))]; LOG("type_identifier (1)\n"); ;}
     break;
 
   case 498:
-#line 1100 "grammar.y"
+// #line 1100 "grammar.y"
     { LOG("type_name (0)\n"); ;}
     break;
 
   case 499:
-#line 1104 "grammar.y"
+// #line 1104 "grammar.y"
     { ((*yyvalp).type) = [[TupleType alloc] initWithList:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.node)]; LOG("tuple_type (0)\n"); ;}
     break;
 
   case 500:
-#line 1105 "grammar.y"
+// #line 1105 "grammar.y"
     {;}
     break;
 
   case 501:
-#line 1105 "grammar.y"
+// #line 1105 "grammar.y"
     { LOG("tuple_type_body_opt\n"); ;}
     break;
 
   case 502:
-#line 1106 "grammar.y"
+// #line 1106 "grammar.y"
     { LOG("tuple_type_body (0)\n"); ;}
     break;
 
   case 503:
-#line 1107 "grammar.y"
+// #line 1107 "grammar.y"
     {((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.node) next:nil]; LOG("tuple_type_element_list (0)\n"); ;}
     break;
 
   case 504:
-#line 1108 "grammar.y"
+// #line 1108 "grammar.y"
     { ((*yyvalp).node)=[[ExpressionList alloc] initWithExpr:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.node) next:(ExpressionList*)(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.node)]; LOG("tuple_type_element_list (1)\n"); ;}
     break;
 
   case 505:
-#line 1109 "grammar.y"
+// #line 1109 "grammar.y"
     {((*yyvalp).node) = [[TypeExpression alloc] initWithLinkedType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.type)]; LOG("tuple_type_element (0)\n"); ;}
     break;
 
   case 506:
-#line 1110 "grammar.y"
+// #line 1110 "grammar.y"
     {((*yyvalp).node) = [[NamedExpression alloc] initWithName:toSwift((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.str)) expr:[[TypeExpression alloc] initWithLinkedType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.type)]]; LOG("tuple_type_element (1)\n"); ;}
     break;
 
   case 507:
-#line 1111 "grammar.y"
+// #line 1111 "grammar.y"
     { LOG("element_name (0)\n"); ;}
     break;
 
   case 508:
-#line 1115 "grammar.y"
+// #line 1115 "grammar.y"
     {((*yyvalp).type) = [[FunctionType alloc] initWithArgsType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.type) returnType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.type)]; LOG("function_type (0)\n"); ;}
     break;
 
   case 509:
-#line 1119 "grammar.y"
+// #line 1119 "grammar.y"
     {((*yyvalp).type) = [[ArrayType alloc] initWithInnerType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.type)]; LOG("array_type (0)\n"); ;}
     break;
 
   case 510:
-#line 1120 "grammar.y"
+// #line 1120 "grammar.y"
     { ((*yyvalp).type) = [[ArrayType alloc] initWithInnerType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.type)]; LOG("array_type (1)\n"); ;}
     break;
 
   case 511:
-#line 1121 "grammar.y"
+// #line 1121 "grammar.y"
     { ((*yyvalp).type) = [[ArrayType alloc] initWithInnerType:(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.type)]; LOG("arry_type (2)\n");;}
     break;
 
   case 512:
-#line 1125 "grammar.y"
+// #line 1125 "grammar.y"
     {(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.type).optional = true; ((*yyvalp).type) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.type); LOG("optional_type (0)\n"); ;}
     break;
 
   case 513:
-#line 1129 "grammar.y"
+// #line 1129 "grammar.y"
     { LOG("implicitly_unwrapped_optional_type (0)\n"); ;}
     break;
 
   case 514:
-#line 1133 "grammar.y"
+// #line 1133 "grammar.y"
     { LOG("protocol_composition_type (0)\n"); ;}
     break;
 
   case 515:
-#line 1134 "grammar.y"
+// #line 1134 "grammar.y"
     {;}
     break;
 
   case 516:
-#line 1134 "grammar.y"
+// #line 1134 "grammar.y"
     { LOG("protocol_identifier_list_opt\n"); ;}
     break;
 
   case 517:
-#line 1135 "grammar.y"
+// #line 1135 "grammar.y"
     { LOG("protocol_identifier_list (0)\n"); ;}
     break;
 
   case 518:
-#line 1136 "grammar.y"
+// #line 1136 "grammar.y"
     { LOG("protocol_identifier_list (1)\n"); ;}
     break;
 
   case 519:
-#line 1137 "grammar.y"
+// #line 1137 "grammar.y"
     { LOG("protocol_identifier (0)\n"); ;}
     break;
 
   case 520:
-#line 1141 "grammar.y"
+// #line 1141 "grammar.y"
     { LOG("metatype_type (0)\n"); ;}
     break;
 
   case 521:
-#line 1142 "grammar.y"
+// #line 1142 "grammar.y"
     { LOG("metatype_type (1)\n"); ;}
     break;
 
   case 522:
-#line 1146 "grammar.y"
+// #line 1146 "grammar.y"
     { LOG("type_inheritance_clause (0)\n"); ;}
     break;
 
   case 523:
-#line 1147 "grammar.y"
+// #line 1147 "grammar.y"
     { LOG("type_inheritance_list (0)\n"); ;}
     break;
 
   case 524:
-#line 1148 "grammar.y"
+// #line 1148 "grammar.y"
     { LOG("type_inheritance_list (1)\n"); ;}
     break;
 
 
 /* Line 930 of glr.c.  */
-#line 4853 "grammar.mm"
+// #line 4853 "grammar.mm"
       default: break;
     }
 
@@ -6509,7 +6509,7 @@ yypdumpstack (yyGLRStack* yystackp)
 #endif
 
 
-#line 1150 "grammar.y"
+// #line 1150 "grammar.y"
 
 
 
@@ -6535,21 +6535,25 @@ int yylex ()
     
     //set string value
     const char * str = [[lexer yylexstr] UTF8String];
+    NSLog(@"input --");
     if (str) {
         yylval.str = strdup(str);
     }
     else {
         yylval.str = NULL;
     }
-    
+    NSLog(@"String: %s",str);
+    NSLog(@"-- input");
     return token;
 }
 
 extern "C" {
     ASTNode* bridge_yyparse(Lexer * instance, int debug) {
+        NSLog(@"Start parsing...");
         lexer = instance;
         debugRules = debug;
         yyparse();
+        NSLog(@"End parsing...");
         return ast;
     }
     
@@ -6558,3 +6562,10 @@ extern "C" {
     }
 }
 
+extern "C" {
+
+void foo()
+{
+    puts("Foo");
+}
+}

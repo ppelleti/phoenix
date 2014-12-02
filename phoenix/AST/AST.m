@@ -197,7 +197,7 @@ NSString *tabulate(NSString *code)
 // Node
 @implementation ASTNode
 
-@synthesize type;
+@dynamic type;
 
 - (NSString *)toCode
 {
@@ -222,7 +222,8 @@ NSString *tabulate(NSString *code)
 
 - (void) setType: (GenericType *)atype
 {
-    self.type = atype;
+    type = atype;
+    [type retain];
 }
 
 - (void) setTypeIfEmpty: (GenericType *)atype
