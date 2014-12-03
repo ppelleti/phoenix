@@ -71,9 +71,9 @@ NSString *tabulate(NSString *code)
         if(self != nil)
         {
             ctx = self;  // set global context...
-            self.exportedVars = [NSMutableArray array];  // array of arrays of exported variables...
+            self.exportedVars = [[NSMutableArray alloc] init];  // array of arrays of exported variables...
             self.exportedIndex = 0;
-            self.symbols = [NSMutableArray array];  // Array of ASTSymbolTable objects...
+            self.symbols = [[NSMutableArray alloc] init];  // Array of ASTSymbolTable objects...
             self.symbolsIndex = -1;
             self.generateIDIndex = 0;
         }
@@ -120,7 +120,7 @@ NSString *tabulate(NSString *code)
 
 - (NSString *)getExportedVars
 {
-    if ([[self.exportedVars objectAtIndex: self.exportedIndex] count] > 0)
+    if ([[self.exportedVars objectAtIndex: self.exportedIndex - 1] count] > 0)
     {
         NSString *result = @"";
         result = [result stringByAppendingString:[self variableDeclaration]];
@@ -173,10 +173,14 @@ NSString *tabulate(NSString *code)
 {
     if([self.symbols count] < self.symbolsIndex)
     {
-        [self.symbols addObject:[ASTSymbolTable dictionary]];
+        ASTSymbolTable *table = [[ASTSymbolTable alloc] init];
+        [self.symbols addObject:table];
     }
-    [[self.symbols objectAtIndex:self.symbolsIndex] setObject:type
-                                                       forKey:name];
+    if(self.symbolsIndex > 0)
+    {
+        [[self.symbols objectAtIndex:self.symbolsIndex] setObject:type
+                                                           forKey:name];
+    }
 }
 
 - (GenericType *)inferSymbol: (NSString *)name
@@ -199,6 +203,17 @@ NSString *tabulate(NSString *code)
 
 @dynamic type;
 
+- (id) init
+{
+    self = [super init];
+    if(self)
+    {
+        type = nil;
+        [self retain];
+    }
+    return self;
+}
+
 - (NSString *)toCode
 {
     return nil;
@@ -206,13 +221,13 @@ NSString *tabulate(NSString *code)
 
 - (GenericType *) getType
 {
-    GenericType *cached = self.type;
+    GenericType *cached = type;
     if(cached)
     {
         return cached;
     }
-    self.type = [self inferType];
-    return self.type ? self.type : [[GenericType alloc] initWithType:TYPE_UNKNOWN];
+    type = [self inferType];
+    return type ? type : [[GenericType alloc] initWithType:TYPE_UNKNOWN];
 }
 
 - (GenericType *) inferType
@@ -230,7 +245,7 @@ NSString *tabulate(NSString *code)
 {
     if(self.type == nil)
     {
-        self.type = atype;
+        type = atype;
     }
 }
 
@@ -363,7 +378,7 @@ NSString *tabulate(NSString *code)
 
 - (NSString *) toCode
 {
-    return [NSString stringWithFormat:@" = %@",self.rightOperand];
+    return [NSString stringWithFormat:@" = %@",[self.rightOperand toCode]];
 }
 
 - (GenericType *) inferType
@@ -567,13 +582,13 @@ NSString *tabulate(NSString *code)
 - (NSString *)toCode
 {
     //Check Tuple assignment binary expressions
-    AssignmentOperator *assignment = (AssignmentOperator *)[self.next current];
+    AssignmentOperator *assignment = (AssignmentOperator *)(AS([self.next current],[AssignmentOperator class]));
     if (assignment != nil)
     {
         self.current.type = [assignment.rightOperand getType];
         //check left to right tuple assignment
-        ParenthesizedExpression *leftTuple =  (ParenthesizedExpression *)[self current];
-        ParenthesizedExpression *rightTuple = (ParenthesizedExpression *)assignment.rightOperand;
+        ParenthesizedExpression *leftTuple =  (ParenthesizedExpression *)(AS([self current], [ParenthesizedExpression class]));
+        ParenthesizedExpression *rightTuple = (ParenthesizedExpression *)(AS(assignment.rightOperand, [ParenthesizedExpression class]));
         
         if(leftTuple && [leftTuple isList] && rightTuple && [rightTuple isList])
         {
@@ -587,7 +602,7 @@ NSString *tabulate(NSString *code)
         }
     }
     
-    BinaryOperator *binaryOperator = (BinaryOperator *)[self.next current];
+    BinaryOperator *binaryOperator = (BinaryOperator *)(AS([self.next current],[BinaryOperator class]));
     //check for custom operators. Example array +=
     if(binaryOperator)
     {
@@ -600,13 +615,13 @@ NSString *tabulate(NSString *code)
 
     //Generic binary expression
     NSString *result = @"";
-    BinaryExpression *currentExpression = (BinaryExpression *)self.current;
-    BinaryExpression *nextExpression = (BinaryExpression *)self.next;
+    id currentExpression = self.current;
+    id nextExpression = self.next;
     if(currentExpression)
     {
         result = [result stringByAppendingString: [currentExpression toCode]];
     }
-    else if(nextExpression)
+    if(nextExpression)
     {
         result = [result stringByAppendingString: [nextExpression toCode]];
     }

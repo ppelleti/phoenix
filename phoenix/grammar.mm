@@ -195,17 +195,17 @@
     
     #define LOG(...) if (debugRules)printf(__VA_ARGS__);
     
-    union YYSTYPE;
+    struct YYSTYPE;
     static ASTNode * statementsMerge(YYSTYPE & a, YYSTYPE & b);
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE 
+typedef struct YYSTYPE
 // #line 26 "grammar.y"
 {
-    ASTNode * node;
-    char *    str;
-    GenericType * type;
+    ASTNode  *node;
+    char     *str;
+    GenericType *type;
 }
 /* Line 204 of glr.c.  */
 // #line 210 "grammar.mm"
@@ -6554,18 +6554,11 @@ extern "C" {
         debugRules = debug;
         yyparse();
         NSLog(@"End parsing...");
+        NSLog(@" %@", [ast toCode]);
         return ast;
     }
     
     const char * bridge_yyerror() {
         return lastError;
     }
-}
-
-extern "C" {
-
-void foo()
-{
-    puts("Foo");
-}
 }

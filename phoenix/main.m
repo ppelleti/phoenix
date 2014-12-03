@@ -30,9 +30,7 @@ NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
         NSLog(@"===========");
     }
     
-    foo();
-    
-    ASTNode *ast = bridge_yyparse(lexer, debug);
+    ASTNode *ast = (ASTNode *)bridge_yyparse(lexer, debug);
     if(ast != nil)
     {
         NSString *program = [ast toCode];
@@ -57,7 +55,7 @@ int main(int argc, const char * argv[]) {
             return 0;
         }
          */
-        
+        ctx = [[ASTContext alloc] init];
         NSString *fileName = @"/tmp/test1.swift";
         // NSString *fileName = [NSString stringWithUTF8String:argv[1]];
         NSString *sourceCode = [NSString stringWithContentsOfFile:fileName
