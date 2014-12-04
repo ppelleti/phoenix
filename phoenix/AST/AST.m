@@ -51,8 +51,7 @@ NSString *tabulate(NSString *code)
 @end
 
 // Define a subclass for future expansion...
-@implementation ASTSymbolTable : NSMutableDictionary
-@end
+#define ASTSymbolTable NSMutableDictionary
 
 // Context
 @implementation ASTContext
@@ -176,11 +175,15 @@ NSString *tabulate(NSString *code)
         ASTSymbolTable *table = [[ASTSymbolTable alloc] init];
         [self.symbols addObject:table];
     }
-    if(self.symbolsIndex > 0)
+    
+    
+    if(self.symbolsIndex < 0)
     {
-        [[self.symbols objectAtIndex:self.symbolsIndex] setObject:type
-                                                           forKey:name];
+        [self saveSymbols];
     }
+    
+    [[self.symbols objectAtIndex:self.symbolsIndex] setObject:type
+                                                       forKey:name];
 }
 
 - (GenericType *)inferSymbol: (NSString *)name
