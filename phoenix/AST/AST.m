@@ -946,7 +946,7 @@ NSString *tabulate(NSString *code)
 - (NSString *)toCode
 {
     self.parenthesized.allowInlineTuple = NO;
-    return [self.function toCode];
+    return [NSString stringWithFormat:@"%@%@",[self.function toCode],[self.parenthesized toCode]];
 }
 
 - (GenericType *)inferType
