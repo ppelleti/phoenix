@@ -252,6 +252,11 @@ NSString *tabulate(NSString *code)
     }
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ : %@",[super description],[self toCode]];
+}
+
 @end
 
 // Literal expression...
@@ -1461,7 +1466,7 @@ NSString *tabulate(NSString *code)
 
 - (NSString *)toCode
 {
-    return [NSString stringWithFormat:@"%@;",self.statement];
+    return [NSString stringWithFormat:@"%@;",[self.statement toCode]];
 }
 
 @end
