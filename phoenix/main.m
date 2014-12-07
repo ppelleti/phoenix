@@ -46,6 +46,7 @@ NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
+        NSError *err = NULL;
         BOOL debug = NO;
         
         /*
@@ -60,7 +61,12 @@ int main(int argc, const char * argv[]) {
         // NSString *fileName = [NSString stringWithUTF8String:argv[1]];
         NSString *sourceCode = [NSString stringWithContentsOfFile:fileName
                                                          encoding:NSUTF8StringEncoding
-                                                            error:NULL];
+                                                            error: &err];
+        if (!sourceCode) {
+            NSString * msg = err ? [err localizedDescription] : @"failure";
+            NSLog(@"Couldn't read %@: %@", fileName, msg);
+            return EXIT_FAILURE;
+        }
         
         NSDictionary *result = swiftCompiler(sourceCode, debug);
         
