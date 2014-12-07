@@ -34,7 +34,10 @@ NSDictionary *swiftCompiler(NSString *sourceCode, BOOL debug)
     if(ast != nil)
     {
         NSString *program = [ast toCode];
-        NSString *error = [NSString stringWithUTF8String:bridge_yyerror()];
+        const char *yye = bridge_yyerror();
+        if (!yye)
+            yye = "(none)";
+        NSString *error = [NSString stringWithUTF8String:yye];
         [result setObject:program forKey:@"program"];
         [result setObject:error forKey:@"error"];
     }
